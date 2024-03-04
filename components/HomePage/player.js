@@ -5,7 +5,7 @@ function Player() {
     <>
       <iframe
         src="https://player.radioking.io/radio-snuagless/?c=%237023FF&c2=%23FFFFFF&f=h&i=1&p=1&s=0&li=1&popup=1&plc=NaN&h=undefined&l=470&v=2"
-        style={{ borderRadius: "5px", width: "90%", height: "20vh" }}
+        style={{ borderRadius: "5px", width: "100%", height: "20vh" }}
         frameBorder="0"
       ></iframe>
       <script
