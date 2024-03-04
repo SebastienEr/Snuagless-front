@@ -1,4 +1,4 @@
-import styles from '../styles/Signup.module.css';
+import styles from '../styles/connexion.module.css';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'
@@ -34,7 +34,7 @@ function Signup() {
     
   
     const handleRegister = () => {
-      fetch('ROUTE DU FETCH DEMANDER À SEB LE PRO DU BACKEND', {
+      fetch('ROUTE DU FETCH DEMANDER VÉRIF À SEB LE PRO DU BACKEND', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: signUpUsername, firstname: signUpFirstname, password: signUpPassword }),
@@ -51,7 +51,7 @@ function Signup() {
   
   const handleConnection = () => {
   
-      fetch('ROUTE DU FETCH DEMANDER À SEB LE PRO DU BACKEND', {
+      fetch('ROUTE DU FETCH DEMANDER VÉRIF À SEB LE PRO DU BACKEND', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: signInUsername, password: signInPassword }),
