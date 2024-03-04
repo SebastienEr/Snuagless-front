@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Menu from "../HomePage/Menu";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -10,6 +11,7 @@ function Header() {
       <button>
         <span>Se Connecter</span>
         <span style={{ marginLeft: "2rem" }}>
+          <Menu />
           <Image src={require("../../public/images/userIcon.png")} />
         </span>
       </button>
