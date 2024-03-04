@@ -1,12 +1,12 @@
-import styles from "../styles/Homepage.module.css";
-import Player from "../components/Player";
+import Player from "./player";
+import styles from "../styles/Home.module.css";
 
-function Homepage() {
+function Home() {
   return (
-    <div>
+    <div className={styles.Home}>
       <Player />
     </div>
   );
 }
 
-export default Homepage;
+export default Home;

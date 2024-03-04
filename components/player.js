@@ -1,11 +1,11 @@
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Player.module.css";
 
 function Player() {
   return (
     <div className={styles.player}>
       <iframe
-        src="https://player.radioking.io/radio-snuagless/?c=%237023FF&c2=%23FFFFFF&f=v&i=1&p=1&s=0&li=1&popup=1&plc=NaN&h=365&l=undefined&v=2"
-        style="border-radius: 5px; width: 275px; height: 365px; "
+        src="https://player.radioking.io/radio-snuagless/?c=%237023FF&c2=%23FFFFFF&f=h&i=1&p=1&s=0&li=1&popup=1&plc=NaN&h=undefined&l=470&v=2"
+        style={{ borderRadius: "5px", width: "90%", height: "20vh" }}
         frameBorder="0"
       ></iframe>
       <script
