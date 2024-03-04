@@ -4,6 +4,7 @@ import styles from "./Home.module.css";
 import Program from "./Program";
 import Image from "next/image";
 import Schedule from "./Schedule";
+import Player from "./player";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
           />
           <Chat />
         </div>
+        <Player />
         <Schedule />
       </main>
     </div>

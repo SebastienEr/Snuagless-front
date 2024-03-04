@@ -1,7 +1,7 @@
 import Home from "../components/HomePage/Home";
 
 function Index() {
-  return <Homepage />;
+  return <Home />;
 }
 
 export default Index;
