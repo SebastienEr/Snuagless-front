@@ -5,6 +5,7 @@ import Program from "./Program";
 import Image from "next/image";
 import Schedule from "./Schedule";
 import Player from "./player";
+import Poulpy from "./Poulpy";
 
 function Home() {
   return (
@@ -13,10 +14,11 @@ function Home() {
       <main className={styles.main}>
         <div className={styles.content}>
           <Program />
-          <Image
+          <Poulpy />
+          {/* <Image
             width={300}
             src={require("../../public/images/mascotte1.png")}
-          />
+          /> */}
           <Chat />
         </div>
         <Player />
