@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5%;
+  background-color: #480ebb;
+}
+
+.header h1 {
+  color: white;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 6rem;
+}
+
+.header button {
+  background-color: #01c2cc;
+  color: #603698;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem;
+  width: 15%;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header button:hover {
+  opacity: 0.8;
+}
