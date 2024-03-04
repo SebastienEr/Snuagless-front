@@ -1,0 +1,6 @@
+.player {
+  position: sticky;
+  bottom: 0;
+  width: 80%;
+  height: 100vh;
+}

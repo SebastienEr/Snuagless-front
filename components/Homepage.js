@@ -1,15 +1,12 @@
-import styles from '../styles/Home.module.css';
+import styles from "../styles/Homepage.module.css";
+import Player from "../components/Player";
 
-function Home() {
+function Homepage() {
   return (
     <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
+      <Player />
     </div>
   );
 }
 
-export default Home;
+export default Homepage;

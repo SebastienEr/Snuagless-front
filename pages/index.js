@@ -1,7 +1,7 @@
-import Home from '../components/Home';
+import Homepage from "../components/Homepage";
 
 function Index() {
-  return <Home />;
+  return <Homepage />;
 }
 
 export default Index;
