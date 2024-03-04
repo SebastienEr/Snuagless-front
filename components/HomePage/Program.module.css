@@ -2,7 +2,7 @@
   height: 22.5rem;
   width: 17.5rem;
   border-radius: 10px;
-  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.6);
   background: linear-gradient(320deg, #7b2be8 50%, #01c2cc 100%);
   display: flex;
   flex-direction: column;

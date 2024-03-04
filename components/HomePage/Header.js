@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Menu from "../HomePage/Menu";
 import styles from "./Header.module.css";
 
 function Header() {
+  const [authenticated, setAuthenticated] = useState(false);
   return (
     <header className={styles.header}>
       <Image src={require("../../public/images/logo.png")} />

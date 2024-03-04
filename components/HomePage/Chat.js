@@ -1,13 +1,26 @@
-import React from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import styles from "./Chat.module.css";
+import PulsatingLock from "./PulsatingLock";
 
 function Chat() {
+  const [authenticated, setAuthenticated] = useState(true);
+
+  let content;
+
+  if (authenticated) {
+    content = (
+      <div className={styles.inputContainer}>
+        <textarea rows={4} placeholder="Type here..." />
+        <button>Send</button>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <h2>Chat</h2>
-
-      <Image src={require("../../public/images/lock.png")} />
+      {!authenticated && <PulsatingLock />}
+      {authenticated && content}
     </div>
   );
 }
