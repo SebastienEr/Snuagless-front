@@ -16,10 +16,12 @@
     "framer-motion": "^11.0.8",
     "motion": "^10.17.0",
     "next": "^12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "^18.2.0",
+    "react-blob": "^2.1.0",
+    "react-dom": "^18.2.0",
     "react-redux": "8.0.2",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

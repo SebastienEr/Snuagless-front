@@ -1,11 +1,11 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import Head from "next/head";
 
 function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Next.js App</title>
+        <title>Radio Snuagless</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
           rel="stylesheet"
