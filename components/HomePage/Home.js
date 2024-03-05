@@ -1,8 +1,7 @@
-import Chat from "./Chat";
+import ChatView from "./ChatView";
 import Header from "./Header";
 import styles from "./Home.module.css";
 import Program from "./Program";
-import Image from "next/image";
 import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
@@ -19,7 +18,7 @@ function Home() {
             width={300}
             src={require("../../public/images/mascotte1.png")}
           /> */}
-          <Chat />
+          <ChatView />
         </div>
         <Player />
         <Schedule />
