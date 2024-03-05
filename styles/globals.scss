@@ -47,7 +47,7 @@ $opening-angle: $pi * 2;
   @extend %ball;
 }
 .hamburger {
-  $width: 25px;
+  $width: 20px;
   $height: 3px;
   width: $width;
   height: $height;
@@ -71,13 +71,13 @@ $hamburger-spacing: 8px;
   transform: translate3d(0, $hamburger-spacing, 0);
 }
 .menu-open:checked + .menu-open-button {
-  .hamburger-1 {
+  .hamburger-3 {
     transform: translate3d(0, 0, 0) rotate(45deg);
   }
   .hamburger-2 {
     transform: translate3d(0, 0, 0) scale(0.1, 1);
   }
-  .hamburger-3 {
+  .hamburger-1 {
     transform: translate3d(0, 0, 0) rotate(-45deg);
   }
 }
@@ -88,12 +88,11 @@ $hamburger-spacing: 8px;
   position: absolute;
   left: 50%;
   margin-left: -$width/2;
-  padding-top: 20px;
+  padding-top: 12px;
   padding-left: $width/2;
   width: $width;
   height: $height;
   box-sizing: border-box;
-  font-size: 20px;
   text-align: left;
 }
 
@@ -125,6 +124,7 @@ $hamburger-spacing: 8px;
   transition-duration: 200ms;
   transform: scale(0.8, 0.8) translate3d(0, 0, 0);
 }
+/* Example: Reduce Font Awesome icon size */
 
 .menu-open:checked ~ .menu-item {
   transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);

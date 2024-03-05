@@ -21,28 +21,21 @@ function Menu() {
           id="menu-open"
         />
         <label class="menu-open-button" for="menu-open">
-          <span class="hamburger hamburger-1"></span>
-          <span class="hamburger hamburger-2"></span>
-          <span class="hamburger hamburger-3"></span>
+          <span class="hamburger-1">
+            <FontAwesomeIcon icon={faUser} />
+          </span>
+          <span class="hamburger-2"></span>
+          <span class="hamburger-3"></span>
         </label>
 
-        <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faHeart} size="5px" />
+        <a href="/Favorites.js" class="menu-item">
+          <FontAwesomeIcon icon={faHeart} />
+        </a>
+        <a href="/Settings.js" class="menu-item">
+          <FontAwesomeIcon icon={faCog} />
         </a>
         <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faCog} size="5px" />
-        </a>
-        <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faOtter} size="5px" />
-        </a>
-        <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faUser} style={{ size: "5px" }} />
-        </a>
-        <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faHeart} size="5px" />
-        </a>
-        <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faHeart} size="5px" />
+          <FontAwesomeIcon icon={faOtter} />
         </a>
       </nav>
 
