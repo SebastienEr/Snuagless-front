@@ -3,7 +3,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 2.5%;
-  background-color: #480ebb;
+  height: 155px;
+  /* background-color: #480ebb; */
+  background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%);
+
 }
 
 .header h1 {
@@ -30,4 +33,14 @@
 
 .header button:hover {
   opacity: 0.8;
+}
+
+.snuagless {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.sunglasses{
+  width: 20vw;
+  height: 4vh;
 }

@@ -1,14 +1,18 @@
 .container {
-  height: 22.5rem;
-  width: 25%;
-  box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.6);
-  background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%);
-  display: flex;
+  height: 60vh;
+  width: 25rem;
+  box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
+  /* background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%); */
+  background: rgba(208, 162, 241, 0.42);  display: flex;
+  border:  0.1px solid rgba(183, 183, 248, 0.607);
+
+  backdrop-filter: blur(10px);
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: relative;
   border-radius: 12px;
+  margin-bottom: 50px;
 }
 
 .container h2 {

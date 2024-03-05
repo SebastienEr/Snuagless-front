@@ -2,7 +2,7 @@
     height: 25.25em;
     width: 25.25em;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
     left: 50%;
     top: 42%;
   }

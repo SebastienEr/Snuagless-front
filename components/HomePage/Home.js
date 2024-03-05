@@ -9,7 +9,7 @@ import Poulpy from "./Poulpy";
 
 function Home() {
   return (
-    <div>
+    <div className={styles.tout}>
       <Header />
       <main className={styles.main}>
         <div className={styles.content}>
