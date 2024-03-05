@@ -9,7 +9,12 @@ body {
 * {
   box-sizing: border-box;
 }
-
+.icon-user {
+  font-family: "Font Awesome";
+  font-size: 12px; // Ajustez la taille de l'icône selon vos besoins
+  overflow: hidden; // Masque le contenu qui dépasse
+  position: relative; // Positionnement relatif pour ajuster l'icône
+}
 // Gooey
 //vars
 $fg: #e91e63;
@@ -31,6 +36,7 @@ $opening-angle: $pi * 2;
   border-radius: 100%;
   width: 80px;
   height: 80px;
+  font-size: 5px;
   margin-left: -40px;
   position: absolute;
   top: 20px;
@@ -39,6 +45,7 @@ $opening-angle: $pi * 2;
   line-height: 80px;
   transform: translate3d(0, 0, 0);
   transition: transform ease-out 200ms;
+  overflow: hidden;
 }
 .menu-open {
   display: none;

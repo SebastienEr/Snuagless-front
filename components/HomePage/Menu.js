@@ -6,6 +6,7 @@ import {
   faUser,
   faCog,
   faOtter,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Menu.module.scss";
 /* import Menu from "../HomePage/Menu"; et <Menu/> dans la page où on souhaite avoir le gooey*/
@@ -22,20 +23,27 @@ function Menu() {
         />
         <label class="menu-open-button" for="menu-open">
           <span class="hamburger-1">
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} class="icon-user" />
           </span>
           <span class="hamburger-2"></span>
           <span class="hamburger-3"></span>
         </label>
 
         <a href="/Favorites.js" class="menu-item">
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={faHeart} class="icon-user" size="xs" />
         </a>
         <a href="/Settings.js" class="menu-item">
-          <FontAwesomeIcon icon={faCog} />
+          <FontAwesomeIcon icon={faCog} class="icon-user" />
         </a>
         <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faOtter} />
+          <FontAwesomeIcon icon={faOtter} class="icon-user" size="xs" />
+        </a>
+        <a href="#" class="menu-item">
+          <FontAwesomeIcon
+            icon={faRightToBracket}
+            class="icon-user"
+            size="xs"
+          />
         </a>
       </nav>
 
