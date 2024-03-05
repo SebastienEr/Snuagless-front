@@ -9,26 +9,8 @@
   justify-content: space-between;
   position: relative;
   border-radius: 12px;
-  margin: 0 auto;
-  overflow-y: scroll;
 }
 
-.container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.container::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-.container::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-.container::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-}
 .container h2 {
   margin: 0;
   color: #ffffffec;
@@ -74,32 +56,4 @@
 .inputContainer textarea::placeholder {
   color: white;
   font-weight: bold;
-}
-
-.message {
-  background-color: rgb(178, 215, 248);
-
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.7rem;
-  position: relative;
-  box-shadow: 3px 3px 1px 0 rgba(0, 0, 0, 0.4);
-  text-align: left;
-  word-wrap: break-word;
-  word-break: break-all;
-  overflow-wrap: break-word;
-  max-width: 50%;
-  margin: 0.25rem;
-}
-
-.tail {
-  content: "";
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-left: 8px solid transparent;
-  border-right: 8px solid rgb(178, 215, 248);
-  border-top: 8px solid rgb(178, 215, 248);
-  border-bottom: 8px solid transparent;
-  right: 46px;
-  bottom: 2px;
 }
