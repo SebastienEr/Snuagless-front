@@ -43,7 +43,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signUpUsername, token: data.token }));
-          router.push("/home");
+          router.push("/");
         } else {
           console.error("Echec");
         }
