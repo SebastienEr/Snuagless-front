@@ -8,13 +8,13 @@ import Link from "next/link";
 function Signup() {
   const [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const [isOpenSignUp, setIsOpenSignUp] = useState(false);
-  const [formDataSignIn, setFormDataSignIn] = useState({
-    firstName: "",
-    lastName: "",
+  const [formDataSignUp, setFormDataSignUp] = useState({
+    userName: "",
+    email: "",
     password: "",
   });
 
-  const [formDataSignUp, setFormDataSignUp] = useState({
+  const [formDataSignIn, setFormDataSignIn] = useState({
     username: "",
     password: "",
   });
@@ -25,16 +25,19 @@ function Signup() {
 
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
+  const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
 
   const handleRegister = () => {
     fetch("http://localhost:3000/users/signup", {
+    fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: signUpUsername,
+        email: signUpEmail,
         email: signUpEmail,
         password: signUpPassword,
       }),
@@ -63,7 +66,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signInUsername, token: data.token }));
-          router.push("/home");
+          router.push("/");
         } else {
           console.error("Echec");
         }
@@ -84,7 +87,7 @@ function Signup() {
               <span className="close" onClick={() => setIsOpenSignUp(false)}>
                 &times;
               </span>
-              <h2>Sign up</h2>
+              <h2>Sign in</h2>
               <input
                 type="text"
                 placeholder="Username"
@@ -100,7 +103,7 @@ function Signup() {
                 value={signInPassword}
               />
               <button id="connection" onClick={() => handleConnection()}>
-                Sign In
+                Sign in
               </button>
             </div>
           </div>
