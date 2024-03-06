@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Menu from "../HomePage/Menu";
+// import Menu from "../HomePage/Menu";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -16,7 +16,7 @@ function Header() {
           <Image src={require("../../public/images/userIcon.png")} />
         </span>
       </button>
-      <Menu />
+      {/* <Menu /> */}
     </header>
   );
 }
