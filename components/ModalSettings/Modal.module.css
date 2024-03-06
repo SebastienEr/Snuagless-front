@@ -1,0 +1,39 @@
+.dialog {
+  background: linear-gradient(70deg, #a273e4 50%, #68c7cc 100%);
+  width: 30%;
+  top: 30%;
+  position: fixed;
+  z-index: 5;
+  padding: 2rem;
+  text-align: center;
+
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  padding-bottom: 4rem;
+}
+
+.logo {
+  margin-bottom: 1rem;
+}
+
+.closeBtnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.close {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -5,19 +5,40 @@ import Program from "./Program";
 import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
+import { useState } from "react";
+import Modal from "../ModalSettings/Modal";
+import ChangePhoto from "../ModalSettings/ChangePhoto";
 
 function Home() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [mode, setMode] = useState("photo");
+  const openModal = () => {
+    setModalIsOpen((prevState) => !prevState);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen((prevState) => !prevState);
+  };
   return (
     <div className={styles.tout}>
-      <Header />
+      {modalIsOpen && (
+        <div className={styles.backdrop} onClick={closeModal}></div>
+      )}
+      <Modal open={modalIsOpen} onClose={closeModal}>
+        {mode === "photo" && (
+          <ChangePhoto
+            // userPhoto={userPhoto}
+            // onSetPhoto={setUserPhoto}
+            onClose={closeModal}
+          />
+        )}
+      </Modal>
+      <Header onClick={openModal} />
       <main className={styles.main}>
         <div className={styles.content}>
           <Program />
-          {/* <Poulpy /> */}
-          {/* <Image
-            width={300}
-            src={require("../../public/images/mascotte1.png")}
-          /> */}
+          <Poulpy />
+
           <ChatView />
         </div>
         <Player />

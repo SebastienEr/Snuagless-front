@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Pusher from "pusher-js";
 import pusherConfig from "../../pusher-config.json";
-import styles from "./Chat.module.css";
+import styles from "./ChatView.module.css";
 import Image from "next/image";
 import { randomUsernames } from "./randomusernames";
 

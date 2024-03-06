@@ -5,7 +5,7 @@ import styles from "./Header.module.css";
 import Signup from "../connexion/connexion";
 import Link from "next/link";
 
-function Header() {
+function Header({ onClick }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   /*   const handleRedirect = () => {
@@ -17,8 +17,9 @@ function Header() {
   return (
     <header className={styles.header}>
       <Image
-        src={require("../../public/images/logo2.png")}
+        src={require("../../public/images/logo.png")}
         className={styles.sunglasses}
+        onClick={onClick}
       />
       <h1 className={styles.snuagless}>Snuagless</h1>
       {authenticated ? (
