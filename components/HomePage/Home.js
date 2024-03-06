@@ -5,19 +5,19 @@ import Program from "./Program";
 import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const user = useSelector((state) => state.user.value);
+
+  console.log(user);
   return (
     <div className={styles.tout}>
       <Header />
       <main className={styles.main}>
         <div className={styles.content}>
           <Program />
-          {/* <Poulpy /> */}
-          {/* <Image
-            width={300}
-            src={require("../../public/images/mascotte1.png")}
-          /> */}
+          <Poulpy />
           <ChatView />
         </div>
         <Player />
