@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from '../HomePage/Poulpy.module.css'; 
+import React from "react";
+import styles from "../HomePage/Poulpy.module.css";
 
 const Poulpy = () => {
   return (

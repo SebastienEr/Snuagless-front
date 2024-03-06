@@ -30,7 +30,7 @@ function Signup() {
   const [signInPassword, setSignInPassword] = useState("");
 
   const handleRegister = () => {
-    fetch("ROUTE DU FETCH DEMANDER VÉRIF À SEB LE PRO DU BACKEND", {
+    fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -43,7 +43,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signUpUsername, token: data.token }));
-          router.push("/home");
+          router.push("/");
         } else {
           console.error("Echec");
         }
@@ -51,7 +51,7 @@ function Signup() {
   };
 
   const handleConnection = () => {
-    fetch("ROUTE DU FETCH DEMANDER VÉRIF À SEB LE PRO DU BACKEND", {
+    fetch("   http://localhost:3000/users/signin ", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -63,7 +63,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signInUsername, token: data.token }));
-          router.push("/home");
+          router.push("/");
         } else {
           console.error("Echec");
         }
@@ -100,7 +100,7 @@ function Signup() {
                 value={signInPassword}
               />
               <button id="connection" onClick={() => handleConnection()}>
-                Sign In
+                Sign in
               </button>
             </div>
           </div>

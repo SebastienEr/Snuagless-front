@@ -5,8 +5,12 @@ import Program from "./Program";
 import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const user = useSelector((state) => state.user.value);
+
+  console.log(user);
   return (
     <div className={styles.all}> {/*tout tout tout */}
       <div className={styles.home}>
