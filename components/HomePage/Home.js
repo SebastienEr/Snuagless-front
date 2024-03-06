@@ -37,7 +37,6 @@ function Home() {
           />
         )}
       </Modal>
-      <Header onClick={openModal} />
 
       <div className={styles.home}>
         <Header />
