@@ -13,7 +13,7 @@ function Home() {
       <main className={styles.main}>
         <div className={styles.content}>
           <Program />
-          <Poulpy />
+          {/* <Poulpy /> */}
           {/* <Image
             width={300}
             src={require("../../public/images/mascotte1.png")}
