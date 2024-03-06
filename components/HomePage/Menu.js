@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,52 +14,53 @@ import { logout, login } from "../../reducers/user";
 /* import Menu from "../HomePage/Menu"; et <Menu/> dans la page où on souhaite avoir le gooey*/
 function Menu() {
   const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
 
   {
     user !== null;
     return (
       <>
-        <nav class="menu">
+        <nav className="menu">
           <input
             type="checkbox"
             href="#"
-            class="menu-open"
+            className="menu-open"
             name="menu-open"
             id="menu-open"
           />
-          <label class="menu-open-button" for="menu-open">
-            <span class="hamburger-1">
-              <FontAwesomeIcon icon={faUser} class="icon-user" />
+          <label className="menu-open-button" for="menu-open">
+            <span className="hamburger-1">
+              <FontAwesomeIcon icon={faUser} className="icon-user" />
             </span>
-            <span class="hamburger-2"></span>
-            <span class="hamburger-3"></span>
+            <span className="hamburger-2"></span>
+            <span className="hamburger-3"></span>
           </label>
 
-          <a href="/Favorites.js" class="menu-item">
+          <a href="/Favorites.js" className="menu-item">
             <FontAwesomeIcon
               icon={faHeart}
               style={{ width: "40px", marginTop: "25px" }}
             />
           </a>
-          <a href="/Settings.js" class="menu-item">
+          <a href="/Settings.js" className="menu-item">
             <FontAwesomeIcon
               icon={faCog}
               style={{ width: "40px", marginTop: "25px" }}
             />
           </a>
-          <a href="#" class="menu-item">
+          <a href="#" className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
               style={{ width: "40px", marginTop: "25px" }}
             />
           </a>
 
-          <a onClick={() => dispatch(logout)} class="menu-item">
+          <span onClick={() => dispatch(logout())} className="menu-item">
             <FontAwesomeIcon
               icon={faRightToBracket}
               style={{ width: "40px", marginTop: "20px" }}
             />
-          </a>
+          </span>
         </nav>
 
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
