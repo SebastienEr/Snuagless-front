@@ -8,13 +8,13 @@ import Link from "next/link";
 function Signup() {
   const [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const [isOpenSignUp, setIsOpenSignUp] = useState(false);
-  const [formDataSignIn, setFormDataSignIn] = useState({
-    firstName: "",
-    lastName: "",
+  const [formDataSignUp, setFormDataSignUp] = useState({
+    userName: "",
+    email: "",
     password: "",
   });
 
-  const [formDataSignUp, setFormDataSignUp] = useState({
+  const [formDataSignIn, setFormDataSignIn] = useState({
     username: "",
     password: "",
   });
@@ -24,7 +24,7 @@ function Signup() {
   const user = useSelector((state) => state.user.value);
 
   const [signUpUsername, setSignUpUsername] = useState("");
-  const [signUpFirstname, setSignUpFirstname] = useState("");
+  const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
@@ -35,7 +35,7 @@ function Signup() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: signUpUsername,
-        firstname: signUpFirstname,
+        email: signUpEmail,
         password: signUpPassword,
       }),
     })
@@ -74,7 +74,7 @@ function Signup() {
   if (!user.isConnected) {
     userSection = (
       <div className={styles.connect}>
-        <p>Already member?</p>
+        <p>Vous avez déjà un compte?</p>
         <button className={styles.signup} onClick={() => setIsOpenSignUp(true)}>
           Sign in
         </button>
@@ -84,7 +84,7 @@ function Signup() {
               <span className="close" onClick={() => setIsOpenSignUp(false)}>
                 &times;
               </span>
-              <h2>Sign up</h2>
+              <h2>Sign in</h2>
               <input
                 type="text"
                 placeholder="Username"
@@ -110,17 +110,17 @@ function Signup() {
   }
 
   return (
-    <div>
+    // <div>
       <main className={styles.main}>
-        <div className={styles.right}>
-          <h1 className={styles.title}>Register now</h1>
+        <div className={styles.form}>
+          <h1 className={styles.title}>INSCRIPTION</h1>
           <div className={styles.inputs}>
             <input
-              className={styles.firstname}
+              className={styles.email}
               type="text"
-              placeholder="Firstname"
-              onChange={(e) => setSignUpFirstname(e.target.value)}
-              value={signUpFirstname}
+              placeholder="email"
+              onChange={(e) => setSignUpEmail(e.target.value)}
+              value={signUpEmail}
             />
             <input
               className={styles.username}
@@ -143,7 +143,7 @@ function Signup() {
           {userSection}
         </div>
       </main>
-    </div>
+    // </div>
   );
 }
 

@@ -6,6 +6,11 @@
   width: 100vw;
 }
 
+.home{
+  height: 100vh;
+  width: 100vw;
+}
+
 .content {
   display: flex;
   width: 100%;
@@ -16,9 +21,9 @@
   margin-left: 3vw;
   padding-right: 6vw;
 }
-
+/* 
 .player {
   position: sticky;
   bottom: 0;
-  /* overflow: hidden; */
-}
+  overflow: hidden;
+} */

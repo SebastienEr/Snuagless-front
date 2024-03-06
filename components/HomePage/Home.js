@@ -8,21 +8,20 @@ import Poulpy from "./Poulpy";
 
 function Home() {
   return (
-    <div className={styles.tout}>
-      <Header />
-      <main className={styles.main}>
+    <div className={styles.all}> {/*tout tout tout */}
+      <div className={styles.home}>
+        <Header />
+        <main className={styles.main}>
         <div className={styles.content}>
-          <Program />
-          {/* <Poulpy /> */}
-          {/* <Image
-            width={300}
-            src={require("../../public/images/mascotte1.png")}
-          /> */}
-          <ChatView />
-        </div>
+             <Program />
+             <Poulpy />
+             <ChatView />
+          </div>
+          </main>
         <Player />
-        <Schedule />
-      </main>
+      {/* </main> */}
+     </div>
+      <Schedule />
     </div>
   );
 }
