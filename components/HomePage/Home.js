@@ -12,17 +12,22 @@ function Home() {
 
   console.log(user);
   return (
-    <div className={styles.tout}>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles.content}>
-          <Program />
-          {/* <Poulpy /> */}
-          <ChatView />
-        </div>
+    <div className={styles.all}>
+      {" "}
+      {/*tout tout tout */}
+      <div className={styles.home}>
+        <Header />
+        <main className={styles.main}>
+          <div className={styles.content}>
+            <Program />
+            <Poulpy />
+            <ChatView />
+          </div>
+        </main>
         <Player />
-        <Schedule />
-      </main>
+        {/* </main> */}
+      </div>
+      <Schedule />
     </div>
   );
 }

@@ -74,7 +74,7 @@ function Signup() {
   if (!user.isConnected) {
     userSection = (
       <div className={styles.connect}>
-        <p>Already member?</p>
+        <p>Vous avez déjà un compte?</p>
         <button className={styles.signup} onClick={() => setIsOpenSignUp(true)}>
           Sign in
         </button>
@@ -110,13 +110,13 @@ function Signup() {
   }
 
   return (
-    <div>
+    // <div>
       <main className={styles.main}>
-        <div className={styles.right}>
-          <h1 className={styles.title}>Register now</h1>
+        <div className={styles.form}>
+          <h1 className={styles.title}>INSCRIPTION</h1>
           <div className={styles.inputs}>
             <input
-              className={styles.firstname}
+              className={styles.email}
               type="text"
               placeholder="email"
               onChange={(e) => setSignUpEmail(e.target.value)}
@@ -143,7 +143,7 @@ function Signup() {
           {userSection}
         </div>
       </main>
-    </div>
+    // </div>
   );
 }
 

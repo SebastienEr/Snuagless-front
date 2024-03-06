@@ -1,6 +1,6 @@
 .player {
   display: flex;
-  position: fixed;
-  bottom: 120px;
+  position: sticky;
+  bottom: 0;
   overflow: hidden;
 }

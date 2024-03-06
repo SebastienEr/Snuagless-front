@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Menu from "../HomePage/Menu";
+// import Menu from "../HomePage/Menu";
 import styles from "./Header.module.css";
 import Signup from "../connexion/connexion";
 import Link from "next/link";
