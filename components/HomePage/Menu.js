@@ -30,19 +30,27 @@ function Menu() {
         </label>
 
         <a href="/Favorites.js" class="menu-item">
-          <FontAwesomeIcon icon={faHeart} class="icon-user" size="xs" />
+          <FontAwesomeIcon
+            icon={faHeart}
+            style={{ width: "40px", marginTop: "25px" }}
+          />
         </a>
         <a href="/Settings.js" class="menu-item">
-          <FontAwesomeIcon icon={faCog} class="icon-user" />
+          <FontAwesomeIcon
+            icon={faCog}
+            style={{ width: "40px", marginTop: "25px" }}
+          />
         </a>
         <a href="#" class="menu-item">
-          <FontAwesomeIcon icon={faOtter} class="icon-user" size="xs" />
+          <FontAwesomeIcon
+            icon={faOtter}
+            style={{ width: "40px", marginTop: "25px" }}
+          />
         </a>
         <a href="#" class="menu-item">
           <FontAwesomeIcon
             icon={faRightToBracket}
-            class="icon-user"
-            size="xs"
+            style={{ width: "40px", marginTop: "20px" }}
           />
         </a>
       </nav>
