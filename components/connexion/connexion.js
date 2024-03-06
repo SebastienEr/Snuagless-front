@@ -25,14 +25,14 @@ function Signup() {
 
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
-  const [signUpEmail, setSignUpEmail] = useState("");
+
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
 
   const handleRegister = () => {
     fetch("http://localhost:3000/users/signup", {
-    fetch("http://localhost:3000/users/signup", {
+  
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -46,7 +46,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signUpUsername, token: data.token }));
-          router.push("/home");
+          router.push("/");
         } else {
           console.error("Echec");
         }
