@@ -15,7 +15,6 @@ function Header() {
       <Image
         src={require("../../public/images/logo.png")}
         className={styles.sunglasses}
-        onClick={onClick}
       />
       <h1 className={styles.snuagless}>Snuagless</h1>
       {user.username ? (
