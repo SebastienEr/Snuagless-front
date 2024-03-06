@@ -55,12 +55,12 @@ function Menu() {
             />
           </a>
 
-          <a onClick={() => dispatch(logout)} className="menu-item">
+          <span onClick={() => dispatch(logout())} className="menu-item">
             <FontAwesomeIcon
               icon={faRightToBracket}
               style={{ width: "40px", marginTop: "20px" }}
             />
-          </a>
+          </span>
         </nav>
 
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
