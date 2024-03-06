@@ -1,5 +1,4 @@
 import styles from '.connexion.module.css';
-import Image from 'next/image';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux';

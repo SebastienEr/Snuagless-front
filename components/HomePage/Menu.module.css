@@ -1,6 +1,0 @@
-.selector {
-  filter: url("#name-of-your-filter-here");
-
-  /* you can also load filters from external SVGs this way: */
-  filter: url("filters.svg#name-of-your-other-filter-here");
-}
