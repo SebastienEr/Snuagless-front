@@ -8,6 +8,7 @@ import Poulpy from "./Poulpy";
 import { useState } from "react";
 import Modal from "../ModalSettings/Modal";
 import ChangePhoto from "../ModalSettings/ChangePhoto";
+import { useSelector } from "react-redux";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -19,6 +20,9 @@ function Home() {
   const closeModal = () => {
     setModalIsOpen((prevState) => !prevState);
   };
+  const user = useSelector((state) => state.user.value);
+
+  console.log(user);
   return (
     <div className={styles.tout}>
       {modalIsOpen && (
@@ -34,16 +38,20 @@ function Home() {
         )}
       </Modal>
       <Header onClick={openModal} />
-      <main className={styles.main}>
-        <div className={styles.content}>
-          <Program />
-          <Poulpy />
 
-          <ChatView />
-        </div>
+      <div className={styles.home}>
+        <Header />
+        <main className={styles.main}>
+          <div className={styles.content}>
+            <Program />
+            <Poulpy />
+            <ChatView />
+          </div>
+        </main>
         <Player />
-        <Schedule />
-      </main>
+        {/* </main> */}
+      </div>
+      <Schedule />
     </div>
   );
 }

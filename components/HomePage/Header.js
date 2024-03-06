@@ -4,16 +4,12 @@ import Menu from "../HomePage/Menu";
 import styles from "./Header.module.css";
 import Signup from "../connexion/connexion";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../reducers/user";
+function Header() {
+  const dispatch = useDispatch();
 
-function Header({ onClick }) {
-  const [authenticated, setAuthenticated] = useState(false);
-
-  /*   const handleRedirect = () => {
-    // Définissez la page de redirection (par exemple, "/connexion")
-    const path = "http://localhost:3000/signup";
-    history.push(path); // Redirigez l'utilisateur vers la page de connexion
-  };
- */
+  const user = useSelector((state) => state.user.value);
   return (
     <header className={styles.header}>
       <Image
@@ -22,8 +18,11 @@ function Header({ onClick }) {
         onClick={onClick}
       />
       <h1 className={styles.snuagless}>Snuagless</h1>
-      {authenticated ? (
-        <Menu />
+      {user.username ? (
+        <>
+          <div>{user.username} </div>
+          <Menu />
+        </>
       ) : (
         <button>
           <Link href="/connexion">Se Connecter</Link>
