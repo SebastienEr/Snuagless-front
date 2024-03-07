@@ -10,11 +10,34 @@ import {
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Menu.module.scss";
-import { logout, login } from "../../reducers/user";
+import { logout } from "../../reducers/user";
+import Settings from "../HomePage/Settings";
 /* import Menu from "../HomePage/Menu"; et <Menu/> dans la page où on souhaite avoir le gooey*/
 function Menu() {
   const user = useSelector((state) => state.user.value);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [favoritesOpen, setFavoritesOpen] = useState(false);
+  const [mascotteOpen, setMascotteOpen] = useState(true);
+
   const dispatch = useDispatch();
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    if (settingsOpen) {
+      setSettingsOpen(false);
+      setFavoritesOpen(false);
+    }
+  };
+  const openSettings = () => {
+    setSettingsOpen(!settingsOpen); // Bascule entre ouvert et fermé
+  };
+  const openFavorites = () => {
+    setFavoritesOpen(!favoritesOpen);
+  };
+  const changeMascotte = () => {
+    setMascotteOpen(!mascotteOpen);
+  };
 
   {
     user !== null;
@@ -29,38 +52,38 @@ function Menu() {
             id="menu-open"
           />
           <label className="menu-open-button" for="menu-open">
-            <span className="hamburger-1">
+            <span className="hamburger-1" onClick={() => toggleMenu()}>
               <FontAwesomeIcon icon={faUser} className="icon-user" />
             </span>
             <span className="hamburger-2"></span>
             <span className="hamburger-3"></span>
           </label>
-
-          <a href="/Favorites.js" className="menu-item">
+          <span className="menu-item" onClick={() => openFavorites()}>
             <FontAwesomeIcon
               icon={faHeart}
               style={{ width: "40px", marginTop: "25px" }}
             />
-          </a>
-          <a href="/Settings.js" className="menu-item">
+          </span>
+          <span className="menu-item" onClick={() => openSettings()}>
             <FontAwesomeIcon
               icon={faCog}
               style={{ width: "40px", marginTop: "25px" }}
             />
-          </a>
-          <a href="#" className="menu-item">
+          </span>
+          <span onClick={() => changeMascotte()} className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
               style={{ width: "40px", marginTop: "25px" }}
             />
-          </a>
-
+          </span>
           <span onClick={() => dispatch(logout())} className="menu-item">
             <FontAwesomeIcon
               icon={faRightToBracket}
               style={{ width: "40px", marginTop: "20px" }}
             />
           </span>
+          {settingsOpen && <Settings />}{" "}
+          {/* Affiche les paramètres si settingsOpen est vrai */}
         </nav>
 
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">

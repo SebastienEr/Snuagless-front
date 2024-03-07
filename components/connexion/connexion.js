@@ -1,5 +1,6 @@
 import styles from "../connexion/connexion.module.css";
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
@@ -25,12 +26,10 @@ function Signup() {
     email: "",
     password: "",
   });
-
   const [formDataSignIn, setFormDataSignIn] = useState({
     username: "",
     password: "",
   });
-
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -49,7 +48,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signUpUsername, token: data.token }));
-          router.push("/");
+          router.push("/VerifPageWrapper");
         } else {
           console.error("Echec");
         }
@@ -57,7 +56,7 @@ function Signup() {
   };
 
   const handleConnection = () => {
-    fetch("   http://localhost:3000/users/signin ", {
+    fetch("http://localhost:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
