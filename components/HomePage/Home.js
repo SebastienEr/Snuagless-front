@@ -55,6 +55,7 @@ function Home() {
         {/* </main> */}
       </div>
       <Schedule />
+      {/* bouton retourner en haut de page */}
     </div>
   );
 }
