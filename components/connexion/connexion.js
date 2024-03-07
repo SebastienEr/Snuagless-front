@@ -1,6 +1,5 @@
 import styles from "../connexion/connexion.module.css";
 import React, { useState, useEffect } from "react";
-import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
