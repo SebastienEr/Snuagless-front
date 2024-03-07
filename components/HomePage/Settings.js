@@ -12,14 +12,14 @@ import {
 function Settings() {
   return (
     <div className={styles.settingsBox}>
-      <div className={styles.bigCard}>
+      <div className={styles.topCard}>
         {/* settings user */}
         <div className={styles.changePic}>
           {/* changer de photo de profil */}
         </div>
-        <div className={styles.fieldCard}>
+        <div className={styles.fieldCardTop}>
           {/* change username */}
-          <h2>Username: </h2>
+          <text>Username: </text>
           <input
             type="field"
             placeholder="Username"
@@ -27,18 +27,18 @@ function Settings() {
           ></input>
         </div>
 
-        <div className={styles.fieldCard}>
+        <div className={styles.fieldCardTop}>
           {/*change email */}
-          <h2>Email: </h2>
+          <text>Email: </text>
           <input
             type="field"
             placeholder="Email"
             className={styles.fields}
           ></input>
         </div>
-        <div className={styles.fieldCard}>
+        <div className={styles.fieldCardTop}>
           {/* change password*/}
-          <h2>Password: </h2>
+          <text>Password: </text>
           <input
             type="field"
             placeholder="Password"
@@ -52,7 +52,7 @@ function Settings() {
         </div>
       </div>
 
-      <div className={styles.bigCard}>
+      <div className={styles.bottomCard}>
         {/* settings preference */}
         <div className={styles.onOff}>
           {/* star on off */}
@@ -98,17 +98,18 @@ function Settings() {
             OFF/ON
           </button>
         </div>
+
+        <div className={styles.separationLine}></div>
       </div>
 
-      <div className={styles.separationLine}></div>
       <div className={styles.saveSettings}>
-        <button className={styles.saveButton}>
+        <span className={styles.icon}>
           <FontAwesomeIcon
             icon={faFloppyDisk}
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />{" "}
-          <text>Save changes</text>
-        </button>{" "}
+            style={{ width: "20px", color: "white" }}
+          />
+        </span>
+        <span className={styles.text}>Save</span>
       </div>
     </div>
   );
