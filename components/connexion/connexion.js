@@ -1,13 +1,25 @@
 import styles from "../connexion/connexion.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
 import Link from "next/link";
 
+
 function Signup() {
+
+// tous les petits useStates 
   const [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const [isOpenSignUp, setIsOpenSignUp] = useState(false);
+  const [isOpenSignUp, setIsOpenSignUp] = useState(false); // état pour gérer ouverture & fermeture modale connexion
+  const [signUpUsername, setSignUpUsername] = useState(""); // état pour stocker username (inscription)
+  const [signUpEmail, setSignUpEmail] = useState(""); // état pour stocker email  (inscription)
+  const [signUpPassword, setSignUpPassword] = useState(""); // état pour stocker password (inscription)
+  const [signInUsername, setSignInUsername] = useState(""); // état pour stocker username (connexion)
+  const [signInPassword, setSignInPassword] = useState(""); // état pour stocker password (connexion)
+  const [passwordAttempts, setPasswordAttempts] = useState(0); // état pour stocker le nombre de tentatives de connexion ratées
+  const [message, setMessage] = useState(""); // état pour stocker messages d'erreurs
+  const [showResetModal, setShowResetModal] = useState(false); // état pour gérer ouverture/fermeture modale réinialisation password
+  const [showCooldownMessage, setShowCooldownMessage] = useState(false); // état pour contrôler affichage du message de cooldown
   const [formDataSignUp, setFormDataSignUp] = useState({
     userName: "",
     email: "",
@@ -22,13 +34,7 @@ function Signup() {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
-
-  const [signUpUsername, setSignUpUsername] = useState("");
-  const [signUpEmail, setSignUpEmail] = useState("");
-  const [signUpPassword, setSignUpPassword] = useState("");
-  const [signInUsername, setSignInUsername] = useState("");
-  const [signInPassword, setSignInPassword] = useState("");
-
+  
   const handleRegister = () => {
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
@@ -64,11 +70,31 @@ function Signup() {
         if (data.result === true) {
           dispatch(login({ username: signInUsername, token: data.token }));
           router.push("/");
+          // login ok, renvoie vers homepage en étant connecté
         } else {
-          console.error("Echec");
-        }
-      });
+          setMessage("Invalid password. Please try gain.");
+          setPasswordAttempts((prevAttempts)=> prevAttempts +1);
+        } // login pas ok, renvoie message password incorrect et incrémente au compteur de tentatives échouées
+      })
+      .catch((error)=>{
+        console.error("Error:", error);
+        setMessage("An error occured, please try again later :)");
+      }) // au cas où il y aurait un petit problème, message d'erreur 
   };
+
+useEffect(()=>{
+  if (passwordAttempts === 3){
+    setShowResetModal(true);
+    console.log("bah alors tu t'en rappelles plus?");
+    // affiche la modale pour réiniialiser le password au 3e essai
+  } else if (passwordAttempts >=5){
+    setShowCooldownMessage(true);
+    setTimeout(()=>{
+      setShowCooldownMessage(false);
+      setPasswordAttempts(0);
+  }, 15*60*1000);
+  }
+}, [passwordAttempts]);
 
   let userSection;
   if (!user.isConnected) {
@@ -102,6 +128,15 @@ function Signup() {
               <button id="connection" onClick={() => handleConnection()}>
                 Sign in
               </button>
+              {message && <p>{message}</p>}
+              {showResetModal && (
+                <div>
+                  <p>Réinitialiser les mot de passe?</p>
+                  <button onClick={()=> setShowResetModal(false)}>non merci</button>
+                  <button onClick={()=> console.log("Réinitialiser SEB ALED")}>OUIII</button>
+                </div>
+              )}
+              {showCooldownMessage && <p>Too many attempts, please wait 15 minutes cheh</p>} 
             </div>
           </div>
         )}
@@ -141,6 +176,7 @@ function Signup() {
             </button>
           </div>
           {userSection}
+          <Link className={styles.guestmode} href="/">Rester en mode invité</Link>
         </div>
       </main>
     // </div>

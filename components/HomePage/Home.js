@@ -46,9 +46,9 @@ function Home() {
             <Poulpy />
             <ChatView />
           </div>
-        </main>
-        <Player />
         {/* </main> */}
+        <Player />
+        </main>
       </div>
       <Schedule />
     </div>
