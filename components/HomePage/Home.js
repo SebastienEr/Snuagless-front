@@ -11,6 +11,7 @@ import ChangePhoto from "../ModalSettings/ChangePhoto";
 import { useSelector } from "react-redux";
 import { settings } from "../../reducers/user";
 import Settings from "./Settings";
+import BackToTop from "./backToTop";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -56,6 +57,7 @@ function Home() {
       </div>
       <Schedule />
       {/* bouton retourner en haut de page */}
+      {/* <BackToTop /> */}
     </div>
   );
 }
