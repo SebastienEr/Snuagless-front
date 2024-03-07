@@ -36,7 +36,7 @@ function Home() {
       </Modal>
 
       <div className={styles.home}>
-        <Header onClick={openModal} />
+        <Header onClick={() => openModal()} />
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
@@ -45,8 +45,8 @@ function Home() {
 
             {settings && <Settings />}
           </div>
-        {/* </main> */}
-        <Player />
+          {/* </main> */}
+          <Player />
         </main>
       </div>
       <Schedule />
