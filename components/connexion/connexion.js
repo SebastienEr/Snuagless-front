@@ -1,5 +1,5 @@
 import styles from "../connexion/connexion.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
@@ -13,21 +13,22 @@ function Signup() {
     email: "",
     password: "",
   });
-
   const [formDataSignIn, setFormDataSignIn] = useState({
     username: "",
     password: "",
   });
-
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
-
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const [passwordAttempts, setPasswordAttempts] = useState(0);
+  const [message, setMessage] = useState("");
+  const [showResetModal, setShowResetModal] = useState(false);
+  const [showCooldownMessage, setShowCooldownMessage] = useState(false);
 
   const handleRegister = () => {
     fetch("http://localhost:3000/users/signup", {
@@ -43,7 +44,7 @@ function Signup() {
       .then((data) => {
         if (data.result === true) {
           dispatch(login({ username: signUpUsername, token: data.token }));
-          router.push("/");
+          router.push("/VerifPageWrapper");
         } else {
           console.error("Echec");
         }
@@ -51,7 +52,7 @@ function Signup() {
   };
 
   const handleConnection = () => {
-    fetch("   http://localhost:3000/users/signin ", {
+    fetch("http://localhost:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -65,10 +66,28 @@ function Signup() {
           dispatch(login({ username: signInUsername, token: data.token }));
           router.push("/");
         } else {
-          console.error("Echec");
+          setMessage("Invalid password. Please try again.");
+          setPasswordAttempts((prevAttempts) => prevAttempts + 1);
         }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setMessage("An error occurred, please try again later :)");
       });
   };
+
+  useEffect(() => {
+    if (passwordAttempts === 3) {
+      setShowResetModal(true);
+      console.log("Reset password modal should be shown");
+    } else if (passwordAttempts >= 5) {
+      setShowCooldownMessage(true);
+      setTimeout(() => {
+        setShowCooldownMessage(false);
+        setPasswordAttempts(0);
+      }, 15 * 60 * 1000);
+    }
+  }, [passwordAttempts]);
 
   let userSection;
   if (!user.isConnected) {
@@ -102,6 +121,15 @@ function Signup() {
               <button id="connection" onClick={() => handleConnection()}>
                 Sign in
               </button>
+              {message && <p>{message}</p>}
+              {showResetModal && (
+                <div>
+                  <p>Réinitialiser le mot de passe?</p>
+                  <button onClick={() => setShowResetModal(false)}>Non merci</button>
+                  <button onClick={() => console.log("Reset password clicked")}>Oui</button>
+                </div>
+              )}
+              {showCooldownMessage && <p>Too many attempts, please wait 15 minutes</p>}
             </div>
           </div>
         )}
@@ -110,40 +138,41 @@ function Signup() {
   }
 
   return (
-    // <div>
-      <main className={styles.main}>
-        <div className={styles.form}>
-          <h1 className={styles.title}>INSCRIPTION</h1>
-          <div className={styles.inputs}>
-            <input
-              className={styles.email}
-              type="text"
-              placeholder="email"
-              onChange={(e) => setSignUpEmail(e.target.value)}
-              value={signUpEmail}
-            />
-            <input
-              className={styles.username}
-              type="text"
-              placeholder="Username"
-              onChange={(e) => setSignUpUsername(e.target.value)}
-              value={signUpUsername}
-            />
-            <input
-              className={styles.password}
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setSignUpPassword(e.target.value)}
-              value={signUpPassword}
-            />
-            <button className={styles.signupbtn} onClick={handleRegister}>
-              Sign Up
-            </button>
-          </div>
-          {userSection}
+    <main className={styles.main}>
+      <div className={styles.form}>
+        <h1 className={styles.title}>INSCRIPTION</h1>
+        <div className={styles.inputs}>
+          <input
+            className={styles.email}
+            type="text"
+            placeholder="Email"
+            onChange={(e) => setSignUpEmail(e.target.value)}
+            value={signUpEmail}
+          />
+          <input
+            className={styles.username}
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setSignUpUsername(e.target.value)}
+            value={signUpUsername}
+          />
+          <input
+            className={styles.password}
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setSignUpPassword(e.target.value)}
+            value={signUpPassword}
+          />
+          <button className={styles.signupbtn} onClick={handleRegister}>
+            Sign Up
+          </button>
         </div>
-      </main>
-    // </div>
+        {userSection}
+        <Link className={styles.guestmode} href="/">
+          Rester en mode invité
+        </Link>
+      </div>
+    </main>
   );
 }
 
