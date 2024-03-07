@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./ChatView.module.css";
 import PulsatingLock from "./PulsatingLock";
+import Chat from "./Chat";
 
-function Chat() {
+function ChatView() {
   const [authenticated, setAuthenticated] = useState(true);
 
   let content;
@@ -18,11 +19,13 @@ function Chat() {
 
   return (
     <div className={styles.container}>
-      <h2>Chat</h2>
+      <h2>ChatView</h2>
+
       {!authenticated && <PulsatingLock />}
-      {authenticated && content}
+
+      {authenticated && <Chat />}
     </div>
   );
 }
 
-export default Chat;
+export default ChatView;

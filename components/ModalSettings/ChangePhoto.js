@@ -1,18 +1,26 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./ChangePhoto.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-// import { changeUserPhoto } from "../../store/reducers/users";
+import { changePhoto } from "../../reducers/user";
 
-function ChangePhoto({ onClose, onSetPhoto, userPhoto }) {
-  const [imagePicked, setImagePicked] = useState();
+function ChangePhoto({ onClose, open }) {
+  const [imagePicked, setImagePicked] = useState(null);
   const imageInput = useRef();
-  const user = useSelector((state) => state.users?.value);
+  const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+
+  console.log(imagePicked);
 
   const handlePickClick = () => {
     imageInput.current.click();
   };
+
+  useEffect(() => {
+    if (!open) {
+    }
+    setImagePicked(null);
+  }, [open]);
 
   const changePhotoHandler = async (event) => {
     const file = event.target.files[0];
@@ -20,7 +28,7 @@ function ChangePhoto({ onClose, onSetPhoto, userPhoto }) {
     const formData = new FormData();
     formData.append("image", file);
     const response = await fetch(
-      `http://localhost:3001/users/upload/${user.user_id}`,
+      `http://localhost:3000/users/upload/${user.token}`,
       {
         method: "POST",
         body: formData,
@@ -30,27 +38,28 @@ function ChangePhoto({ onClose, onSetPhoto, userPhoto }) {
     const data = await response.json();
     console.log(data);
     setImagePicked(data.url);
-    // dispatch(changeUserPhoto(data.url));
-    onSetPhoto(data.url);
   };
 
   const onConfirmHandler = () => {
     onClose();
+    dispatch(changePhoto(imagePicked));
     setImagePicked(null);
   };
 
   return (
-    <>
-      {!imagePicked && !userPhoto && (
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      {!imagePicked && !user.image && (
         <img src="/images/avatar.jpg" alt="logo" className={styles.avatar} />
       )}
-      {!imagePicked && userPhoto && (
+      {!imagePicked && user.image && (
         <Image
-          src={userPhoto}
+          src={user.image}
           alt="The image selected by user."
           className={styles.avatar}
-          width={64}
-          height={64}
+          width={80}
+          height={80}
         />
       )}
       {imagePicked && (
@@ -58,14 +67,13 @@ function ChangePhoto({ onClose, onSetPhoto, userPhoto }) {
           src={imagePicked}
           alt="The image selected by user."
           className={styles.avatar}
-          width={64}
-          height={64}
-          //   fill
+          width={80}
+          height={80}
         />
       )}
       <input
         type="file"
-        accept="image/png, image/jpeg"
+        accept="image/png, image/jpeg, image/jpg"
         onChange={changePhotoHandler}
         id="image"
         name="image"
@@ -75,31 +83,37 @@ function ChangePhoto({ onClose, onSetPhoto, userPhoto }) {
       {!imagePicked && (
         <button
           type="button"
-          className={styles.buttonAlt}
+          className={styles.button}
           onClick={handlePickClick}
         >
           <span>Change Photo</span>
         </button>
       )}
       {imagePicked && (
-        <div style={{ display: "flex" }}>
+        <div
+          style={{
+            display: "flex",
+            width: "110%",
+            justifyContent: "space-between",
+          }}
+        >
           <button
             type="button"
             onClick={onConfirmHandler}
             className={styles.button}
           >
-            Confirm Change
+            <span>Confirm </span>
           </button>
           <button
             type="button"
             onClick={handlePickClick}
             className={styles.buttonAlt}
           >
-            Choose Another Image
+            <span>Pick Another Image</span>
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
