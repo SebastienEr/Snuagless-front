@@ -13,7 +13,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <Image
-        src={require("../../public/images/logo2.png")}
+        src={require("../../public/images/logo.png")}
         className={styles.sunglasses}
       />
       <h1 className={styles.snuagless}>Snuagless</h1>

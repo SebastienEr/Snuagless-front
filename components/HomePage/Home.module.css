@@ -6,7 +6,7 @@
   width: 100vw;
 }
 
-.home{
+.home {
   height: 100vh;
   width: 100vw;
 }
@@ -25,5 +25,15 @@
 .player {
   position: sticky;
   bottom: 0;
-  overflow: hidden;
-} */
+  /* overflow: hidden; */
+/* } */
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.65);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
