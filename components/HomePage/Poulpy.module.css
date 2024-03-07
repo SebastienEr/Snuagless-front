@@ -1,4 +1,5 @@
 .container {
+  z-index: 0.5;
     height: 25.25em;
     width: 25.25em;
     position: absolute;
