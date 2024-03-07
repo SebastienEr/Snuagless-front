@@ -9,6 +9,9 @@ import { useState } from "react";
 import Modal from "../ModalSettings/Modal";
 import ChangePhoto from "../ModalSettings/ChangePhoto";
 import { useSelector } from "react-redux";
+import { settings } from "../../reducers/user";
+import Settings from "./Settings";
+import BackToTop from "./backToTop";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -37,14 +40,18 @@ function Home() {
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
-            <Poulpy />
+            {/*  <Poulpy /> */}
             <ChatView />
+
+            {settings && <Settings />}
           </div>
-        </main>
-        <Player />
         {/* </main> */}
+        <Player />
+        </main>
       </div>
       <Schedule />
+      {/* bouton retourner en haut de page */}
+      {/* <BackToTop /> */}
     </div>
   );
 }
