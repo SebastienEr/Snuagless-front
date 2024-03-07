@@ -1,32 +1,35 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import Pusher from "pusher-js";
 import pusherConfig from "../../pusher-config.json";
 import styles from "./ChatView.module.css";
 import Image from "next/image";
-import { randomUsernames } from "./randomusernames";
-
-const username =
-  randomUsernames[Math.floor(Math.random() * randomUsernames.length - 1)];
+import { useSelector } from "react-redux";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [welcomeMessage, setWelcomeMessage] = useState("");
   const inputRef = useRef(null);
+  const user = useSelector((state) => state.user.value);
+  const username = user.username;
 
-  console.log(username);
+  console.log(user.username);
   useEffect(() => {
     // Initialize Pusher
-    const pusher = new Pusher(pusherConfig.key, pusherConfig);
+    const pusher = new Pusher(pusherConfig.key, {
+      cluster: pusherConfig.cluster,
+    });
 
     // Subscribe to the 'chat' channel
-    const channel = pusher.subscribe("chat");
+    const channel = pusher.subscribe("chat_channel");
 
     // Bind to the 'new-message' event
     channel.bind("pusher:subscription_succeeded", () => {
-      channel.bind("join", (data) => handleJoin(data.name));
-      channel.bind("part", (data) => handlePart(data.name));
-      channel.bind("message", (data) =>
-        handleMessage(data.name, data.message, data.time)
+      channel.bind("join", ({ name }) => handleJoin(name));
+      channel.bind("part", ({ name }) => handlePart(name));
+      channel.bind("message", ({ name, message, time, image, token, id }) =>
+        handleMessage(name, message, time, image, token, id)
       );
     });
 
@@ -41,18 +44,6 @@ const Chat = () => {
     };
   }, [username]);
 
-  useEffect(() => {
-    const fetchMessages = async () => {
-      const response = await fetch("http://localhost:3000/message");
-      const data = await response.json();
-      setMessages(data.messages);
-      console.log(data);
-    };
-    fetchMessages();
-  }, [messages.length]);
-
-  // Function to send a message
-
   const handleJoin = (name) => {
     setWelcomeMessage(`${name} has joined the chat`);
   };
@@ -61,22 +52,36 @@ const Chat = () => {
     setWelcomeMessage(`${name} has left the chat`);
   };
 
+  const handleMessage = (name, message, time, image, token, id) => {
+    console.log("Received message:", { name, message, time, token, id });
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { name, message, time, image, token, id },
+    ]);
+  };
+
   console.log(messages);
 
   // Function to send a message
-  const onSendMessage = useCallback(async () => {
+  const onSendMessage = async () => {
     // (9)
     const text = inputRef.current.value;
     if (text.trim() === "") {
       return;
     }
     const payload = {
+      id: uuidv4(),
       message: text,
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
+      image: user.image,
+      token: user.token,
     };
+
+    console.log(payload);
     await fetch(`${pusherConfig.restServer}/chat/${username}/messages`, {
       method: "POST",
       headers: {
@@ -85,91 +90,66 @@ const Chat = () => {
       body: JSON.stringify(payload),
     });
 
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { action: "message", username, ...payload },
-    ]);
     inputRef.current.value = "";
-
-    const response = await fetch("http://localhost:3000/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        texte: payload.message,
-        username: username,
-      }),
-    });
-    const data = await response.json();
-
-    // setMessages(data.messages);
-  }, [username]);
+  };
 
   const displayMessages =
     messages.length > 0 &&
     messages.map((message, index) => {
+      const { name, message: text, time, image, token, id } = message;
       const isFirstMessage =
-        index === 0 || message.username !== messages[index - 1]?.username;
+        index === 0 || token !== messages[index - 1]?.token;
       const messageStyle = {
         display: "flex",
-        alignItems: "flex-start",
-        justifyContent: isFirstMessage ? "flex-end" : "flex-start",
-        position: "relative",
       };
       return (
-        <div style={messageStyle}>
-          <div
-            key={index}
-            style={{ color: "black" }}
-            className={styles.message}
-          >
-            {message.texte}
+        <div
+          style={messageStyle}
+          className={
+            username === message.name
+              ? styles.messageSent
+              : styles.messageReceived
+          }
+          key={id}
+        >
+          {isFirstMessage && (
+            <div className={styles.tail} style={{ zIndex: 1 }}></div>
+          )}
+          <div style={{ color: "black" }} className={styles.message}>
+            {text}
           </div>
-          {isFirstMessage && <div className={styles.tail}></div>}
           <div>
             <Image
-              src={require("../../public/images/avatar.jpg")}
+              src={image ? image : require("../../public/images/avatar.jpg")}
               width={40}
               height={40}
               style={{ borderRadius: "50%", marginBottom: "0.25rem" }}
             />
           </div>
-          {message.username}
-          {/* <div>
-            <div key={index} style={{ color: "blue" }}>
-              {message.username}
-            </div>
-            <div key={index} style={{ color: "blue" }}>
-              {message.time}
-            </div>
-          </div> */}
         </div>
       );
     });
 
   return (
-    <div>
-      <h1>Chat App</h1>
-      <div className={styles.container}>
+    <div style={{ width: "100%", textAlign: "center" }}>
+      <div style={{ height: "70%", overflowY: "scroll" }}>
         <ul
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-end",
             width: "100%",
-            padding: "1rem",
+            height: "100%",
           }}
         >
           {displayMessages}
         </ul>
-        <div color="white">{welcomeMessage}</div>
       </div>
+      <div style={{ marginBottom: "1rem" }}>{welcomeMessage}</div>
 
-      <div>
-        <input ref={inputRef} />
+      <div className={styles.inputContainer}>
+        <textarea rows={4} placeholder="Type here..." ref={inputRef} />
+        <button onClick={onSendMessage}>Send</button>
       </div>
-      <button onClick={onSendMessage}>Send Message</button>
     </div>
   );
 };

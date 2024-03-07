@@ -17,6 +17,7 @@
   background: linear-gradient(to right, #8e2de2, #4a00e0);
   overflow: hidden;
   margin-top: 2rem;
+  height: 3rem;
 }
 
 .button span {
@@ -74,14 +75,15 @@
   background: linear-gradient(to right, #4fb7fd, #06568b);
   overflow: hidden;
   margin-top: 2rem;
+  height: 3rem;
 }
 
 .buttonAlt span {
   position: relative;
   z-index: 10;
   transition: color 0.4s;
-  display: inline-flex;
-  align-items: center;
+  /* display: inline; */
+
   padding: 0.5rem 1.2rem 0.5rem 1.05rem;
 }
 

@@ -1,11 +1,11 @@
 .container {
   z-index: 1;
   height: 60vh;
-  width: 29%;
+  width: calc(29% - 60px);
   box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
   /* background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%); */
-  background: rgba(208, 162, 241, 0.42);  
-  border:  0.1px solid rgba(183, 183, 248, 0.607);
+  background: rgba(208, 162, 241, 0.42);
+  border: 0.1px solid rgba(183, 183, 248, 0.607);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
@@ -13,8 +13,9 @@
   justify-content: space-between;
   position: relative;
   border-radius: 12px;
-  /* margin-bottom:2rem; */
-  margin-top:2%;
+  margin-bottom: 50px;
+  margin-top: 2%;
+  padding: 30px;
 }
 
 .container h2 {
@@ -28,7 +29,6 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 0.7rem;
-  width: 98%;
 }
 
 .inputContainer button {
@@ -82,7 +82,7 @@
   max-width: 50%;
   margin: 0.25rem;
 }
-
+/* 
 .tail {
   content: "";
   width: 0;
@@ -92,6 +92,18 @@
   border-right: 8px solid rgb(178, 215, 248);
   border-top: 8px solid rgb(178, 215, 248);
   border-bottom: 8px solid transparent;
-  right: 46px;
-  bottom: 2px;
+  right: 44px;
+  bottom: 3px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 50%;
+} */
+
+.messageReceived {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.messageSent {
+  align-self: flex-end;
+  align-items: flex-end;
 }
