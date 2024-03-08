@@ -319,15 +319,15 @@ width: 50vw;
     border: none;
     width: 10rem;
     height: 36px;
-    background-color:#7ec8fadb;
-    color: rgba(57, 14, 116, 0.802);
+    background-color:#380e658e;
+    color: rgba(248, 194, 79, 0.861);
 
     /* background-color: #7022DB9a; */
     /* color:#FFE81Dfb; */
 }
 
 .signupbtn:hover{
-    background-color:#7ec9fab8;
+    background-color:#6c4398d2;
     transition: background-color 2s;
     /* color: rgba(56, 14, 116, 0.802); */
     transition: color 0.4s;
