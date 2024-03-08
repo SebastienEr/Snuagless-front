@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import Pusher from "pusher-js";
 import pusherConfig from "../../pusher-config.json";
 import styles from "./ChatView.module.css";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -13,7 +15,7 @@ const Chat = () => {
   const inputRef = useRef(null);
   const user = useSelector((state) => state.user.value);
   const username = user.username;
-
+  const router = useRouter();
   console.log(user.username);
   useEffect(() => {
     // Initialize Pusher
@@ -148,7 +150,13 @@ const Chat = () => {
 
       <div className={styles.inputContainer}>
         <textarea rows={4} placeholder="Type here..." ref={inputRef} />
-        <button onClick={onSendMessage}>Send</button>
+        {user.username ? (
+          <button onClick={() => onSendMessage()}>Send</button>
+        ) : (
+          <button onClick={() => router.push("/connexion")}>
+            <FontAwesomeIcon icon={faRightToBracket} />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ function ResetPasswordPage() {
     }
 
     // Envoi de la demande de réinitialisation de mot de passe avec le token
-    fetch(`http://localhost:3000/changepassword/changepassword?token=${token}`, {
+    fetch(`http://localhost:3000/users/reset-password?token=${token}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function ResetPasswordPage() {
     })
     .then(response => {
       if (response.ok) {
-        setResetStatus('Mot de passe réinitialisé avec succès.');
+        setResetStatus('Mot de passe modifié avec succès.');
         // Vous pouvez ajouter ici une redirection ou toute autre action en cas de succès
       } else {
         setResetStatus('Erreur lors de la réinitialisation du mot de passe.');
@@ -65,5 +65,10 @@ function ResetPasswordPage() {
     </div>
   );
 }
+
+
+
+
+
 
 export default ResetPasswordPage;
