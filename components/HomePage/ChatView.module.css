@@ -79,7 +79,7 @@
   word-wrap: break-word;
   word-break: break-all;
   overflow-wrap: break-word;
-  max-width: 50%;
+  max-width: 70%;
   margin: 0.25rem;
 }
 /* 
@@ -100,10 +100,10 @@
 
 .messageReceived {
   align-self: flex-start;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 .messageSent {
   align-self: flex-end;
-  align-items: flex-end;
+  /* align-items: flex-end; */
 }
