@@ -1,5 +1,6 @@
 import styles from "../connexion/connexion.module.css";
 import React, { useState} from "react";
+import MailInput from "./mailInput";
 
 
 
@@ -21,13 +22,14 @@ return (
     <div className={styles.inputs}>
     <div className={styles.emailBox}>
         <form onSubmit={handleResetPassword}>
-              <input type="email" 
-              placeholder="Entrez votre adresse e-mail"
-              value={resetEmail}
-              onChange={(e)=>setResetEmail(e.target.value)}/>
-              <button type="submit">Envoyer le lien de réinitialisation</button>
-            </form>
-            {isEmailValid && (<p>Nous n'avons pas cet email dans notre base de données.</p>)}
+                <MailInput
+                value={resetEmail}
+                onChange={(value)=> setResetEmail(value)}
+                required={true}
+                />
+            <button type="submit">Envoyer le lien de réinitialisation</button>
+        </form>
+          {isEmailValid && (<p>Nous n'avons pas cet email dans notre base de données.</p>)}
     </div>
     </div>
 );

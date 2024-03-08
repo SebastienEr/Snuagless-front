@@ -69,19 +69,27 @@ return (
         {showResetForm ? (
             <ResetForm/>) :(
                 <div>
-        <input
-          type="text"
-          id="sigInUsername"
-          onChange={(e)=> setSignInUserName(e.target.value)}
-          value={signInUsername}
-        />
-        <input
-          type="password"
-                placeholder="Mot de passe"
-                id="signInPassword"
-                onChange={(e) => setSignInPassword(e.target.value)}
-                value={signInPassword}
-        />
+                    <div className={styles.inputs}>
+                      <div className={styles.usernameBox}>
+                         <input
+                             type="text"
+                             required
+                             id="sigInUsername"
+                             onChange={(e)=> setSignInUserName(e.target.value)}
+                             value={signInUsername}
+                        />
+                        <label>Nom d'utilisateur</label>
+                      </div>
+                      <div className={styles.passwordBox}>
+                         <input
+                             type="password"
+                               id="signInPassword"
+                                 onChange={(e) => setSignInPassword(e.target.value)}
+                                 value={signInPassword}
+                         />
+                         <label>Mot de passe</label>
+                    </div>
+                </div>
               <button id="connection" onClick={() => handleConnection()}>
                 Se connecter
               </button>
