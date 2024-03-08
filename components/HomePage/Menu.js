@@ -53,7 +53,12 @@ function Menu() {
           />
           <label className="menu-open-button" for="menu-open">
             <span className="hamburger-1" onClick={() => toggleMenu()}>
-              <FontAwesomeIcon icon={faUser} className="icon-user" />
+              <Image
+                src={user.image}
+                alt="user-avatar"
+                width={50}
+                height={50}
+              />
             </span>
             <span className="hamburger-2"></span>
             <span className="hamburger-3"></span>
@@ -61,7 +66,7 @@ function Menu() {
           <span className="menu-item" onClick={() => openFavorites()}>
             <FontAwesomeIcon
               icon={faHeart}
-              style={{ width: "40px", marginTop: "25px" }}
+              style={{ width: "20px", marginTop: "25px" }}
             />
           </span>
           <span className="menu-item" onClick={() => openSettings()}>

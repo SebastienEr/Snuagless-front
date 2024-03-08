@@ -16,6 +16,7 @@ import BackToTop from "./backToTop";
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mode, setMode] = useState("photo");
+
   const openModal = () => {
     setModalIsOpen((prevState) => !prevState);
   };
@@ -28,21 +29,14 @@ function Home() {
   console.log(user);
   return (
     <div className={styles.tout}>
-      {modalIsOpen && (
-        <div className={styles.backdrop} onClick={closeModal}></div>
-      )}
       <Modal open={modalIsOpen} onClose={closeModal}>
         {mode === "photo" && (
-          <ChangePhoto
-            // userPhoto={userPhoto}
-            // onSetPhoto={setUserPhoto}
-            onClose={closeModal}
-          />
+          <ChangePhoto onClose={closeModal} open={modalIsOpen} />
         )}
       </Modal>
 
       <div className={styles.home}>
-        <Header />
+        <Header onClick={() => openModal()} />
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
@@ -51,8 +45,8 @@ function Home() {
 
             {settings && <Settings />}
           </div>
-        {/* </main> */}
-        <Player />
+          {/* </main> */}
+          <Player />
         </main>
       </div>
       <Schedule />
