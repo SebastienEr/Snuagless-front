@@ -19,7 +19,7 @@ function Header() {
       <h1 className={styles.snuagless}>Snuagless</h1>
       {user.username ? (
         <>
-          <div>{user.username} </div>
+          <div> Connecté en tant que {user.username} </div>
           <Menu />
         </>
       ) : (

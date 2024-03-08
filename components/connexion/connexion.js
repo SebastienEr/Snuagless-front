@@ -5,9 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
 import Link from "next/link";
 
+
 function Signup() {
+
+// tous les petits useStates 
   const [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const [isOpenSignUp, setIsOpenSignUp] = useState(false);
+  const [isOpenSignUp, setIsOpenSignUp] = useState(false); // état pour gérer ouverture & fermeture modale connexion
+  const [signUpUsername, setSignUpUsername] = useState(""); // état pour stocker username (inscription)
+  const [signUpEmail, setSignUpEmail] = useState(""); // état pour stocker email  (inscription)
+  const [signUpPassword, setSignUpPassword] = useState(""); // état pour stocker password (inscription)
+  const [signInUsername, setSignInUsername] = useState(""); // état pour stocker username (connexion)
+  const [signInPassword, setSignInPassword] = useState(""); // état pour stocker password (connexion)
+  const [passwordAttempts, setPasswordAttempts] = useState(0); // état pour stocker le nombre de tentatives de connexion ratées
+  const [message, setMessage] = useState(""); // état pour stocker messages d'erreurs
+  const [showResetModal, setShowResetModal] = useState(false); // état pour gérer ouverture/fermeture modale réinialisation password
+  const [showCooldownMessage, setShowCooldownMessage] = useState(false); // état pour contrôler affichage du message de cooldown
   const [formDataSignUp, setFormDataSignUp] = useState({
     userName: "",
     email: "",
@@ -71,29 +83,31 @@ function Signup() {
         if (data.result === true) {
           dispatch(login({ username: signInUsername, token: data.token }));
           router.push("/");
+          // login ok, renvoie vers homepage en étant connecté
         } else {
-          setMessage("Invalid password. Please try again.");
-          setPasswordAttempts((prevAttempts) => prevAttempts + 1);
-        }
+          setMessage("Invalid password. Please try gain.");
+          setPasswordAttempts((prevAttempts)=> prevAttempts +1);
+        } // login pas ok, renvoie message password incorrect et incrémente au compteur de tentatives échouées
       })
-      .catch((error) => {
+      .catch((error)=>{
         console.error("Error:", error);
-        setMessage("An error occurred, please try again later :)");
-      });
+        setMessage("An error occured, please try again later :)");
+      }) // au cas où il y aurait un petit problème, message d'erreur 
   };
 
-  useEffect(() => {
-    if (passwordAttempts === 3) {
-      setShowResetModal(true);
-      console.log("Reset password modal should be shown");
-    } else if (passwordAttempts >= 5) {
-      setShowCooldownMessage(true);
-      setTimeout(() => {
-        setShowCooldownMessage(false);
-        setPasswordAttempts(0);
-      }, 15 * 60 * 1000);
-    }
-  }, [passwordAttempts]);
+useEffect(()=>{
+  if (passwordAttempts === 3){
+    setShowResetModal(true);
+    console.log("bah alors tu t'en rappelles plus?");
+    // affiche la modale pour réiniialiser le password au 3e essai
+  } else if (passwordAttempts >=5){
+    setShowCooldownMessage(true);
+    setTimeout(()=>{
+      setShowCooldownMessage(false);
+      setPasswordAttempts(0);
+  }, 15*60*1000);
+  }
+}, [passwordAttempts]);
 
   let userSection;
   if (!user.isConnected) {
@@ -135,7 +149,7 @@ function Signup() {
                   <button onClick={handleResetPasswordClick}>Oui</button>
                 </div>
               )}
-              {showCooldownMessage && <p>Too many attempts, please wait 15 minutes</p>}
+              {showCooldownMessage && <p>Too many attempts, please wait 15 minutes cheh</p>} 
             </div>
           </div>
         )}
@@ -144,41 +158,41 @@ function Signup() {
   }
 
   return (
-    <main className={styles.main}>
-      <div className={styles.form}>
-        <h1 className={styles.title}>INSCRIPTION</h1>
-        <div className={styles.inputs}>
-          <input
-            className={styles.email}
-            type="text"
-            placeholder="Email"
-            onChange={(e) => setSignUpEmail(e.target.value)}
-            value={signUpEmail}
-          />
-          <input
-            className={styles.username}
-            type="text"
-            placeholder="Username"
-            onChange={(e) => setSignUpUsername(e.target.value)}
-            value={signUpUsername}
-          />
-          <input
-            className={styles.password}
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setSignUpPassword(e.target.value)}
-            value={signUpPassword}
-          />
-          <button className={styles.signupbtn} onClick={handleRegister}>
-            Sign Up
-          </button>
+    // <div>
+      <main className={styles.main}>
+        <div className={styles.form}>
+          <h1 className={styles.title}>INSCRIPTION</h1>
+          <div className={styles.inputs}>
+            <input
+              className={styles.email}
+              type="text"
+              placeholder="email"
+              onChange={(e) => setSignUpEmail(e.target.value)}
+              value={signUpEmail}
+            />
+            <input
+              className={styles.username}
+              type="text"
+              placeholder="Username"
+              onChange={(e) => setSignUpUsername(e.target.value)}
+              value={signUpUsername}
+            />
+            <input
+              className={styles.password}
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setSignUpPassword(e.target.value)}
+              value={signUpPassword}
+            />
+            <button className={styles.signupbtn} onClick={handleRegister}>
+              Sign Up
+            </button>
+          </div>
+          {userSection}
+          <Link className={styles.guestmode} href="/">Rester en mode invité</Link>
         </div>
-        {userSection}
-        <Link className={styles.guestmode} href="/">
-          Rester en mode invité
-        </Link>
-      </div>
-    </main>
+      </main>
+    // </div>
   );
 }
 

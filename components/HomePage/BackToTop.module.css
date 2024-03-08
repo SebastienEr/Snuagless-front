@@ -1,0 +1,8 @@
+.circle {
+  display: flex;
+  background-color: rgb(38, 1, 73);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  justify-content: center;
+}
