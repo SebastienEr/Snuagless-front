@@ -21,7 +21,7 @@ function Header({ onClick }) {
       {user.username ? (
         <>
           <div> Connecté en tant que {user.username} </div>
-          {/* <Menu /> */}
+          <Menu />
         </>
       ) : (
         <button>
