@@ -100,8 +100,29 @@ function Signup() {
   };
 
 const handleResetPassword = (e) => {
+  router.push('/ResetPasswordPageWrapped');
+  fetch("http://localhost:3000/users/reset-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: resetEmail,
+        
+      }),
+    })
+    .then((response) => response.json())
+      .then((data) => {
+        if (data.result === true) {
+          dispatch(login({ email: resetEmail}));
+ 
+        }
+}) 
+
+
+  
+
   e.preventDefault();
-  const userEmail =[mailsdesusersSEBOSCOUR];
+  const userEmail =[user.useremail];
+  console.log(user.userEmail)
   if(userEmail.includes(resetEmail)){
     setIsEmailValid(true);
   } else{
