@@ -32,15 +32,15 @@ function Signup() {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
-  const [signUpUsername, setSignUpUsername] = useState("");
-  const [signUpEmail, setSignUpEmail] = useState("");
-  const [signUpPassword, setSignUpPassword] = useState("");
-  const [signInUsername, setSignInUsername] = useState("");
-  const [signInPassword, setSignInPassword] = useState("");
-  const [passwordAttempts, setPasswordAttempts] = useState(0);
-  const [message, setMessage] = useState("");
-  const [showResetModal, setShowResetModal] = useState(false);
-  const [showCooldownMessage, setShowCooldownMessage] = useState(false);
+  // const [signUpUsername, setSignUpUsername] = useState("");
+  // const [signUpEmail, setSignUpEmail] = useState("");
+  // const [signUpPassword, setSignUpPassword] = useState("");
+  // const [signInUsername, setSignInUsername] = useState("");
+  // const [signInPassword, setSignInPassword] = useState("");
+  // const [passwordAttempts, setPasswordAttempts] = useState(0);
+  // const [message, setMessage] = useState("");
+  // const [showResetModal, setShowResetModal] = useState(false);
+  // const [showCooldownMessage, setShowCooldownMessage] = useState(false);
 
  const handleResetPasswordClick = () => {
     router.push('/ResetPasswordPageWrapped');
