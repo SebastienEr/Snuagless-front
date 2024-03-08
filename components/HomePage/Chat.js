@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import Pusher from "pusher-js";
@@ -15,7 +16,7 @@ const Chat = () => {
   const inputRef = useRef(null);
   const user = useSelector((state) => state.user.value);
   const username = user.username;
-
+  const router = useRouter();
   console.log(user.username);
   useEffect(() => {
     // Initialize Pusher
