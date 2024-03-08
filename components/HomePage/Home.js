@@ -46,7 +46,7 @@ function Home() {
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
-            {/*  <Poulpy /> */}
+             <Poulpy />
             <ChatView />
 
             {settings && <Settings />}
