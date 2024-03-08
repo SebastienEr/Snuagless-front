@@ -44,29 +44,6 @@ function Settings() {
     });
   };
 
-  // const deleteConfirmed = (userEmail) => {
-  //   try {
-  //     const response = fetch("http://localhost:3000/users/deleteUser", {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ token: user.token }), // Inclure l'email de l'utilisateur ici
-  //     });
-  //     console.log(response);
-  //     if (response.ok) {
-  //       console.log("Compte supprimé avec succès.");
-  //       // Redirection vers la page d'accueil ou de connexion
-  //       window.location.href = "/"; // ou la route que vous souhaitez
-  //     } else {
-  //       console.error("Échec de la suppression du compte.");
-  //       // Gestion de l'erreur
-  //     }
-  //   } catch (error) {
-  //     console.error("Erreur lors de la suppression du compte:", error);
-  //     // Exception
-  //   }
-  // };
   return (
     <div className={styles.settingsBox}>
       <div className={styles.topCard}>
