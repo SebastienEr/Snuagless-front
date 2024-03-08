@@ -38,6 +38,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 10px;
+    margin-bottom: 3vh;
 }
 
 .inputs{
@@ -48,49 +49,289 @@ justify-content: center;
 /* border: solid 1px rgb(255, 162, 0); */
 height: 30vh;
 width: 50vw;
+
+    position: relative;
+    margin: 25px 0;
+  
 }
 
-.email{
-    border-radius: 16px;
-    border: none;
-    height: 3vh;
+.emailBox,
+.usernameBox,
+.passwordBox {
+  position: relative;
+  margin-bottom: 2vh;
+}
+
+.emailBox input,
+.usernameBox input,
+.passwordBox input {
+  width: 19rem;
+  height: 40px;
+  /* background: transparent; */
+  /* background-color: #f8cbce; */
+  background-color: #f8cbce8b;
+  border: 1px solid rgba(85, 52, 98, 0.432);
+
+  /* background-color: #fce8dd74; */
+  /* border: solid 1px rgba(227, 184, 255, 0.767); */
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: #fff;
+  padding: 0 20px;
+  transition: 0.5s;
+}
+
+.emailBox input:hover,
+.usernameBox input:hover,
+.passwordBox input:hover {
+  box-shadow: 0px 0px 10px #080909b8;
+  border: 1px solid rgba(85, 52, 98, 0.729);
+
+}
+
+.emailBox input:focus,
+.usernameBox input:focus,
+.passwordBox input:focus,
+.emailBox input:valid,
+.usernameBox input:valid,
+.passwordBox input:focus-within {
+  border: 1.5px solid rgba(85, 52, 98, 0.956);
+  color: black;
+  background-color: #f8cbce87;
+  /* background-color: #f8cbce6a; */
+}
+
+.emailBox label,
+.usernameBox label,
+.passwordBox label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 25px; 
+  font-size: 0.8em;
+  color: #5f4d67de;
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+.emailBox input:focus ~ label,
+.emailBox input:valid ~ label,
+.usernameBox input:focus ~ label,
+.usernameBox input:valid ~ label,
+.passwordBox input:focus ~ label,
+.passwordBox input:focus-within ~ label {
+  top: 0;
+  left: 20px; 
+  font-size: 0.8em;
+  background-color: #fbdddf;
+  padding: 0 6px;
+  color: rgba(50, 34, 74, 0.901);
+  border-radius: 24px;
+  /* border: solid 1 rgba(85, 52, 98, 0.956); */
+}
+
+
+/* .emailBox input {
     width: 19rem;
-    padding:1vh;
-    margin-bottom: 1vh;
+    height: 40px;
+    background: transparent;
+    border: solid 1px rgba(227, 184, 255, 0.767); */
+    /* border: 2px solid #2c4766; */
+    /* outline: none;
+    border-radius: 40px;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 20px;
+    transition: 0.5s;
+    margin-bottom: 2vh;
+    background-color: rgba(255, 255, 255, 0.391); 
+  }
+
+.emailBox input:hover {
+    box-shadow: #080909;
 }
 
-.username{
-    border-radius: 16px;
-    border: none;
-    height: 3vh;
+.emailBox input:focus,
+.emailBox input:valid {
+    border: 1.5px solid rgba(85, 52, 98, 0.956);
+    color: black; */
+    /* border: solid 1px rgba(227, 184, 255, 0.767); */
+/* }
+.emailBox label{
+    position: absolute; */
+    /* top: 50%; */
+    /* left: 20rem;
+    transform: translateY(-50%); */
+    /* font-size: 1em; */
+    /* color: #73637aca;
+    pointer-events: none;
+    transition: 0.5s ease; */
+    /* position: absolute; */
+    /* top: 19%; */
+    /* bottom: 47vh; */
+    /* left: 4.5vw;
+    transform: translateY(-3%);
+    font-size:0.8em;
+}
+
+.emailBox input:focus ~ label,
+.emailBox input:valid ~ label {
+  top: 22px;
+  left: 4.9vw;
+  font-size: 0.8em;
+  background-color: #f8cbce;
+  padding: 0 6px;
+  color: rgba(50, 34, 74, 0.901);
+  border-radius: 24px; */
+  /* border: 1.5px solid rgba(85, 52, 98, 0.649); */
+/* 
+}
+
+
+.usernameBox input {
     width: 19rem;
-    padding:1vh;
-    margin-bottom: 1vh;
+    height: 40px;
+    background: transparent;
+    border: solid 1px rgba(227, 184, 255, 0.767); */
+    /* border: 2px solid #2c4766; */
+    /* outline: none;
+    border-radius: 40px;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 20px;
+    transition: 0.5s;
+    margin-bottom: 2vh;
+    background-color: rgba(255, 255, 255, 0.391); 
+  }
+
+.usernameBox input:hover {
+    box-shadow: #080909;
+} */
+
+/* .usernameBox input:focus,
+.usernameBox input:valid {
+    border: 1.5px solid rgba(85, 52, 98, 0.956);
+    color: black; */
+    /* border: solid 1px rgba(227, 184, 255, 0.767); */
+/* }
+.usernameBox label{
+    position: absolute; */
+    /* top: 50%; */
+    /* left: 20rem;
+    transform: translateY(-50%); */
+    /* font-size: 1em; */
+    /* color: #73637aca;
+    pointer-events: none;
+    transition: 0.5s ease; */
+    /* position: absolute; */
+    /* top: 19%; */
+    /* bottom: 47vh; */
+    /* left: 4.5vw;
+    transform: translateY(-3%);
+    font-size:0.8em;
 }
 
-.password{
+.usernameBox input:focus ~ label,
+.usernameBox input:valid ~ label {
+  top: 22px;
+  left: 4.9vw;
+  font-size: 0.8em;
+  background-color: #f8cbce;
+  padding: 0 6px;
+  color: rgba(50, 34, 74, 0.901);
+  border-radius: 24px; */
+  /* border: 1.5px solid rgba(85, 52, 98, 0.649); */
+/* 
+} */
+
+
+/* 
+.passwordBox input {
+    width: 19rem;
+    height: 40px;
+    background: transparent;
+    border: solid 1px rgba(227, 184, 255, 0.767); */
+    /* border: 2px solid #2c4766; */
+    /* outline: none;
+    border-radius: 40px;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 20px;
+    transition: 0.5s;
+    margin-bottom: 2vh;
+    background-color: rgba(255, 255, 255, 0.391); 
+  } */
+
+/* .passwordBox input:hover {
+    box-shadow: #080909;
+} */
+
+/* .passwordBox input:focus,
+.passwordBox input:valid {
+    border: 1.5px solid rgba(85, 52, 98, 0.956);
+    color: black; */
+    /* border: solid 1px rgba(227, 184, 255, 0.767); */
+/* }
+.passwordBox label{
+    position: absolute; */
+    /* top: 50%; */
+    /* left: 20rem;
+    transform: translateY(-50%); */
+    /* font-size: 1em; */
+    /* color: #73637aca;
+    pointer-events: none;
+    transition: 0.5s ease; */
+    /* position: absolute; */
+    /* top: 19%; */
+    /* bottom: 47vh; */
+    /* left: 4.5vw;
+    transform: translateY(-3%);
+    font-size:0.8em;
+} */
+
+/* .passwordBox input:focus ~ label,
+.passwordBox input:valid ~ label {
+  top: 22px;
+  left: 4.9vw;
+  font-size: 0.8em;
+  background-color: #f8cbce;
+  padding: 0 6px;
+  color: rgba(50, 34, 74, 0.901);
+  border-radius: 24px; */
+  /* border: 1.5px solid rgba(85, 52, 98, 0.649); */
+
+/* } */
+
+
+/* .password{
     border-radius: 16px;
     border: none;
     height: 3vh;
     padding:1vh;
     width: 19rem;
     margin-bottom: 4vh;
-}
+} */
 
 .signupbtn{
+    margin-top:19px;
     border-radius: 16px;
     border: none;
-    width: 15vw;
-    height: 3.5vh;
-    background-color: #7022DB9a;
-    color:#FFE81Dfb;
+    width: 10rem;
+    height: 36px;
+    background-color:#7ec8fadb;
+    color: rgba(57, 14, 116, 0.802);
+
+    /* background-color: #7022DB9a; */
+    /* color:#FFE81Dfb; */
 }
 
 .signupbtn:hover{
     background-color:#7ec9fab8;
     transition: background-color 2s;
-    color: rgba(56, 14, 116, 0.802);
+    /* color: rgba(56, 14, 116, 0.802); */
     transition: color 0.4s;
+    box-shadow: 0px 0px 10px #7353a1;
 }
 
 .connect{
@@ -104,3 +345,4 @@ width: 50vw;
     color:rgba(61, 39, 70, 0.956);
 
 }
+

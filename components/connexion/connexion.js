@@ -20,6 +20,9 @@ function Signup() {
   const [message, setMessage] = useState(""); // état pour stocker messages d'erreurs
   const [showResetModal, setShowResetModal] = useState(false); // état pour gérer ouverture/fermeture modale réinialisation password
   const [showCooldownMessage, setShowCooldownMessage] = useState(false); // état pour contrôler affichage du message de cooldown
+  const [resetEmail, setResetEmail] = useState(""); // état pour stocker mail (réinitialisation)
+  const [isEmailValid, setIsEmailValid] = useState(false); // état pour check si mail valide/invalide
+  const [showResetForm, setShowResetForm] = useState(false); // état pour gérer ouverture/fermeture envoi lien réinitialisation
   const [formDataSignUp, setFormDataSignUp] = useState({
     userName: "",
     email: "",
@@ -29,6 +32,7 @@ function Signup() {
     username: "",
     password: "",
   });
+
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -95,6 +99,16 @@ function Signup() {
       }) // au cas où il y aurait un petit problème, message d'erreur 
   };
 
+const handleResetPassword = (e) => {
+  e.preventDefault();
+  const userEmail =[mailsdesusersSEBOSCOUR];
+  if(userEmail.includes(resetEmail)){
+    setIsEmailValid(true);
+  } else{
+    setIsEmailValid(false);
+  }setShowResetModal(false);
+}
+
 useEffect(()=>{
   if (passwordAttempts === 3){
     setShowResetModal(true);
@@ -144,13 +158,25 @@ useEffect(()=>{
               {message && <p>{message}</p>}
               {showResetModal && (
                 <div>
-                  <p>Réinitialiser le mot de passe?</p>
-                  <button onClick={() => setShowResetModal(false)}>Non merci</button>
-                  <button onClick={handleResetPasswordClick}>Oui</button>
+                  <p>Réinitialiser les mot de passe?</p>
+                  <button onClick={()=> setShowResetModal(false)}>non merci</button>
+                  <button onClick={()=> {setShowResetForm(true); setShowResetModal(false)}}>OUIIIII</button>
                 </div>
               )}
               {showCooldownMessage && <p>Too many attempts, please wait 15 minutes cheh</p>} 
             </div>
+          </div>
+        )}
+        {showResetForm && (
+          <div>
+            <form onSubmit={handleResetPassword}>
+              <input type="email" 
+              placeholder="Entrez votre adresse e-mail"
+              value={resetEmail}
+              onChange={(e)=>setResetEmail(e.target.value)}/>
+              <button type="submit">Envoyer le lien de réinitialisation</button>
+            </form>
+            {isEmailValid && (<p>Nous n'avons pas cet email dans notre base de données.</p>)}
           </div>
         )}
       </div>
@@ -163,27 +189,46 @@ useEffect(()=>{
         <div className={styles.form}>
           <h1 className={styles.title}>INSCRIPTION</h1>
           <div className={styles.inputs}>
-            <input
-              className={styles.email}
+
+            <div className={styles.emailBox}>
+              <input
+                type="email"
+                required
+                // placeholder="email"
+                onChange={(e) => setSignUpEmail(e.target.value)}
+                value={signUpEmail}
+              />
+              <label>
+                Email
+              </label>
+            </div>
+
+            <div className={styles.usernameBox}>
+              <input
               type="text"
-              placeholder="email"
-              onChange={(e) => setSignUpEmail(e.target.value)}
-              value={signUpEmail}
-            />
-            <input
-              className={styles.username}
-              type="text"
-              placeholder="Username"
+              required
+              // placeholder="Username"
               onChange={(e) => setSignUpUsername(e.target.value)}
               value={signUpUsername}
-            />
+              />
+              <label>
+                Username
+              </label>
+            </div>
+
+            <div className={styles.passwordBox}>
             <input
-              className={styles.password}
               type="password"
-              placeholder="Password"
+              require
+              // placeholder="Password"
               onChange={(e) => setSignUpPassword(e.target.value)}
               value={signUpPassword}
             />
+            <label>
+              Password
+            </label>
+            </div>
+
             <button className={styles.signupbtn} onClick={handleRegister}>
               Sign Up
             </button>
@@ -191,6 +236,8 @@ useEffect(()=>{
           {userSection}
           <Link className={styles.guestmode} href="/">Rester en mode invité</Link>
         </div>
+
+
       </main>
     // </div>
   );
