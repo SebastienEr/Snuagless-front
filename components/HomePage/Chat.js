@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 const Chat = () => {
+  console.log("rerender");
   const [messages, setMessages] = useState([]);
   const [welcomeMessage, setWelcomeMessage] = useState("");
   const inputRef = useRef(null);
@@ -28,11 +29,24 @@ const Chat = () => {
 
     // Bind to the 'new-message' event
     channel.bind("pusher:subscription_succeeded", () => {
-      channel.bind("join", ({ name }) => handleJoin(name));
+      channel.bind("join", async ({ name }) => {
+        handleJoin(name);
+        // Send a request to fetch messages for the current user only
+        await fetchMessages(name);
+      });
       channel.bind("part", ({ name }) => handlePart(name));
-      channel.bind("message", ({ name, message, time, image, token, id }) =>
-        handleMessage(name, message, time, image, token, id)
+      channel.bind("message", ({ name, text, time, image, token }) =>
+        handleMessage(name, text, time, image, token)
       );
+      channel.bind("messageHistoryFetched", async ({ messages, username }) => {
+        if (username === user.username) {
+          const updatedMessages = messages.map((message) => ({
+            ...message,
+            isSentMessage: message.user.username === user.username,
+          }));
+          setMessages(updatedMessages);
+        }
+      });
     });
 
     fetch(`${pusherConfig.restServer}/chat/${username}`, {
@@ -46,24 +60,50 @@ const Chat = () => {
     };
   }, [username]);
 
+  const fetchMessages = async (username) => {
+    try {
+      const response = await fetch(
+        `${pusherConfig.restServer}/chat/messages/${username}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch messages");
+      }
+      const data = await response.json();
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
+  };
+
   const handleJoin = (name) => {
+    if (name === null) {
+      return;
+    }
+
     setWelcomeMessage(`${name} has joined the chat`);
   };
 
   const handlePart = (name) => {
+    if (!name) {
+      return;
+    }
     setWelcomeMessage(`${name} has left the chat`);
   };
 
-  const handleMessage = (name, message, time, image, token, id) => {
-    console.log("Received message:", { name, message, time, token, id });
+  const handleMessage = (name, text, time, image, token) => {
+    console.log("Received message:", { name, text, time, token });
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { name, message, time, image, token, id },
+      { name, text, time, image, token },
     ]);
   };
 
-  console.log(messages);
+  // console.log(messages);
+
+  const handleFetch = (fetchedMessages) => {
+    console.log(fetchedMessages);
+    setMessages(fetchedMessages);
+  };
 
   // Function to send a message
   const onSendMessage = async () => {
@@ -73,8 +113,7 @@ const Chat = () => {
       return;
     }
     const payload = {
-      id: uuidv4(),
-      message: text,
+      text,
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -83,7 +122,6 @@ const Chat = () => {
       token: user.token,
     };
 
-    console.log(payload);
     await fetch(`${pusherConfig.restServer}/chat/${username}/messages`, {
       method: "POST",
       headers: {
@@ -98,34 +136,64 @@ const Chat = () => {
   const displayMessages =
     messages.length > 0 &&
     messages.map((message, index) => {
-      const { name, message: text, time, image, token, id } = message;
-      const isFirstMessage =
-        index === 0 || token !== messages[index - 1]?.token;
+      // const { name, text, image, time, token, _id } = message;
+      const { user, text, image, time, token, _id, isSentMessage } = message;
+      // console.log(user);
+      // const isSentMessage = username === message.name;
+      // const isFirstMessage =
+      //   index === 0 || token !== messages[index - 1]?.token;
       const messageStyle = {
         display: "flex",
+        flexDirection: !isSentMessage && "row-reverse",
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
       };
       return (
         <div
           style={messageStyle}
           className={
-            username === message.name
-              ? styles.messageSent
-              : styles.messageReceived
+            isSentMessage ? styles.messageSent : styles.messageReceived
           }
-          key={id}
+          key={_id}
         >
-          {isFirstMessage && (
+          {/* {isFirstMessage && (
             <div className={styles.tail} style={{ zIndex: 1 }}></div>
-          )}
-          <div style={{ color: "black" }} className={styles.message}>
+          )} */}
+          <div className={styles.message}>
+            <div
+              style={{
+                fontWeight: "500",
+                textAlign: "left",
+                marginTop: "0.25rem",
+              }}
+            >
+              {user?.username}
+            </div>
             {text}
+            <div
+              style={{
+                fontSize: "0.75rem",
+                textAlign: "right",
+                marginTop: "0.25rem",
+              }}
+            >
+              {time}
+            </div>
           </div>
           <div>
             <Image
-              src={image ? image : require("../../public/images/avatar.jpg")}
+              src={
+                user?.profilePic
+                  ? user?.profilePic
+                  : require("../../public/images/avatar.jpg")
+              }
               width={40}
               height={40}
-              style={{ borderRadius: "50%", marginBottom: "0.25rem" }}
+              style={{
+                borderRadius: "50%",
+                marginBottom: "0.25rem",
+                margin: 0,
+              }}
             />
           </div>
         </div>
@@ -133,20 +201,24 @@ const Chat = () => {
     });
 
   return (
-    <div style={{ width: "100%", textAlign: "center" }}>
-      <div style={{ height: "70%", overflowY: "scroll" }}>
-        <ul
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          {displayMessages}
-        </ul>
+    <div style={{ height: "90%", textAlign: "center" }}>
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "70%",
+          margin: 0,
+          padding: 0,
+          overflowY: "scroll",
+        }}
+      >
+        {displayMessages}
+      </ul>
+
+      <div style={{ marginBottom: "1rem", fontWeight: "500", color: "#fff" }}>
+        {welcomeMessage}
       </div>
-      <div style={{ marginBottom: "1rem" }}>{welcomeMessage}</div>
 
       <div className={styles.inputContainer}>
         <textarea rows={4} placeholder="Type here..." ref={inputRef} />

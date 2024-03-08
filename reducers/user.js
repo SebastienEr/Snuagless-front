@@ -17,6 +17,9 @@ export const userSlice = createSlice({
       state.value.token = null;
       state.value.username = null;
     },
+    changePhoto: (state, action) => {
+      state.value.image = action.payload;
+    },
   },
 });
 

@@ -89,13 +89,13 @@ function Signup() {
           router.push("/");
           // login ok, renvoie vers homepage en étant connecté
         } else {
-          setMessage("Invalid password. Please try gain.");
+          setMessage("Mot de passe erroné. Veuillez réessayer.");
           setPasswordAttempts((prevAttempts)=> prevAttempts +1);
         } // login pas ok, renvoie message password incorrect et incrémente au compteur de tentatives échouées
       })
       .catch((error)=>{
         console.error("Error:", error);
-        setMessage("An error occured, please try again later :)");
+        setMessage("Désolé, nous rencontrons actuellement un problème, veuillez réessayer plus tard. :)");
       }) // au cas où il y aurait un petit problème, message d'erreur 
   };
 
@@ -148,9 +148,8 @@ useEffect(()=>{
   if (!user.isConnected) {
     userSection = (
       <div className={styles.connect}>
-        <p>Vous avez déjà un compte?</p>
         <button className={styles.signup} onClick={() => setIsOpenSignUp(true)}>
-          Sign in
+        Vous avez déjà un compte?
         </button>
         {isOpenSignUp && (
           <div className={styles.modal}>
@@ -158,23 +157,23 @@ useEffect(()=>{
               <span className="close" onClick={() => setIsOpenSignUp(false)}>
                 &times;
               </span>
-              <h2>Sign in</h2>
+              <h2>Se connecter</h2>
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Nom d'utilisateur"
                 id="signInUsername"
                 onChange={(e) => setSignInUsername(e.target.value)}
                 value={signInUsername}
               />
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="Mot de passe"
                 id="signInPassword"
                 onChange={(e) => setSignInPassword(e.target.value)}
                 value={signInPassword}
               />
               <button id="connection" onClick={() => handleConnection()}>
-                Sign in
+                Se connecter
               </button>
               {message && <p>{message}</p>}
               {showResetModal && (
@@ -220,7 +219,7 @@ useEffect(()=>{
                 value={signUpEmail}
               />
               <label>
-                Email
+                Mail
               </label>
             </div>
 
@@ -233,7 +232,7 @@ useEffect(()=>{
               value={signUpUsername}
               />
               <label>
-                Username
+                Nom d'utilisateur
               </label>
             </div>
 
@@ -246,12 +245,12 @@ useEffect(()=>{
               value={signUpPassword}
             />
             <label>
-              Password
+              Mot de passe
             </label>
             </div>
 
             <button className={styles.signupbtn} onClick={handleRegister}>
-              Sign Up
+              S'INSCRIRE
             </button>
           </div>
           {userSection}
