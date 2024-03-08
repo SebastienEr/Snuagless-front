@@ -30,6 +30,12 @@ function Signup() {
   const [showResetModal, setShowResetModal] = useState(false);
   const [showCooldownMessage, setShowCooldownMessage] = useState(false);
 
+ const handleResetPasswordClick = () => {
+    router.push('/ResetPasswordPageWrapped');
+ }
+
+
+
   const handleRegister = () => {
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
@@ -126,7 +132,7 @@ function Signup() {
                 <div>
                   <p>Réinitialiser le mot de passe?</p>
                   <button onClick={() => setShowResetModal(false)}>Non merci</button>
-                  <button onClick={() => console.log("Reset password clicked")}>Oui</button>
+                  <button onClick={handleResetPasswordClick}>Oui</button>
                 </div>
               )}
               {showCooldownMessage && <p>Too many attempts, please wait 15 minutes</p>}
