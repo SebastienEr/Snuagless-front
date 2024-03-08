@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../HomePage/Settings.module.css";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -10,8 +11,11 @@ import {
   faFloppyDisk,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import { logout } from "../../reducers/user";
 
 function Settings() {
+  const user = useSelector((state) => state.user.value);
+  console.log(user);
   const [wantToDelete, setWantToDelete] = useState(false);
   // Effet pour forcer un re-rendering lorsque `wantToDelete` change
 
@@ -19,7 +23,50 @@ function Settings() {
     setWantToDelete(true);
   };
 
-  const deleteConfirmed = () => {};
+  const dispatch = useDispatch();
+
+  const deleteConfirmed = () => {
+    fetch("http://localhost:3000/users/deleteUser", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({ token: user.token }), // Inclure l'email de l'utilisateur ici
+    }).then((data) => {
+      console.log("this", data.ok);
+      if (data.ok === true) {
+        window.location.href = "/";
+        dispatch(logout());
+      } else {
+        console.log("Pas d'utilisateur trouvé");
+      }
+    });
+  };
+
+  // const deleteConfirmed = (userEmail) => {
+  //   try {
+  //     const response = fetch("http://localhost:3000/users/deleteUser", {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ token: user.token }), // Inclure l'email de l'utilisateur ici
+  //     });
+  //     console.log(response);
+  //     if (response.ok) {
+  //       console.log("Compte supprimé avec succès.");
+  //       // Redirection vers la page d'accueil ou de connexion
+  //       window.location.href = "/"; // ou la route que vous souhaitez
+  //     } else {
+  //       console.error("Échec de la suppression du compte.");
+  //       // Gestion de l'erreur
+  //     }
+  //   } catch (error) {
+  //     console.error("Erreur lors de la suppression du compte:", error);
+  //     // Exception
+  //   }
+  // };
   return (
     <div className={styles.settingsBox}>
       <div className={styles.topCard}>
