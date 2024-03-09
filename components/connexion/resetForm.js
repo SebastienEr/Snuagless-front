@@ -9,8 +9,9 @@ const ResetForm = () => {
 
   const handleResetPassword = (e) => {
     e.preventDefault();
-    const userEmail = [mailsdesusersSEBOSCOUR];
-    if (userEmail.includes(resetEmail)) {
+    const userEmail = useSelector((state) => state.reset.value.email); // email de reset placé en reducer
+    console.log(userEmail, "reducered e-mail");
+    if (resetEmail.includes(userEmail)) {
       setIsEmailValid(true);
     } else {
       setIsEmailValid(false);

@@ -32,6 +32,7 @@ function ResetPasswordPage() {
       console.log(resetStatus);
     } else {
       console.log(resetEmail, "we will try this");
+      dispatch(resetEmailToStore(resetEmail));
       // Envoi de la demande de réinitialisation de mot de passe avec le token
       fetch(`http://localhost:3000/users/reset-password?token=${token}`, {
         method: "POST",

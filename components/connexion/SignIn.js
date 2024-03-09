@@ -171,7 +171,7 @@ const SignIn = () => {
               <label>Mot de passe</label>
             </div>
           </div>
-          <button id="connection" onClick={handleConnection}>
+          <button id="connection" onClick={() => handleConnection()}>
             Se connecter
           </button>
           {message && <p>{message}</p>}
@@ -187,7 +187,7 @@ const SignIn = () => {
                   handleResetPassword();
                 }}
               >
-                OUIIIII
+                Oui
               </button>
             </div>
           )}
