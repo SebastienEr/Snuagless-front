@@ -32,7 +32,7 @@ function Settings() {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ token: user.token }), // Inclure l'email de l'utilisateur ici
+      body: JSON.stringify({ token: user.token }), // Inclure le token de l'utilisateur ici
     }).then((data) => {
       console.log("this", data.ok);
       if (data.ok === true) {
