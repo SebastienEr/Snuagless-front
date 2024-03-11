@@ -34,20 +34,18 @@ function Home() {
         {mode === "photo" && (
           <ChangePhoto onClose={closeModal} open={modalIsOpen} />
         )}
+        {mode === "settings" && <Settings />}
       </Modal>
 
       <div className={styles.home}>
-        <Header onClick={() => openModal()} />
+        <Header onClick={() => openModal()} onSetMode={setMode} />
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
-            <Poulpy />
-            {/* <ChatView /> */}
-
-            {settings && <Settings />}
+            {/*  <Poulpy /> */}
+            <ChatView />
           </div>
-          {/* </main> */}
-          <Player />
+          {/* <Player /> */}
         </main>
       </div>
       <Schedule />

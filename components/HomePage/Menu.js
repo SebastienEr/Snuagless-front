@@ -9,13 +9,11 @@ import {
   faOtter,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Menu.module.scss";
 import { logout } from "../../reducers/user";
 import Settings from "../HomePage/Settings";
 
 /* import Menu from "../HomePage/Menu"; et <Menu/> dans la page où on souhaite avoir le gooey*/
-function Menu() {
-  const user = useSelector((state) => state.user.value);
+function Menu({ onClick, onSetMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [favoritesOpen, setFavoritesOpen] = useState(false);
@@ -30,18 +28,25 @@ function Menu() {
       setFavoritesOpen(false);
     }
   };
-  const openSettings = () => {
-    setSettingsOpen(!settingsOpen); // Bascule entre ouvert et fermé
-  };
+  // const openSettings = () => {
+  //   setSettingsOpen(!settingsOpen); // Bascule entre ouvert et fermé
+  // };
   const openFavorites = () => {
     setFavoritesOpen(!favoritesOpen); //Favoris ouvert/fermé
   };
-  const changeMascotte = () => {
-    setMascotteOpen(!mascotteOpen); //mascotte présente/absente
-  };
+  // const changeMascotte = () => {
+  //   setMascotteOpen(!mascotteOpen); //mascotte présente/absente
+  // };
 
+  const openSettings = () => {
+    onSetMode("settings");
+    onClick();
+  };
+  const openChangePhoto = () => {
+    onSetMode("photo");
+    onClick();
+  };
   {
-    user !== null;
     return (
       <>
         <nav className="menu">
@@ -56,41 +61,15 @@ function Menu() {
           <label className="menu-open-button" for="menu-open">
             <span className="hamburger-1">
               {image && (
-                <img
+                <Image
                   src={image}
                   alt="Avatar de l'utilisateur - ouvre le menu"
-                  styles={{
-                    height: "40px",
-                    width: "44px",
-                    fontSize: "3rem",
-                  }}
+                  layout="fill"
                 />
               )}
             </span>
           </label>
           {/* Expliquer pk  */}
-          <span
-            className="menu-item"
-            style={{ display: "none" }}
-            onClick={() => openFavorites()}
-          >
-            <FontAwesomeIcon
-              alt="icône en forme de coeur. Mes 10 musiques favorites"
-              icon={faHeart}
-              style={{ width: "20px", fontSize: "3rem" }}
-            />
-          </span>
-          <span
-            className="menu-item"
-            style={{ display: "none" }}
-            onClick={() => openFavorites()}
-          >
-            <FontAwesomeIcon
-              alt="icône en forme de coeur. Mes 10 musiques favorites"
-              icon={faHeart}
-              style={{ width: "20px", fontSize: "3rem" }}
-            />
-          </span>
           <span className="menu-item" onClick={() => openFavorites()}>
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
@@ -98,32 +77,32 @@ function Menu() {
               style={{ width: "20px", fontSize: "3rem" }}
             />
           </span>
-          <span className="menu-item" onClick={() => openSettings()}>
+          <span className="menu-item" onClick={openSettings}>
             <FontAwesomeIcon
               icon={faCog}
               alt="Paramètres"
-              style={{ width: "40px", fontSize: "3rem" }}
+              style={{ width: "20px", fontSize: "3rem" }}
             />
           </span>{" "}
           {settingsOpen && <Settings />}{" "}
-          <span onClick={() => changeMascotte()} className="menu-item">
+          <span onClick={openChangePhoto} className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
               alt="Mascotte - Cliquer pour changer de mascotte"
-              style={{ width: "40px", fontSize: "3rem" }}
+              style={{ width: "30px", fontSize: "3rem" }}
             />
           </span>
           <span onClick={() => dispatch(logout())} className="menu-item">
             <FontAwesomeIcon
               alt="Me déconnecter"
               icon={faRightToBracket}
-              style={{ width: "40px", fontSize: "3rem" }}
+              style={{ width: "30px", fontSize: "3rem" }}
             />
           </span>
           {/* Affiche les paramètres si settingsOpen est vrai */}
         </nav>
 
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        {/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
           <defs>
             <filter id="shadowed-goo">
               <feGaussianBlur
@@ -137,16 +116,16 @@ function Menu() {
                 values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
                 result="goo"
               />
-              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-              <feColorMatrix
+              <feGaussianBlur in="goo" stdDeviation="3" result="shadow" /> 
+               <feColorMatrix
                 in="shadow"
                 mode="matrix"
                 values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2"
                 result="shadow"
-              />
-              <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-              <feComposite in2="shadow" in="goo" result="goo" />
-              <feComposite in2="goo" in="SourceGraphic" result="mix" />
+              /> 
+               <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+               <feComposite in2="shadow" in="goo" result="goo" /> 
+              <feComposite in2="goo" in="SourceGraphic" result="mix" /> 
             </filter>
             <filter id="goo">
               <feGaussianBlur
@@ -163,7 +142,7 @@ function Menu() {
               <feComposite in2="goo" in="SourceGraphic" result="mix" />
             </filter>
           </defs>
-        </svg>
+        </svg> */}
       </>
     );
   }

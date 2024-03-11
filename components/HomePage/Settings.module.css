@@ -5,7 +5,6 @@
   align-items: center;
   height: 500px;
   width: 700px;
-  background-color: blueviolet;
   border-radius: 30px;
   padding: 10px 20px;
 }
@@ -16,7 +15,6 @@
   align-items: center;
   height: 450px;
   width: 300px;
-  border: 1px solid green;
   padding: 10px 20px;
   margin: 10px;
 }
@@ -31,7 +29,6 @@
   align-items: center;
   height: 450px;
   width: 300px;
-  border: 1px solid green;
   padding: 10px 20px;
   margin: 10px;
 }
@@ -43,7 +40,6 @@
   align-items: left;
   height: 75px;
   width: 290px;
-  border: 1px solid orange;
   padding: 10px 20px;
   margin: 10px;
 }
@@ -54,7 +50,6 @@
   align-items: left;
   height: 75px;
   width: 290px;
-  border: 1px solid yellow;
 }
 
 .fields {
@@ -68,7 +63,6 @@
   align-items: left;
   height: 75px;
   width: 290px;
-  border: 1px solid orange;
 }
 .settingsText {
   font-size: 14px;

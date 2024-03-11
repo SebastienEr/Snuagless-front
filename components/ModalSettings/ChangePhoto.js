@@ -10,8 +10,6 @@ function ChangePhoto({ onClose, open }) {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
-  console.log(imagePicked);
-
   const handlePickClick = () => {
     imageInput.current.click();
   };
@@ -23,21 +21,30 @@ function ChangePhoto({ onClose, open }) {
   }, [open]);
 
   const changePhotoHandler = async (event) => {
-    const file = event.target.files[0];
-    console.log(file);
-    const formData = new FormData();
-    formData.append("image", file);
-    const response = await fetch(
-      `http://localhost:3000/users/upload/${user.token}`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    try {
+      const file = event.target.files[0];
+      console.log(file);
+      const formData = new FormData();
+      formData.append("image", file);
+      const response = await fetch(
+        `http://localhost:3000/users/upload/${user.token}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-    const data = await response.json();
-    console.log(data);
-    setImagePicked(data.url);
+      if (!response.ok) {
+        throw new Error("Failed to upload image");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setImagePicked(data.url);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      // Handle the error, e.g., display a message to the user
+    }
   };
 
   const onConfirmHandler = () => {
