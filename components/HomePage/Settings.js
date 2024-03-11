@@ -53,10 +53,10 @@ function Settings() {
         </div>
         <div className={styles.fieldCardTop}>
           {/* change username */}
-          <text>Username: </text>
+          <text>Nom d'utilisateur: </text>
           <input
             type="field"
-            placeholder="Username"
+            placeholder="Entrez votre pseudo"
             className={styles.fields}
           ></input>
         </div>
@@ -72,15 +72,15 @@ function Settings() {
         </div>
         <div className={styles.fieldCardTop}>
           {/* change password*/}
-          <text>Password: </text>
+          <text>Mot de passe: </text>
           <input
             type="field"
-            placeholder="Password"
+            placeholder="Nouveau mot de passe"
             className={styles.fields}
           ></input>
           <input
             type="field"
-            placeholder="Confirm password"
+            placeholder="Confirmez votre nouveau mot de passe"
             className={styles.fields}
           ></input>
         </div>
@@ -92,6 +92,7 @@ function Settings() {
           {/* star on off */}
           <FontAwesomeIcon
             icon={faStar}
+            alt="Une étoile"
             style={{ width: "20px", marginTop: "25px", color: "white" }}
           />
           <text className={styles.settingsText}>
@@ -108,6 +109,7 @@ function Settings() {
           {/* tchat on off */}
           <FontAwesomeIcon
             icon={faMessage}
+            alt="Une bulle de dialogue"
             style={{ width: "20px", marginTop: "25px", color: "white" }}
           />
           <text className={styles.settingsText}>
@@ -123,6 +125,7 @@ function Settings() {
           {/* mascottes on off */}
           <FontAwesomeIcon
             icon={faOtter}
+            alt="Une loutre"
             style={{ width: "20px", marginTop: "25px", color: "white" }}
           />
           <text className={styles.settingsText}>
@@ -136,6 +139,7 @@ function Settings() {
         <div className={styles.separationLine}></div>
         <div className={styles.deleteAccount} onClick={() => deleteAccount()}>
           <FontAwesomeIcon
+            alt="Une poubelle pour supprimer mon compte"
             icon={faTrash}
             style={{ width: "20px", marginTop: "25px", color: "white" }}
           />
@@ -174,6 +178,7 @@ function Settings() {
         <span className={styles.icon}>
           <FontAwesomeIcon
             icon={faFloppyDisk}
+            alt="Une icône de disquette pour sauvegarder les changements"
             style={{ width: "20px", color: "white" }}
           />
         </span>
