@@ -43,7 +43,7 @@ function Home() {
             <Program />
             <Poulpy />
             {/* <ChatView /> */}
-            <AxeptioWidget />
+
             {settings && <Settings />}
           </div>
           {/* </main> */}
