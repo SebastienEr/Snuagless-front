@@ -9,8 +9,8 @@ const ResetForm = () => {
   const [resetEmail, setResetEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
-  const router = useRouter(); // Add this line to get the router object
-  const userEmail = useSelector((state) => state.reset.value.email); // Moved useSelector to the top
+  const router = useRouter();
+  const userEmail = useSelector((state) => state.reset.value.email);
   const user = useSelector((state) => state.user.value);
 
   const handleResetPassword = (e) => {
@@ -43,7 +43,7 @@ const ResetForm = () => {
   return (
     <div className={styles.inputs}>
       <div className={styles.emailBox}>
-        <form onSubmit={() => handleResetPassword()}>
+        <form onSubmit={handleResetPassword}>
           <MailInput
             value={resetEmail}
             onChange={(value) => setResetEmail(value)}
