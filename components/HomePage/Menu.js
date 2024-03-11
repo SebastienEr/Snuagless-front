@@ -63,25 +63,47 @@ function Menu() {
               )}
             </span>
           </label>
+          <span
+            className="menu-item"
+            style={{ display: "none" }}
+            onClick={() => openFavorites()}
+          >
+            <FontAwesomeIcon
+              alt="icône en forme de coeur. Mes 10 musiques favorites"
+              icon={faHeart}
+              style={{ width: "20px", fontSize: "3rem" }}
+            />
+          </span>
+          <span
+            className="menu-item"
+            style={{ display: "none" }}
+            onClick={() => openFavorites()}
+          >
+            <FontAwesomeIcon
+              alt="icône en forme de coeur. Mes 10 musiques favorites"
+              icon={faHeart}
+              style={{ width: "20px", fontSize: "3rem" }}
+            />
+          </span>
           <span className="menu-item" onClick={() => openFavorites()}>
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
-              style={{ width: "20px", marginTop: "25px" }}
+              style={{ width: "20px", fontSize: "3rem" }}
             />
           </span>
           <span className="menu-item" onClick={() => openSettings()}>
             <FontAwesomeIcon
               icon={faCog}
               alt="Paramètres"
-              style={{ width: "40px", marginTop: "25px" }}
+              style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
           <span onClick={() => changeMascotte()} className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
               alt="Mascotte - Cliquer pour changer de mascotte"
-              style={{ width: "40px", marginTop: "25px" }}
+              style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
           <span onClick={() => dispatch(logout())} className="menu-item">

@@ -19,7 +19,7 @@ function Header({ onClick }) {
       />
       <h1 className={styles.snuagless}>Snuagless</h1>
       <div>
-        {user.username ? (
+        {user?.username ? (
           <div className={styles.connected}>
             <div> Connecté en tant que {user.username} </div>
             <Menu />
