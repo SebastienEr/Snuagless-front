@@ -58,11 +58,16 @@ function Menu() {
                 <img
                   src={image}
                   alt="Avatar de l'utilisateur - ouvre le menu"
-                  styles={{ height: "40px", width: "44px" }}
+                  styles={{
+                    height: "40px",
+                    width: "44px",
+                    fontSize: "3rem",
+                  }}
                 />
               )}
             </span>
           </label>
+          {/* Expliquer pk  */}
           <span
             className="menu-item"
             style={{ display: "none" }}
@@ -110,7 +115,7 @@ function Menu() {
             <FontAwesomeIcon
               alt="Me déconnecter"
               icon={faRightToBracket}
-              style={{ width: "40px", marginTop: "20px" }}
+              style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
           {settingsOpen && <Settings />}{" "}
