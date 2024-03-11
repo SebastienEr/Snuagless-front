@@ -44,7 +44,7 @@ const SignIn = () => {
           // login ok, renvoie vers homepage en étant connecté
         } else {
           setMessage("Mot de passe erroné. Veuillez réessayer.");
-          setsignInAttempts(signInAttempts + 1);
+          setSignInAttempts(signInAttempts + 1);
 
           // login pas ok, renvoie message password incorrect et incrémente au compteur de tentatives échouées
         }

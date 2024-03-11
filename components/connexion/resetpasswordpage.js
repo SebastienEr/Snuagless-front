@@ -74,9 +74,10 @@ function ResetPasswordPage() {
             value={resetEmail}
             onChange={(e) => {
               setResetEmail(e.target.value);
+              console.log(resetEmail, "after value");
             }}
           />
-          <button onClick={handleResetPassword}>
+          <button onClick={() => handleResetPassword()}>
             Réinitialiser le mot de passe
           </button>
           <p className={styles["reset-password-page-p"]}>{resetStatus}</p>

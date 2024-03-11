@@ -43,7 +43,7 @@ const ResetForm = () => {
   return (
     <div className={styles.inputs}>
       <div className={styles.emailBox}>
-        <form onSubmit={handleResetPassword}>
+        <form onSubmit={() => handleResetPassword()}>
           <MailInput
             value={resetEmail}
             onChange={(value) => setResetEmail(value)}
