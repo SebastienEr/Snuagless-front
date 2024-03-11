@@ -12,6 +12,7 @@ import {
 import styles from "./Menu.module.scss";
 import { logout } from "../../reducers/user";
 import Settings from "../HomePage/Settings";
+
 /* import Menu from "../HomePage/Menu"; et <Menu/> dans la page où on souhaite avoir le gooey*/
 function Menu() {
   const user = useSelector((state) => state.user.value);
@@ -19,7 +20,7 @@ function Menu() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [favoritesOpen, setFavoritesOpen] = useState(false);
   const [mascotteOpen, setMascotteOpen] = useState(true);
-
+  const image = useSelector((state) => state.user.value.image);
   const dispatch = useDispatch();
 
   const toggleMenu = () => {
@@ -53,38 +54,68 @@ function Menu() {
           />
           <label className="menu-open-button" for="menu-open">
             <span className="hamburger-1" onClick={() => toggleMenu()}>
-              <Image
-                src={user.image}
-                alt="user-avatar"
-                width={50}
-                height={50}
-              />
+              {image && (
+                <img
+                  src={image}
+                  alt="Avatar de l'utilisateur - ouvre le menu"
+                  styles={{
+                    height: "40px",
+                    width: "44px",
+                    fontSize: "3rem",
+                  }}
+                />
+              )}
             </span>
-            <span className="hamburger-2"></span>
-            <span className="hamburger-3"></span>
           </label>
+          {/* Expliquer pk  */}
+          <span
+            className="menu-item"
+            style={{ display: "none" }}
+            onClick={() => openFavorites()}
+          >
+            <FontAwesomeIcon
+              alt="icône en forme de coeur. Mes 10 musiques favorites"
+              icon={faHeart}
+              style={{ width: "20px", fontSize: "3rem" }}
+            />
+          </span>
+          <span
+            className="menu-item"
+            style={{ display: "none" }}
+            onClick={() => openFavorites()}
+          >
+            <FontAwesomeIcon
+              alt="icône en forme de coeur. Mes 10 musiques favorites"
+              icon={faHeart}
+              style={{ width: "20px", fontSize: "3rem" }}
+            />
+          </span>
           <span className="menu-item" onClick={() => openFavorites()}>
             <FontAwesomeIcon
+              alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
-              style={{ width: "20px", marginTop: "25px" }}
+              style={{ width: "20px", fontSize: "3rem" }}
             />
           </span>
           <span className="menu-item" onClick={() => openSettings()}>
             <FontAwesomeIcon
               icon={faCog}
-              style={{ width: "40px", marginTop: "25px" }}
+              alt="Paramètres"
+              style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
           <span onClick={() => changeMascotte()} className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
-              style={{ width: "40px", marginTop: "25px" }}
+              alt="Mascotte - Cliquer pour changer de mascotte"
+              style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
           <span onClick={() => dispatch(logout())} className="menu-item">
             <FontAwesomeIcon
+              alt="Me déconnecter"
               icon={faRightToBracket}
-              style={{ width: "40px", marginTop: "20px" }}
+              style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
           {settingsOpen && <Settings />}{" "}

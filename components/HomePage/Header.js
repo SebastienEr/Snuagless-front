@@ -18,19 +18,21 @@ function Header({ onClick }) {
         onClick={onClick}
       />
       <h1 className={styles.snuagless}>Snuagless</h1>
-      {user.username ? (
-        <>
-          <div> Connecté en tant que {user.username} </div>
-          <Menu />
-        </>
-      ) : (
-        <button>
-          <Link href="/connexion">Se Connecter</Link>
-          <span style={{ marginLeft: "2rem" }}>
-            <Image src={require("../../public/images/userIcon.png")} />
-          </span>
-        </button>
-      )}
+      <div>
+        {user?.username ? (
+          <div className={styles.connected}>
+            <div> Connecté en tant que {user.username} </div>
+            <Menu />
+          </div>
+        ) : (
+          <button>
+            <Link href="/connexion">Se Connecter</Link>
+            <span style={{ marginLeft: "2rem" }}>
+              <Image src={require("../../public/images/userIcon.png")} />
+            </span>
+          </button>
+        )}
+      </div>
     </header>
   );
 }

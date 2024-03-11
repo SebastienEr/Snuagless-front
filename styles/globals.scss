@@ -15,7 +15,6 @@ body {
 }
 .icon-user {
   font-family: "Font Awesome";
-  font-size: 12px; // Ajustez la taille de l'icône selon vos besoins
   overflow: hidden; // Masque le contenu qui dépasse
   position: relative; // Positionnement relatif pour ajuster l'icône
 }
@@ -108,6 +107,10 @@ $hamburger-spacing: 8px;
 }
 
 .menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     background: white;
     color: $fg;

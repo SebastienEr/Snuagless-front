@@ -40,13 +40,11 @@ function Home() {
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
-            {/*  <Poulpy /> */}
-            {/*  <ChatView /> */}
-
-            {settings && <Settings />}
+            <Poulpy />
+            <ChatView /> {settings && <Settings />}
           </div>
           {/* </main> */}
-          {/* <Player /> */}
+          <Player />
         </main>
       </div>
       <Schedule />
