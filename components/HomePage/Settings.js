@@ -48,7 +48,9 @@ function Settings() {
     <div className={styles.settingsBox}>
       <div className={styles.topCard}>
         {/* settings user */}
-
+        <div className={styles.changePic}>
+          {/* changer de photo de profil */}
+        </div>
         <div className={styles.fieldCardTop}>
           {/* change username */}
           <text>Nom d'utilisateur: </text>
