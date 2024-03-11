@@ -39,7 +39,7 @@ const SignIn = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.result === true) {
-          dispatch(login({ username: signInUsername, token: data.token }));
+          dispatch(login({ username: signInUsername, token: token }));
           router.push("/");
           // login ok, renvoie vers homepage en étant connecté
         } else {
@@ -171,10 +171,11 @@ const SignIn = () => {
               />
               <label>Mot de passe</label>
             </div>
-          </div>
-          <button id="connection" onClick={() => handleConnection()}>
+            <button className={styles.signupbtn} id="connection" onClick={() => handleConnection()}>
             Se connecter
           </button>
+          </div>
+     
           {message && <p>{message}</p>}
           {showResetModal && (
             <div>
