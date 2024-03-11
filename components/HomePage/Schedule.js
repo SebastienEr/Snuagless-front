@@ -272,7 +272,7 @@ function Schedule() {
                     <div></div>
                     <div></div>
                   </li>
-                  <li>
+                  <li className={styles.Li}>
                     <div></div>
                     <div></div>
                   </li>
@@ -281,9 +281,11 @@ function Schedule() {
             </li>
           </ul>
         </div>
-        <div className={styles.bottomBox}></div>
+        <div className={styles.bottomBox}>
+          {" "}
+          <footer className={styles.footer} />
+        </div>
       </div>
-      <footer className={styles.footer} />
     </div>
   );
 }

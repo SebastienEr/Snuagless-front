@@ -56,12 +56,10 @@ function Menu() {
           <label className="menu-open-button" for="menu-open">
             <span className="hamburger-1">
               {image && (
-                <img
-                  src={image}
+                <Image
+                  src={() => image}
                   alt="Avatar de l'utilisateur - ouvre le menu"
                   styles={{
-                    height: "40px",
-                    width: "44px",
                     fontSize: "2rem",
                   }}
                 />

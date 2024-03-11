@@ -1,7 +1,6 @@
 .header {
   width: 100vw;
   text-align: center;
-  border: 2px solid black;
 }
 
 .bigBox {
@@ -9,11 +8,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: row;
-  height: 1000vh;
-  width: 98%;
-  border: yellow 1px solid;
+  height: 500vh;
+  width: 100%;
   padding: 20px;
-  margin: 10px;
 }
 
 .topBox {
@@ -57,8 +54,9 @@
 .hourList {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
 }
 
 .Li {
@@ -69,4 +67,11 @@
   height: 8vh;
   width: 18vh;
   border: 1px black solid;
+}
+
+.footer {
+  width: 100vw;
+  height: 200px;
+  text-align: center;
+  border: 2px solid green;
 }

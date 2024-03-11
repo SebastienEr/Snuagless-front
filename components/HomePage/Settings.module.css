@@ -3,14 +3,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 450px;
+  height: 400px;
   width: 300px;
-  border: 1px solid green;
-  padding: 10px 20px;
-  margin: 10px;
+  padding: 10px;
+  margin: 2px;
+}
+.changePic {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  width: 300px;
+  padding: 5px;
+  margin: 2px;
 }
 .settingsBox {
-  transform: translateX(70);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -20,21 +28,22 @@
   background-color: blueviolet;
   border-radius: 30px;
   padding: 10px 20px;
-}
-.changePic {
-  height: 25px;
-  width: 300px;
+  transform: translateX(-777px);
 }
 .bottomCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 450px;
+  height: 500px;
   width: 300px;
-  border: 1px solid green;
   padding: 10px 20px;
   margin: 10px;
+}
+.settingsWrapper {
+  display: flex;
+  flex-direction: column;
+  /* Ajoutez d'autres styles si nécessaire */
 }
 
 .fieldCardTop {
@@ -42,22 +51,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  height: 75px;
-  width: 290px;
-  border: 1px solid orange;
+  height: 450px;
+  width: 300px;
   padding: 10px 20px;
   margin: 10px;
 }
 .fieldCardBottom {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: left;
-  height: 75px;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
   width: 290px;
-  border: 1px solid yellow;
+  padding: 10px;
+  margin: 2px;
 }
-
 .fields {
   height: 25px;
   width: 240px;
@@ -69,7 +77,6 @@
   align-items: left;
   height: 75px;
   width: 290px;
-  border: 1px solid orange;
 }
 .settingsText {
   font-size: 14px;
@@ -78,13 +85,13 @@
 }
 .buttonOnOff {
   font-size: 12px;
-  height: 15px;
-  width: 40px;
+  height: 50px;
+  width: 70px;
 }
 .separationLine {
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
+  height: 2px;
   width: 100px;
 }
 
@@ -103,6 +110,7 @@
 
 /* Icône à gauche du texte */
 .icon {
+  font-size: 24px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -119,4 +127,20 @@
 /* Effet de survol */
 .saveButton:hover {
   background-color: #e64a29; /* Couleur de fond au survol */
+}
+
+.fieldCardSave {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 290px;
+
+  padding: 10px;
+  margin: 2px;
+}
+.saveButton {
+  height: 30px;
+  width: 240px;
 }
