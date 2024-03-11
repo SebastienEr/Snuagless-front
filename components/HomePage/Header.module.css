@@ -7,9 +7,16 @@
   height: 155px;
   background-color: #480ebb;
   background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%);
-
 }
 
+.connected {
+  position: relative;
+}
+
+.connecter {
+  height: 100px;
+  width: 400px;
+}
 .header h1 {
   color: white;
   font-family: "Press Start 2P", system-ui;
@@ -41,7 +48,7 @@
   padding-right: 2vw;
 }
 
-.sunglasses{
+.sunglasses {
   width: 20vw;
   height: 4vh;
 }

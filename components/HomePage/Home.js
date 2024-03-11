@@ -46,7 +46,7 @@ function Home() {
             {settings && <Settings />}
           </div>
           {/* </main> */}
-          {/* <Player /> */}
+          <Player />
         </main>
       </div>
       <Schedule />
