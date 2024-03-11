@@ -73,7 +73,7 @@ const SignIn = () => {
   }, [signInAttempts]);
 
   const handleResetClick = () => {
-    router.push("/ResetPasswordPageWrapped");
+    // router.push("/ResetPasswordPageWrapped");
     setShowResetForm(true);
   };
 
