@@ -18,6 +18,7 @@ const Chat = () => {
   const username = user.username;
   const router = useRouter();
   console.log(user.username);
+
   useEffect(() => {
     // Initialize Pusher
     const pusher = new Pusher(pusherConfig.key, {
@@ -29,24 +30,25 @@ const Chat = () => {
 
     // Bind to the 'new-message' event
     channel.bind("pusher:subscription_succeeded", () => {
-      channel.bind("join", async ({ name }) => {
-        handleJoin(name);
+      // const currentUser = user.username;
+      fetchMessages(username);
+
+      channel.bind("join", async ({ name, messages }) => {
+        await fetchMessages();
+        handleJoin(name, messages);
+        // if (currentUser === name) {
+        //   const messagesRetrieved = await fetchMessages(name);
+        //   // console.log(messages);
+        //   // setMessages(messagesRetrieved);
+        //   setMessages(messagesRetrieved.messages);
+        // }
+        // console.log(messagesRetrieved);
         // Send a request to fetch messages for the current user only
-        await fetchMessages(name);
       });
       channel.bind("part", ({ name }) => handlePart(name));
       channel.bind("message", ({ name, text, time, image, token }) =>
         handleMessage(name, text, time, image, token)
       );
-      channel.bind("messageHistoryFetched", async ({ messages, username }) => {
-        if (username === user.username) {
-          const updatedMessages = messages.map((message) => ({
-            ...message,
-            isSentMessage: message.user.username === user.username,
-          }));
-          setMessages(updatedMessages);
-        }
-      });
     });
 
     fetch(`${pusherConfig.restServer}/chat/${username}`, {
@@ -69,17 +71,21 @@ const Chat = () => {
         throw new Error("Failed to fetch messages");
       }
       const data = await response.json();
+
+      setMessages(data.messages);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
-  const handleJoin = (name) => {
+  const handleJoin = (name, messages) => {
     if (name === null) {
       return;
     }
 
     setWelcomeMessage(`${name} has joined the chat`);
+
+    // setMessages(messages);
   };
 
   const handlePart = (name) => {
@@ -98,7 +104,8 @@ const Chat = () => {
     ]);
   };
 
-  // console.log(messages);
+  console.log(messages);
+  // console.log(messagesRetrieved);
 
   const handleFetch = (fetchedMessages) => {
     console.log(fetchedMessages);
@@ -133,18 +140,21 @@ const Chat = () => {
     inputRef.current.value = "";
   };
 
+  // console.log(messages);
+
   const displayMessages =
-    messages.length > 0 &&
+    messages?.length > 0 &&
     messages.map((message, index) => {
       // const { name, text, image, time, token, _id } = message;
-      const { user, text, image, time, token, _id, isSentMessage } = message;
+      const { user, name, text, image, time, token, _id, isSentMessage } =
+        message;
       // console.log(user);
       // const isSentMessage = username === message.name;
       // const isFirstMessage =
       //   index === 0 || token !== messages[index - 1]?.token;
       const messageStyle = {
         display: "flex",
-        flexDirection: !isSentMessage && "row-reverse",
+        flexDirection: username !== name && "row-reverse",
         alignItems: "flex-start",
         justifyContent: "flex-end",
       };
@@ -152,7 +162,7 @@ const Chat = () => {
         <div
           style={messageStyle}
           className={
-            isSentMessage ? styles.messageSent : styles.messageReceived
+            username === name ? styles.messageSent : styles.messageReceived
           }
           key={_id}
         >
@@ -167,7 +177,8 @@ const Chat = () => {
                 marginTop: "0.25rem",
               }}
             >
-              {user?.username}
+              {/* {user?.username} */}
+              {name}
             </div>
             {text}
             <div
@@ -183,8 +194,10 @@ const Chat = () => {
           <div>
             <Image
               src={
-                user?.profilePic
-                  ? user?.profilePic
+                // user?.profilePic
+                image
+                  ? // ? user?.profilePic
+                    image
                   : require("../../public/images/avatar.jpg")
               }
               width={40}
