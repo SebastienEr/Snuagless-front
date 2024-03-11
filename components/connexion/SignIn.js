@@ -38,8 +38,15 @@ const SignIn = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.result === true) {
-          dispatch(login({ username: signInUsername, token: data.token }));
+          dispatch(
+            login({
+              username: signInUsername,
+              token: data.token,
+              image: data.user.profilePic,
+            })
+          );
           router.push("/");
           // login ok, renvoie vers homepage en étant connecté
         } else {

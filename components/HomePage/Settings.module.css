@@ -1,10 +1,10 @@
 .settingsBox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  height: 700px;
-  width: 350px;
-  background-color: blueviolet;
+  align-items: center;
+  height: 500px;
+  width: 700px;
   border-radius: 30px;
   padding: 10px 20px;
 }
@@ -13,10 +13,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 450px;
   width: 300px;
-  border: 1px solid green;
   padding: 10px 20px;
+  margin: 10px;
 }
 .changePic {
   height: 25px;
@@ -27,40 +27,42 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 450px;
   width: 300px;
-  border: 1px solid green;
   padding: 10px 20px;
+  margin: 10px;
 }
 
 .fieldCardTop {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: left;
   height: 75px;
   width: 290px;
-  border: 1px solid orange;
   padding: 10px 20px;
+  margin: 10px;
 }
 .fieldCardBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
   height: 75px;
   width: 290px;
-  border: 1px solid orange;
-  padding: 10px 20px;
 }
 
 .fields {
   height: 25px;
-  width: 250px;
+  width: 240px;
 }
 .onOff {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  height: 75px;
   width: 290px;
-  padding: 10px;
 }
 .settingsText {
   font-size: 14px;
@@ -68,10 +70,13 @@
   padding: 20px;
 }
 .buttonOnOff {
+  font-size: 12px;
   height: 15px;
-  width: 20px;
+  width: 40px;
 }
 .separationLine {
+  display: flex;
+  flex-direction: row;
   border: 1px solid blue;
   width: 100px;
 }
@@ -91,6 +96,10 @@
 
 /* Icône à gauche du texte */
 .icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px; /* Espacement entre l'icône et le texte */
 }
 

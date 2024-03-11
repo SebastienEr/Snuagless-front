@@ -48,9 +48,7 @@ function Settings() {
     <div className={styles.settingsBox}>
       <div className={styles.topCard}>
         {/* settings user */}
-        <div className={styles.changePic}>
-          {/* changer de photo de profil */}
-        </div>
+
         <div className={styles.fieldCardTop}>
           {/* change username */}
           <text>Nom d'utilisateur: </text>
@@ -89,51 +87,56 @@ function Settings() {
       <div className={styles.bottomCard}>
         {/* settings preference */}
         <div className={styles.onOff}>
-          {/* star on off */}
-          <FontAwesomeIcon
-            icon={faStar}
-            alt="Une étoile"
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />
-          <text className={styles.settingsText}>
-            Les étoiles me notifient quand ma musique passe. Les autres
-            personnes qui ont les mêmes étoiles seront surement sur le tchat
-            quand la musique passera!
-          </text>
-          <button type="radio" className={styles.buttonOnOff}>
-            OFF/ON
-          </button>
+          <div className={styles.fieldCardBottom}>
+            {/* star on off */}
+            <FontAwesomeIcon
+              icon={faStar}
+              alt="Une étoile"
+              style={{ width: "20px", color: "white", fontSize: "3rem" }}
+            />
+            <text className={styles.settingsText}>
+              Les étoiles me notifient quand ma musique passe.
+              Activer/désactiver les notifications
+            </text>
+            <button type="radio" className={styles.buttonOnOff}>
+              OFF/ON
+            </button>
+          </div>
         </div>
         <div className={styles.onOff}>
-          {" "}
-          {/* tchat on off */}
-          <FontAwesomeIcon
-            icon={faMessage}
-            alt="Une bulle de dialogue"
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />
-          <text className={styles.settingsText}>
-            Désactiver/activer la présence du tchat
-          </text>
-          <button type="radio" className={styles.buttonOnOff}>
-            OFF/ON
-          </button>
+          <div className={styles.fieldCardBottom}>
+            {" "}
+            {/* tchat on off */}
+            <FontAwesomeIcon
+              icon={faMessage}
+              alt="Une bulle de dialogue"
+              style={{ width: "20px", color: "white", fontSize: "3rem" }}
+            />
+            <text className={styles.settingsText}>
+              Désactiver/activer la présence du tchat
+            </text>
+            <button type="radio" className={styles.buttonOnOff}>
+              OFF/ON
+            </button>
+          </div>
         </div>
 
         <div className={styles.onOff}>
           {" "}
           {/* mascottes on off */}
-          <FontAwesomeIcon
-            icon={faOtter}
-            alt="Une loutre"
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />
-          <text className={styles.settingsText}>
-            Désactiver/activer la présence de la mascotte
-          </text>
-          <button type="radio" className={styles.buttonOnOff}>
-            OFF/ON
-          </button>
+          <div className={styles.fieldCardBottom}>
+            <FontAwesomeIcon
+              icon={faOtter}
+              alt="Une loutre"
+              style={{ width: "20px", color: "white", fontSize: "3rem" }}
+            />
+            <text className={styles.settingsText}>
+              Désactiver/activer la présence de la mascotte
+            </text>
+            <button type="radio" className={styles.buttonOnOff}>
+              OFF/ON
+            </button>
+          </div>
         </div>
 
         <div className={styles.separationLine}></div>
@@ -141,7 +144,7 @@ function Settings() {
           <FontAwesomeIcon
             alt="Une poubelle pour supprimer mon compte"
             icon={faTrash}
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
+            style={{ width: "20px", color: "white", fontSize: "3rem" }}
           />
         </div>
         {wantToDelete ? (
@@ -172,17 +175,16 @@ function Settings() {
         )}
 
         <div className={styles.separationLine}></div>
-      </div>
-
-      <div className={styles.saveSettings}>
-        <span className={styles.icon}>
-          <FontAwesomeIcon
-            icon={faFloppyDisk}
-            alt="Une icône de disquette pour sauvegarder les changements"
-            style={{ width: "20px", color: "white" }}
-          />
-        </span>
-        <span className={styles.text}>Save</span>
+        <div className={styles.saveSettings}>
+          <span className={styles.icon}>
+            <FontAwesomeIcon
+              icon={faFloppyDisk}
+              alt="Une icône de disquette pour sauvegarder les changements"
+              style={{ width: "20px", color: "white" }}
+            />
+            <text>Save changes</text>
+          </span>
+        </div>
       </div>
     </div>
   );
