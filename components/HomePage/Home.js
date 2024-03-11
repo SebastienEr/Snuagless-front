@@ -5,6 +5,7 @@ import Program from "./Program";
 import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
+import AxeptioWidget from "./Cookies";
 import { useState } from "react";
 import Modal from "../ModalSettings/Modal";
 import ChangePhoto from "../ModalSettings/ChangePhoto";
@@ -40,9 +41,9 @@ function Home() {
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
-            {/*  <Poulpy /> */}
-            <ChatView />
-
+            <Poulpy />
+            {/* <ChatView /> */}
+            <AxeptioWidget />
             {settings && <Settings />}
           </div>
           {/* </main> */}

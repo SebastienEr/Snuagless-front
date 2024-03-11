@@ -34,10 +34,10 @@ function Menu() {
     setSettingsOpen(!settingsOpen); // Bascule entre ouvert et fermé
   };
   const openFavorites = () => {
-    setFavoritesOpen(!favoritesOpen);
+    setFavoritesOpen(!favoritesOpen); //Favoris ouvert/fermé
   };
   const changeMascotte = () => {
-    setMascotteOpen(!mascotteOpen);
+    setMascotteOpen(!mascotteOpen); //mascotte présente/absente
   };
 
   {
@@ -51,9 +51,10 @@ function Menu() {
             className="menu-open"
             name="menu-open"
             id="menu-open"
+            onClick={() => toggleMenu()}
           />
           <label className="menu-open-button" for="menu-open">
-            <span className="hamburger-1" onClick={() => toggleMenu()}>
+            <span className="hamburger-1">
               {image && (
                 <img
                   src={image}
@@ -103,7 +104,8 @@ function Menu() {
               alt="Paramètres"
               style={{ width: "40px", fontSize: "3rem" }}
             />
-          </span>
+          </span>{" "}
+          {settingsOpen && <Settings />}{" "}
           <span onClick={() => changeMascotte()} className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
@@ -118,7 +120,6 @@ function Menu() {
               style={{ width: "40px", fontSize: "3rem" }}
             />
           </span>
-          {settingsOpen && <Settings />}{" "}
           {/* Affiche les paramètres si settingsOpen est vrai */}
         </nav>
 

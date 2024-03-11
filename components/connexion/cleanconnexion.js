@@ -10,7 +10,7 @@ import Link from "next/link";
 const Connexion = () => {
   const router = useRouter();
 
-  const user = useSelector((state) => state.user.value);
+  /* const user = useSelector((state) => state.user.value.username);
   const [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const [isOpenSignUp, setIsOpenSignUp] = useState(false); // état pour gérer ouverture & fermeture modale connexion
   const [signUpUsername, setSignUpUsername] = useState(""); // état pour stocker username (inscription)
@@ -33,7 +33,7 @@ const Connexion = () => {
   const [formDataSignIn, setFormDataSignIn] = useState({
     username: "",
     password: "",
-  });
+  }); */
   const [isSignInVisible, setIsSignInVisible] = useState(true); // pour faire apparaître signin en premier
   const toggleConnexionForm = () => {
     setIsSignInVisible(!isSignInVisible); // inverser true false pour toggle connexion/inscription
