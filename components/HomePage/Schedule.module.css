@@ -64,11 +64,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 8vh;
-  width: 18vh;
+  height: 20vh;
+  width: 22vh;
   border: 1px black solid;
+  padding: 5px;
 }
 
+/* .bigPicture {
+  background-image: ;
+} */
 .footer {
   width: 100vw;
   height: 200px;

@@ -30,22 +30,6 @@ function Schedule() {
                     <div></div>
                     <div></div>
                   </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
                 </ul>
               </div>
             </li>
@@ -55,22 +39,6 @@ function Schedule() {
               </div>
               <div className={styles.daySched}>
                 <ul className={styles.hourList}>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
                   <li className={styles.Li}>
                     <div></div>
                     <div></div>
@@ -104,22 +72,6 @@ function Schedule() {
                     <div></div>
                     <div></div>
                   </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
                 </ul>
               </div>
             </li>
@@ -129,22 +81,6 @@ function Schedule() {
               </div>
               <div className={styles.daySched}>
                 <ul className={styles.hourList}>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
                   <li className={styles.Li}>
                     <div></div>
                     <div></div>
@@ -178,22 +114,6 @@ function Schedule() {
                     <div></div>
                     <div></div>
                   </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
                 </ul>
               </div>
             </li>
@@ -203,22 +123,6 @@ function Schedule() {
               </div>
               <div className={styles.daySched}>
                 <ul className={styles.hourList}>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
                   <li className={styles.Li}>
                     <div></div>
                     <div></div>
@@ -251,26 +155,11 @@ function Schedule() {
                   <li className={styles.Li}>
                     <div>
                       <text>9h</text>
-                    </div>
-                    <div>
                       <text>Infos LOL</text>
                     </div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
-                  </li>
-                  <li className={styles.Li}>
-                    <div></div>
-                    <div></div>
+                    <div className={styles.bigPicture}>
+                      <Image />
+                    </div>
                   </li>
                   <li className={styles.Li}>
                     <div></div>
