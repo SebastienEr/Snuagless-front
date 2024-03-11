@@ -3,15 +3,14 @@ import React, { useState} from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
-
+import PasswordCheck from './passwordCheck';
 
 function SignUp() {
 
-// tous les petits useStates 
   const [signUpUsername, setSignUpUsername] = useState(""); // état pour stocker username (inscription)
   const [signUpEmail, setSignUpEmail] = useState(""); // état pour stocker email  (inscription)
   const [signUpPassword, setSignUpPassword] = useState(""); // état pour stocker password (inscription)
-  
+
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -78,6 +77,8 @@ return (
     <label>
       Mot de passe
     </label>
+    <PasswordCheck />
+
     </div>
 
     <button className={styles.signupbtn} onClick={handleRegister}>

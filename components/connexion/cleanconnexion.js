@@ -15,13 +15,15 @@ return (
     <main className={styles.main}>
         <div className={styles.form}>
            <h1 className={styles.title}>{isSignInVisible ? "CONNEXION" : "INSCRIPTION"}</h1>
-           <div>     
+           <div className = {styles.bottomMsg}>     
                {isSignInVisible ? (<SignIn/>) : (<SignUp/>)}   {/* Si isSignInVisible = true alors render component SignIn, sinon SignUp */}
-               <button onClick={toggleConnexionForm}>
-                   {isSignInVisible ? "Vous n'avez pas de compte?": "Déjà inscrit?"} {/* Si isSignInVisible = true alors render "pas de compte?", sinon "déjà inscrit" */}
-               </button>
+                <div onClick={toggleConnexionForm} className={styles.toggleText}>
+                {isSignInVisible ? "Vous n'avez pas de compte? Rejoignez-nous!": "Déjà inscrit? Connectez-vous ici."} {/* Si isSignInVisible = true alors render "pas de compte?", sinon "déjà inscrit" */}
             </div>
-            <Link className={styles.guestmode} href="/">Rester en mode invité</Link>
+            <Link href="/">
+                <a className={styles.guestmode}>mode invité</a>
+            </Link>
+        </div>
         </div>
     </main>
 )

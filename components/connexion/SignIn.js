@@ -89,10 +89,11 @@ return (
                          />
                          <label>Mot de passe</label>
                     </div>
-                </div>
-              <button id="connection" onClick={() => handleConnection()}>
+                    <button className={styles.signupbtn} id="connection" onClick={() => handleConnection()}>
                 Se connecter
               </button>
+                </div>
+            
               {message && <p>{message}</p>}
               {showResetModal && (
                 <div>

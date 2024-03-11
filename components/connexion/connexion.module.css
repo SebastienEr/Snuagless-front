@@ -320,7 +320,8 @@ width: 50vw;
     width: 10rem;
     height: 36px;
     background-color:#380e658e;
-    color: rgba(248, 194, 79, 0.861);
+    color: rgba(255, 226, 36, 0.929);
+    transition: background-color ease 1s;
 
     /* background-color: #7022DB9a; */
     /* color:#FFE81Dfb; */
@@ -346,3 +347,32 @@ width: 50vw;
 
 }
 
+.toggleText {
+    cursor: pointer;
+    margin-bottom: 0.8vh;
+    font-size: 0.8rem;
+    color: #211a2dfb;
+
+}
+
+.toggleText:hover{
+    text-decoration: underline;
+}
+
+.bottomMsg{
+    padding-bottom: 3vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guestmode{
+    text-decoration: none;
+    color: #211a2dfb;
+    font-size: 0.8rem;
+}
+
+.guestmode:hover{
+    text-decoration: underline;
+}
