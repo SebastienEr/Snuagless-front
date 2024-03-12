@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import ChatView from "./ChatView";
 import Header from "./Header";
 import styles from "./Home.module.css";
@@ -6,47 +7,53 @@ import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
 import AxeptioWidget from "./Cookies";
-import { useState } from "react";
 import Modal from "../ModalSettings/Modal";
 import ChangePhoto from "../ModalSettings/ChangePhoto";
 import { useSelector } from "react-redux";
 import { settings } from "../../reducers/user";
 import Settings from "./Settings";
 import BackToTop from "./backToTop";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [mode, setMode] = useState("photo");
+  const [isStarred, setIsStarred] = useState(false); // État pour vérifier si l'étoile est activée ou non
 
   const openModal = () => {
-    setModalIsOpen((prevState) => !prevState);
+    setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    setModalIsOpen((prevState) => !prevState);
+    setModalIsOpen(false);
   };
-  const user = useSelector((state) => state.user.value);
 
-  console.log(user);
+  const toggleStar = () => {
+    setIsStarred(prevState => !prevState); // Inverse l'état de l'étoile
+  };
+
   return (
     <div className={styles.tout}>
       <Modal open={modalIsOpen} onClose={closeModal}>
-        {mode === "photo" && (
-          <ChangePhoto onClose={closeModal} open={modalIsOpen} />
-        )}
-        {mode === "settings" && <Settings />}
+        <Settings />
       </Modal>
 
       <div className={styles.home}>
-        <Header onClick={() => openModal()} onSetMode={setMode} />
+        <Header onClick={() => openModal()} />
         <main className={styles.main}>
           <div className={styles.content}>
             <Program />
-            {/*  <Poulpy /> */}
+            <Poulpy />
             <ChatView />
+            {/* Ici, vous pouvez mettre d'autres éléments de votre contenu */}
           </div>
           <Player />
         </main>
+        {/* Utilisation de la classe "starred" conditionnelle pour afficher l'étoile vide ou jaune */}
+        <button className={`${styles.likeButton} ${isStarred ? styles.starred : ""}`} onClick={toggleStar}>
+          <FontAwesomeIcon icon={isStarred ? solidStar : regularStar} className={styles.heartIcon} style={{ color: isStarred ? 'yellow' : 'inherit' }} />
+        </button>
       </div>
       <Schedule />
       {/* bouton retourner en haut de page */}
