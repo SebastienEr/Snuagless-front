@@ -1,5 +1,7 @@
 import styles from "../HomePage/Home.module.css";
 
+
+
 function Player() {
   return (
     <div style={{ position: "fixed", width: "100%", zIndex: "100", bottom:"0", height:"auto" }}>
@@ -12,6 +14,9 @@ function Player() {
         type="text/javascript"
         src="https://player.radioking.io/scripts/iframe.bundle.js"
       ></script>
+      {/* <button className={styles.likeButton}>
+        <span className={styles.heartIcon}></span>
+      </button> */}
     </div>
   );
 }

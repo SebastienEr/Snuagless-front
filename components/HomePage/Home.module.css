@@ -21,6 +21,24 @@
   margin-left: 3vw;
   padding-right: 6vw;
 }
+.likeButton {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 1020px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101; /* Assurez-vous que le bouton est au-dessus de l'iframe */
+  position: fixed;
+}
 
 .footer {
   width: 100vw;
