@@ -38,17 +38,17 @@
   align-items: center;
   border: 1px solid cyan;
   height: 15vh;
-  width: 24vh;
+  width: 30vh;
 }
 
 .daySched {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid pink;
   height: 90vh;
-  width: 24vh;
+  width: 30vh;
 }
 
 .hourList {
@@ -64,14 +64,16 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 20vh;
-  width: 22vh;
+  height: 24vh;
+  width: 24vh;
   border: 1px black solid;
   padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .bigPicture {
-  background-image: url("_6fa6ae8c-4387-43e7-af59-260384c7e5a7.jpg");
+  background-image: url("/artists/_1c0b9c0e-28b5-4f5d-b2a5-ef22aaf600d6.jpg");
 }
 .footer {
   width: 100vw;

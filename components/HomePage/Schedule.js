@@ -8,7 +8,6 @@ function Schedule() {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 style={{ color: "white" }}>Live Show</h2>
-          <Image src={require("../../public/images/radioschedule.png")} />
         </div>
         <div className={styles.bigBox}>
           <ul className={styles.rowList}>
@@ -40,6 +39,7 @@ function Schedule() {
               <div className={styles.daySched}>
                 <ul className={styles.hourList}>
                   <li className={styles.Li}>
+                    <Image styles={styles.bigPicture} />
                     <div></div>
                     <div></div>
                   </li>
@@ -157,9 +157,7 @@ function Schedule() {
                       <text>9h</text>
                       <text>Infos LOL</text>
                     </div>
-                    <div className={styles.bigPicture}>
-                      <Image />
-                    </div>
+                    <div className={styles.bigPicture}></div>
                   </li>
                   <li className={styles.Li}>
                     <div></div>

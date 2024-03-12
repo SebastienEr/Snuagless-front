@@ -28,6 +28,7 @@
   background-color: blueviolet;
   border-radius: 30px;
   padding: 10px 20px;
+  z-index: "100";
   transform: translateX(-777px);
 }
 .bottomCard {
