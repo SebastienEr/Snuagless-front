@@ -6,7 +6,9 @@ function Schedule() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2 style={{ color: "white" }}>Programme de la semaine</h2>
+        <h2 style={{ color: "white", fontFamily: "Press Start 2P, system-ui" }}>
+          Programme de la semaine
+        </h2>
         {/*  <Image src="./images/radioschedule.png" /> */}
       </div>
       <div className={styles.bigBox}>
@@ -155,7 +157,7 @@ function Schedule() {
                 </li>
                 <li className={styles.Li}>
                   <Image
-                    src="/artists/_14038bd5-b889-4f65-a221-20c506b42353.jpg" /* Ajoutez le chemin correct */
+                    src="/artists/_ffb4c084-cae7-4185-a495-50e851b30d3d.jpg" /* Ajoutez le chemin correct */
                     className={styles.bigPicture1}
                     width={"190vh"}
                     height={"190vh"}
@@ -239,7 +241,7 @@ function Schedule() {
                 </li>
                 <li className={styles.Li}>
                   <Image
-                    src="/artists/_cbdd4c3d-2a87-4592-8981-1dfdb9cfc216.jpg" /* Ajoutez le chemin correct */
+                    src="/artists/_fa828fbd-93ae-4c0c-b338-b2181e598afe.jpg" /* Ajoutez le chemin correct */
                     className={styles.bigPicture1}
                     width={"190vh"}
                     height={"190vh"}
@@ -308,7 +310,13 @@ function Schedule() {
       </div>
       <div className={styles.bottomBox}>
         {" "}
-        <footer className={styles.footer} />
+        <footer
+          className={styles.footer}
+          style={{ color: "white", fontFamily: "Press Start 2P, system-ui" }}
+        >
+          {" "}
+          Et bien plus encore!
+        </footer>
       </div>
     </div>
   );

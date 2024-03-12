@@ -1,6 +1,15 @@
 .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  min-width: 1000px;
   width: 100vw;
+  height: 8vh;
+  padding-left: 60px;
   text-align: center;
+  background: linear-gradient(70deg, #7b2be8 50%, #01c2cc 100%);
+  background-color: lightskyblue;
 }
 
 .rowList {
@@ -10,6 +19,7 @@
   align-items: center;
   height: 140vh;
   width: 100vw;
+  min-width: 1000px;
   text-align: center;
   padding: 1px;
   background-color: lightskyblue;
@@ -38,8 +48,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border: darkblue;
   height: 120vh;
   width: 14vw;
+  min-width: 210px;
 }
 
 .hourList {
@@ -48,7 +60,7 @@
   justify-content: space-between;
   padding: 5px;
   align-items: center;
-  margin: 1vw;
+  margin: 1px;
 }
 
 .Li {
@@ -56,9 +68,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 30vh;
-  width: 30vh;
-  margin-top: 0.2vh;
+  height: 215px;
+  width: 215px;
+  margin-top: 5px;
+  margin-right: 1px;
+  margin-left: 0;
+  margin-bottom: 0;
   border-radius: 5%;
   color: #1b2968;
   border-top: 3px transparent rgb(151, 12, 206);
@@ -89,4 +104,11 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+}
+
+.footer {
+  background: linear-gradient(70deg, #7b2be8 50%, #01c2cc 100%);
+  font-size: "22px";
+  height: 10vh;
+  width: 100%;
 }
