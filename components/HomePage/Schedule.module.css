@@ -61,19 +61,20 @@
 
 .Li {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  height: 24vh;
-  width: 24vh;
+  height: 28vh;
+  width: 28vh;
   border: 1px black solid;
-  padding: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.bigPicture {
-  background-image: url("/artists/_1c0b9c0e-28b5-4f5d-b2a5-ef22aaf600d6.jpg");
+.bigPicture1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .footer {
   width: 100vw;
