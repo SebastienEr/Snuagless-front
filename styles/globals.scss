@@ -107,6 +107,8 @@ $hamburger-spacing: 4px;
   height: $height;
   box-sizing: border-box;
   text-align: left;
+  z-index: 1200;
+  position: absolute;
 }
 .settingsBox {
   display: flex;
@@ -118,6 +120,8 @@ $hamburger-spacing: 4px;
   background-color: blueviolet;
   border-radius: 30px;
   padding: 10px 20px;
+  position: absolute;
+  z-index: 1200;
   transform: translateX(-1000px);
 }
 .menu-item {

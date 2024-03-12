@@ -30,27 +30,27 @@ function Home() {
   console.log(user);
   return (
     <div className={styles.tout}>
-      <Modal open={modalIsOpen} onClose={closeModal}>
+      {/* <Modal open={modalIsOpen} onClose={closeModal}>
         {mode === "photo" && (
           <ChangePhoto onClose={closeModal} open={modalIsOpen} />
         )}
         {mode === "settings" && <Settings />}
-      </Modal>
-
+      </Modal> */}
       <div className={styles.home}>
         <Header onClick={() => openModal()} onSetMode={setMode} />
         <main className={styles.main}>
           <div className={styles.content}>
-            <Program />
-            {/*  <Poulpy /> */}
-            <ChatView />
+            <Program /> {/* Emission/Musique suivante */}
+            <Poulpy /> {/* Mascotte */}
+            <ChatView /> {/* tchat */}
           </div>
           <Player />
         </main>
       </div>
-      <Schedule />
+      <Schedule /> {/* programme de la semaine */}
       {/* bouton retourner en haut de page */}
-      {/* <BackToTop /> */}
+      <BackToTop />
+      <footer className={styles.footer}></footer>
     </div>
   );
 }

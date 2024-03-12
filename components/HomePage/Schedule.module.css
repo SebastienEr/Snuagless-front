@@ -3,42 +3,34 @@
   text-align: center;
 }
 
-.bigBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: row;
-  height: 500vh;
-  width: 100%;
-  padding: 20px;
-}
-
-.topBox {
-  border: red 1px solid;
-  height: 11vh;
-  width: 100%;
-}
 .rowList {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 120vh;
-  width: 97%;
+  height: 140vh;
+  width: 100vw;
   text-align: center;
-  padding: 10px;
-  border: 1px black solid;
-  margin: 30px;
+  padding: 1px;
+  background-color: lightskyblue;
+  color: lightskyblue;
+  overflow-x: auto;
 }
 
 .colSched {
   display: flex;
-  flex-direction: center;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid cyan;
-  height: 15vh;
-  width: 30vh;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(70deg, #7b2be8 50%, #01c2cc 100%);
+  border-radius: 20px;
+  margin: 1.25vw;
+  height: 8vh;
+  width: 10vw;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .daySched {
@@ -46,9 +38,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid pink;
-  height: 90vh;
-  width: 30vh;
+  height: 120vh;
+  width: 14vw;
 }
 
 .hourList {
@@ -57,17 +48,39 @@
   justify-content: space-between;
   padding: 5px;
   align-items: center;
+  margin: 1vw;
 }
 
 .Li {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: 28vh;
-  width: 28vh;
-  border: 1px black solid;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  height: 30vh;
+  width: 30vh;
+  margin-top: 0.2vh;
+  border-radius: 5%;
+  color: #1b2968;
+  border-top: 3px transparent rgb(151, 12, 206);
+  border-left: 3px transparent rgb(151, 12, 206);
+  border-bottom: none;
+  border-right: none;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5); /* Ombre grise plus claire */
+  padding: 5px;
+}
+.liText {
+  font-family: "monospace";
+  font-size: 20px;
+  height: 20px;
+  width: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  border: black 0.5px solid;
+
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); /* Ombre sous les lettres */
+  border-radius: 5px;
 }
 
 .bigPicture1 {
@@ -75,10 +88,5 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-.footer {
-  width: 100vw;
-  height: 200px;
-  text-align: center;
-  border: 2px solid green;
+  border-radius: 20px;
 }

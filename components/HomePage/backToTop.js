@@ -11,8 +11,8 @@ function BackToTop() {
           <FontAwesomeIcon
             icon={faArrowUp}
             style={{
-              width: "16px",
-
+              fontSize: "2rem",
+              width: "14px",
               color: "white",
             }}
           />

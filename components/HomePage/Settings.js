@@ -63,7 +63,7 @@ function Settings() {
           <button
             className={styles.settingsButton}
             styles={{ fontSize: "14px" }}
-            onClick={() => ChangePhoto()}
+            onClick={() => ChangePhoto(onClose, open)}
           >
             +
           </button>

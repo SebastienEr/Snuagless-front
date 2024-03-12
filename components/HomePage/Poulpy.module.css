@@ -2,10 +2,11 @@
   z-index: 0.5;
   height: 10.2em;
   width: 10.2em;
-  position: absolute;
+  position: relative;
   transform: translate(-50%, -50%);
   left: 50%;
   top: 42%;
+  transform: translateX(-800px);
 }
 .squid {
   height: 18.75em;
@@ -117,7 +118,6 @@
 }
 .rotate {
   animation: rotate 3s linear infinite;
-  
 }
 
 @keyframes rotate {
@@ -137,9 +137,8 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(100vw); /* Déplace le poulpe vers la droite jusqu'au bord droit de la fenêtre */
+    transform: translateX(
+      100vw
+    ); /* Déplace le poulpe vers la droite jusqu'au bord droit de la fenêtre */
   }
 }
-
-
-
