@@ -1,9 +1,7 @@
 .container {
-  z-index: 1;
   height: 60vh;
   width: calc(29% - 60px);
   box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
-  /* background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%); */
   background: rgba(208, 162, 241, 0.42);
   border: 0.1px solid rgba(183, 183, 248, 0.607);
   backdrop-filter: blur(10px);
@@ -14,7 +12,7 @@
   position: relative;
   border-radius: 12px;
   margin-bottom: 50px;
-  margin-top: 2%;
+  margin-top: 7%;
   padding: 30px;
 }
 

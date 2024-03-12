@@ -9,7 +9,7 @@ import {
   faOtter,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Menu.module.scss";
+/* import styles from "../../styles/globals.scss"; */
 import { logout } from "../../reducers/user";
 import Settings from "../HomePage/Settings";
 
@@ -34,10 +34,10 @@ function Menu() {
     setSettingsOpen(!settingsOpen); // Bascule entre ouvert et fermé
   };
   const openFavorites = () => {
-    setFavoritesOpen(!favoritesOpen);
+    setFavoritesOpen(!favoritesOpen); //Favoris ouvert/fermé
   };
   const changeMascotte = () => {
-    setMascotteOpen(!mascotteOpen);
+    setMascotteOpen(!mascotteOpen); //mascotte présente/absente
   };
 
   {
@@ -51,17 +51,16 @@ function Menu() {
             className="menu-open"
             name="menu-open"
             id="menu-open"
+            onClick={() => toggleMenu()}
           />
           <label className="menu-open-button" for="menu-open">
-            <span className="hamburger-1" onClick={() => toggleMenu()}>
+            <span className="hamburger-1">
               {image && (
-                <img
-                  src={image}
+                <Image
+                  src={() => image}
                   alt="Avatar de l'utilisateur - ouvre le menu"
                   styles={{
-                    height: "40px",
-                    width: "44px",
-                    fontSize: "3rem",
+                    fontSize: "2rem",
                   }}
                 />
               )}
@@ -76,7 +75,7 @@ function Menu() {
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
-              style={{ width: "20px", fontSize: "3rem" }}
+              style={{ fontSize: "2rem" }}
             />
           </span>
           <span
@@ -87,41 +86,40 @@ function Menu() {
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
-              style={{ width: "20px", fontSize: "3rem" }}
+              style={{ fontSize: "2rem" }}
             />
           </span>
           <span className="menu-item" onClick={() => openFavorites()}>
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
-              style={{ width: "20px", fontSize: "3rem" }}
+              style={{ fontSize: "2rem" }}
             />
           </span>
           <span className="menu-item" onClick={() => openSettings()}>
             <FontAwesomeIcon
               icon={faCog}
               alt="Paramètres"
-              style={{ width: "40px", fontSize: "3rem" }}
+              style={{ fontSize: "2rem" }}
             />
-          </span>
+          </span>{" "}
+          {settingsOpen && <Settings />}{" "}
           <span onClick={() => changeMascotte()} className="menu-item">
             <FontAwesomeIcon
               icon={faOtter}
               alt="Mascotte - Cliquer pour changer de mascotte"
-              style={{ width: "40px", fontSize: "3rem" }}
+              style={{ fontSize: "2rem" }}
             />
           </span>
           <span onClick={() => dispatch(logout())} className="menu-item">
             <FontAwesomeIcon
               alt="Me déconnecter"
               icon={faRightToBracket}
-              style={{ width: "40px", fontSize: "3rem" }}
+              style={{ fontSize: "2rem" }}
             />
           </span>
-          {settingsOpen && <Settings />}{" "}
           {/* Affiche les paramètres si settingsOpen est vrai */}
         </nav>
-
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
           <defs>
             <filter id="shadowed-goo">

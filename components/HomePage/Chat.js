@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import Pusher from "pusher-js";
@@ -10,14 +9,15 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 const Chat = () => {
-  console.log("rerender");
+  // console.log("rerender");
   const [messages, setMessages] = useState([]);
   const [welcomeMessage, setWelcomeMessage] = useState("");
   const inputRef = useRef(null);
   const user = useSelector((state) => state.user.value);
   const username = user.username;
   const router = useRouter();
-  console.log(user.username);
+  console.log(user);
+
   useEffect(() => {
     // Initialize Pusher
     const pusher = new Pusher(pusherConfig.key, {
@@ -29,24 +29,17 @@ const Chat = () => {
 
     // Bind to the 'new-message' event
     channel.bind("pusher:subscription_succeeded", () => {
-      channel.bind("join", async ({ name }) => {
-        handleJoin(name);
+      fetchMessages(username);
+
+      channel.bind("join", async ({ name, messages }) => {
+        handleJoin(username, messages);
+
         // Send a request to fetch messages for the current user only
-        await fetchMessages(name);
       });
       channel.bind("part", ({ name }) => handlePart(name));
       channel.bind("message", ({ name, text, time, image, token }) =>
         handleMessage(name, text, time, image, token)
       );
-      channel.bind("messageHistoryFetched", async ({ messages, username }) => {
-        if (username === user.username) {
-          const updatedMessages = messages.map((message) => ({
-            ...message,
-            isSentMessage: message.user.username === user.username,
-          }));
-          setMessages(updatedMessages);
-        }
-      });
     });
 
     fetch(`${pusherConfig.restServer}/chat/${username}`, {
@@ -69,12 +62,24 @@ const Chat = () => {
         throw new Error("Failed to fetch messages");
       }
       const data = await response.json();
+      console.log(data.messages);
+
+      const fetchedMessages = data.messages.map((message) => {
+        return {
+          name: message.user.username,
+          text: message.text,
+          time: message.time,
+          image: message.user.profilePic,
+          id: message._id,
+        };
+      });
+      setMessages(fetchedMessages);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
-  const handleJoin = (name) => {
+  const handleJoin = (name, messages) => {
     if (name === null) {
       return;
     }
@@ -90,19 +95,12 @@ const Chat = () => {
   };
 
   const handleMessage = (name, text, time, image, token) => {
-    console.log("Received message:", { name, text, time, token });
+    console.log("Received message:", { name, text, time, token, image });
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { name, text, time, image, token },
+      { name, text, time, image },
     ]);
-  };
-
-  // console.log(messages);
-
-  const handleFetch = (fetchedMessages) => {
-    console.log(fetchedMessages);
-    setMessages(fetchedMessages);
   };
 
   // Function to send a message
@@ -112,6 +110,7 @@ const Chat = () => {
     if (text.trim() === "") {
       return;
     }
+    // console.log(user.image);
     const payload = {
       text,
       time: new Date().toLocaleTimeString([], {
@@ -133,18 +132,18 @@ const Chat = () => {
     inputRef.current.value = "";
   };
 
+  // console.log(messages);
+
   const displayMessages =
-    messages.length > 0 &&
+    messages?.length > 0 &&
     messages.map((message, index) => {
       // const { name, text, image, time, token, _id } = message;
-      const { user, text, image, time, token, _id, isSentMessage } = message;
-      // console.log(user);
-      // const isSentMessage = username === message.name;
-      // const isFirstMessage =
-      //   index === 0 || token !== messages[index - 1]?.token;
+      const { name, text, image, time, id } = message;
+      console.log(message);
+
       const messageStyle = {
         display: "flex",
-        flexDirection: !isSentMessage && "row-reverse",
+        flexDirection: username !== name && "row-reverse",
         alignItems: "flex-start",
         justifyContent: "flex-end",
       };
@@ -152,13 +151,10 @@ const Chat = () => {
         <div
           style={messageStyle}
           className={
-            isSentMessage ? styles.messageSent : styles.messageReceived
+            username === name ? styles.messageSent : styles.messageReceived
           }
-          key={_id}
+          key={id}
         >
-          {/* {isFirstMessage && (
-            <div className={styles.tail} style={{ zIndex: 1 }}></div>
-          )} */}
           <div className={styles.message}>
             <div
               style={{
@@ -167,7 +163,7 @@ const Chat = () => {
                 marginTop: "0.25rem",
               }}
             >
-              {user?.username}
+              {name}
             </div>
             {text}
             <div
@@ -182,11 +178,7 @@ const Chat = () => {
           </div>
           <div>
             <Image
-              src={
-                user?.profilePic
-                  ? user?.profilePic
-                  : require("../../public/images/avatar.jpg")
-              }
+              src={image ? image : require("../../public/images/avatar.jpg")}
               width={40}
               height={40}
               style={{

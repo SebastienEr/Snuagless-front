@@ -11,6 +11,8 @@ import {
 } from "../../reducers/email";
 
 const SignIn = () => {
+  const user = useSelector((state) => state.user.value.username);
+
   const [signInUsername, setSignInUserName] = useState(""); // état pour stocker username
   const [signInPassword, setSignInPassword] = useState(""); // état pour stocker password
   const [signInAttempts, setSignInAttempts] = useState(0); // état pour stocker nombre de tentatives de connexion ratées
@@ -38,8 +40,15 @@ const SignIn = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.result === true) {
-          dispatch(login({ username: signInUsername, token: token }));
+          dispatch(
+            login({
+              username: signInUsername,
+              token: token,
+              image: data.user.profilePic,
+            })
+          );
           router.push("/");
           // login ok, renvoie vers homepage en étant connecté
         } else {
