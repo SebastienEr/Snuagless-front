@@ -39,7 +39,7 @@ const SignIn = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.result === true) {
-          dispatch(login({ username: signInUsername, token: data.token }));
+          dispatch(login({ username: signInUsername, token: token }));
           router.push("/");
           // login ok, renvoie vers homepage en étant connecté
         } else {
@@ -127,7 +127,8 @@ const SignIn = () => {
       console.log(email, "after fetch");
 
       if (response.ok) {
-        setResetStatus("Mot de passe modifié avec succès.");
+        setResetStatus("Mot de passe modifié avec succès. Vous pouvez fermer cette page et vous connecter.")
+
         // Vous pouvez ajouter ici une redirection ou toute autre action en cas de succès
       } else {
         const error = await response.json();

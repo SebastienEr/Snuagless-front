@@ -31,26 +31,24 @@ function ResetPasswordPage() {
       },
       body: JSON.stringify({ token: token, newPassword: resetEmail }),
     })
-      .then((response) => {
-        if (response.ok) {
+    .then((response) => {
+      if (response.ok) {
           setResetStatus("Mot de passe modifié avec succès.");
-          // Redirection ou autre action en cas de succès
-        } else {
-          throw new Error(
-            "Erreur lors de la réinitialisation du mot de passe."
-          );
-        }
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la réinitialisation du mot de passe :",
-          error
-        );
-        setResetStatus(
-          "Erreur lors de la réinitialisation du mot de passe. Veuillez réessayer."
-        );
-      });
-  };
+          setTimeout(() => {
+              setResetStatus("Mot de passe modifié avec succès. Vous allez être redirigé vers la page de connexion...");
+              setTimeout(() => {
+                  router.push('/connexion');
+              }, 3000); // Redirection après 3 secondes
+          }, 3000); // Affichage du message pendant 3 secondes
+      } else {
+          throw new Error("Erreur lors de la réinitialisation du mot de passe.");
+      }
+  })
+  .catch((error) => {
+      console.error("Erreur lors de la réinitialisation du mot de passe :", error);
+      setResetStatus("Erreur lors de la réinitialisation du mot de passe. Veuillez réessayer.");
+  });
+  }  
 
   return (
     <div className={styles["reset-password-page"]}>
