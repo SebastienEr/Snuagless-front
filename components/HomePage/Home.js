@@ -14,6 +14,7 @@ import BackToTop from "./backToTop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { login } from "../../reducers/user";
 import { faStar as solidStar, faStar as regularStar } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -106,7 +107,25 @@ function Home() {
       </div>
       <Schedule />
       <BackToTop />
-      <footer className={styles.footer}></footer>
+      <footer className={styles.footer}>
+        <div>
+          <Image />
+          <h2></h2>
+          <text></text>
+        </div>
+        <div>
+          {" "}
+          <Image />
+          <h2></h2>
+          <text></text>
+        </div>
+        <div>
+          {" "}
+          <Image />
+          <h2></h2>
+          <text></text>
+        </div>
+      </footer>
       <Modal open={modalIsOpen} onClose={() => setModalIsOpen(false)}>
         <FavoriteModal currentSong={currentSong} fetchCurrentSong={fetchCurrentSong} />
       </Modal>
