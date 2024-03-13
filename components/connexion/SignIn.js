@@ -45,7 +45,7 @@ const SignIn = () => {
           dispatch(
             login({
               username: signInUsername,
-              token: token,
+              token: data.token,
               image: data.user.profilePic,
             })
           );

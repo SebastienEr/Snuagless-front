@@ -1,3 +1,24 @@
+.settingsBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 700px;
+  background: linear-gradient(to bottom, #91b6f7 2%, #d96bfb 100%);
+  border-radius: 30px;
+  padding: 10px 20px;
+  transform: translateX(-777px);
+  font-family: "Courier New", Courier, monospace;
+
+}
+
+.sunglasses{
+  width: 200px;
+  height: auto;
+  border: solid 1px green;
+}
+
 .topCard {
   display: flex;
   flex-direction: column;
@@ -7,7 +28,9 @@
   width: 300px;
   padding: 10px;
   margin: 2px;
+  border: solid 1px red;
 }
+
 .changePic {
   display: flex;
   flex-direction: row;
@@ -17,19 +40,9 @@
   width: 300px;
   padding: 5px;
   margin: 2px;
+  background-color: aqua;
 }
-.settingsBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-  width: 700px;
-  background-color: blueviolet;
-  border-radius: 30px;
-  padding: 10px 20px;
-  transform: translateX(-777px);
-}
+
 .bottomCard {
   display: flex;
   flex-direction: column;
@@ -39,10 +52,12 @@
   width: 300px;
   padding: 10px 20px;
   margin: 10px;
+  border: solid 1px whitesmoke;
 }
 .settingsWrapper {
   display: flex;
   flex-direction: column;
+  border: solid 1px yellow
   /* Ajoutez d'autres styles si nécessaire */
 }
 
@@ -55,6 +70,7 @@
   width: 300px;
   padding: 10px 20px;
   margin: 10px;
+  background-color: blue;
 }
 .fieldCardBottom {
   display: flex;
@@ -78,6 +94,8 @@
   height: 75px;
   width: 290px;
 }
+
+
 .settingsText {
   font-size: 14px;
   font-family: "Courier New", Courier, monospace;

@@ -1,6 +1,7 @@
 .container {
   height: 60vh;
-  width: calc(29% - 60px);
+  width: 40vw;
+  /* width: calc(29% - 60px); */
   box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
   background: rgba(208, 162, 241, 0.42);
   border: 0.1px solid rgba(183, 183, 248, 0.607);
@@ -12,7 +13,7 @@
   position: relative;
   border-radius: 12px;
   margin-bottom: 50px;
-  margin-top: 7%;
+  margin-top: 1%;
   padding: 30px;
 }
 

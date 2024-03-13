@@ -51,6 +51,13 @@ function Settings() {
   return (
     <div className={styles.settingsBox}>
       <div className={styles.topCard}>
+      <Image
+  src="/../../public/images/logo.png"
+  className={styles.sunglasses}
+  alt="Logo"
+  layout='fill'
+/>
+        <h3>Utilisateur</h3>
         <div className={styles.changePic}>
           {/* settings user */}
           <div styles={{ display: "flex" }}>
@@ -59,14 +66,16 @@ function Settings() {
               style={{ color: "white", width: "20px", fontSize: "3rem" }}
             />
           </div>
-          <text styles={{ fontSize: "12px" }}>Changer ma photo de profil</text>
-          <button
+          <span style={{ fontSize: "12px", cursor: "pointer" }} onClick={() => ChangePhoto(onClose, open)}>
+    Changer ma photo de profil
+  </span>
+          {/* <button
             className={styles.settingsButton}
             styles={{ fontSize: "14px" }}
             onClick={() => ChangePhoto(onClose, open)}
           >
             +
-          </button>
+          </button> */}
         </div>
 
         <div className={styles.fieldCardTop}>
