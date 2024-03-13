@@ -1,8 +1,65 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./Schedule.module.css";
+import { useState, useEffect } from "react";
 
 function Schedule() {
+  const [eventsAtNineHour, setEventsAtnineHour] = useState([]);
+  const [eventsAtNoon, setEventsAtNoon] = useState(null);
+  const [eventsAtNight, setEventsAtNight] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/events/getevents")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.programmes);
+
+        for (let i of data.programmes) {
+          if (new Date(i.started_at).getHours() < 14) {
+            // 9h
+            setEventsAtnineHour(i);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+      });
+
+    fetch("http://localhost:3000/events/getevents")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.programmes);
+
+        for (let i of data.programmes) {
+          if (new Date(i.started_at).getHours() < 17) {
+            //12h
+            setEventsAtNoon(i);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+      });
+
+    fetch("http://localhost:3000/events/getevents")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.programmes);
+
+        for (let i of data.programmes) {
+          if (new Date(i.started_at).getHours() > 20) {
+            //22h
+            setEventsAtNight(i);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+      });
+  }, []);
+
+  console.log("this", eventsAtNineHour);
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -19,17 +76,22 @@ function Schedule() {
           </div>
           <div className={styles.daySched}>
             <ul className={styles.hourList}>
-              <li className={styles.Li}>
-                <Image
-                  src="/artists/_1c0b9c0e-28b5-4f5d-b2a5-ef22aaf600d6.jpg" /* Ajoutez le chemin correct */
-                  className={styles.bigPicture1}
-                  width={"190vh"}
-                  height={"190vh"}
-                />
-                <div styles={styles.Litext}>
-                  <text>9H - MORNING NEWS</text>
-                </div>
-              </li>
+              {[eventsAtNineHour].map((data) => {
+                return (
+                  <li className={styles.Li}>
+                    <Image
+                      src="/artists/_1c0b9c0e-28b5-4f5d-b2a5-ef22aaf600d6.jpg" /* Ajoutez le chemin correct */
+                      className={styles.bigPicture1}
+                      width={"190vh"}
+                      height={"190vh"}
+                    />
+                    <div styles={styles.Litext}>
+                      <text>9H - {data.title} </text> {/*Lundi 9h*/}
+                    </div>
+                  </li>
+                );
+              })}
+
               <li className={styles.Li}>
                 <Image
                   src="/artists/_2fe7d821-e453-4f1d-a028-0694328029f6.jpg" /* Ajoutez le chemin correct */
@@ -37,18 +99,25 @@ function Schedule() {
                   width={"190vh"}
                   height={"190vh"}
                 />
-                <div styles={styles.Litext}>9H - MORNING NEWS</div>
+                <div styles={styles.Litext}>12 - MORNING NEWS</div>{" "}
+                {/* Lundi 12h*/}
               </li>
               <li className={styles.Li}>
-                <Image
-                  src="/artists/_5d2375e0-7b1a-43f4-8707-8d1fce2c345a.jpg" /* Ajoutez le chemin correct */
-                  className={styles.bigPicture1}
-                  width={"190vh"}
-                  height={"190vh"}
-                />
-                <div styles={styles.Litext}>
-                  <text>9H - MORNING NEWS</text>
-                </div>
+                {[eventsAtNineHour].map((data) => {
+                  return (
+                    <li className={styles.Li}>
+                      <Image
+                        src="/artists/_5d2375e0-7b1a-43f4-8707-8d1fce2c345a.jpg" /* Ajoutez le chemin correct */
+                        className={styles.bigPicture1}
+                        width={"190vh"}
+                        height={"190vh"}
+                      />
+                      <div styles={styles.Litext}>
+                        <text>9H - {data.title} </text> {/*Lundi 9h*/}
+                      </div>
+                    </li>
+                  );
+                })}
               </li>
             </ul>
           </div>
@@ -60,17 +129,22 @@ function Schedule() {
           <div className={styles.daySched}>
             <ul className={styles.hourList}>
               <div className={styles.Li}>
-                <Image
-                  src="/artists/_53ae7473-fdbc-42fa-af26-8ec8b903fe6a.jpg" /* Ajoutez le chemin correct */
-                  className={styles.bigPicture1}
-                  width={"190vh"}
-                  height={"190vh"}
-                />
-                <div styles={styles.Litext}>
-                  <text>9H - MORNING NEWS</text>
-                </div>
+                {[eventsAtNineHour].map((data) => {
+                  return (
+                    <li className={styles.Li}>
+                      <Image
+                        src="/artists/_53ae7473-fdbc-42fa-af26-8ec8b903fe6a.jpg" /* Ajoutez le chemin correct */
+                        className={styles.bigPicture1}
+                        width={"190vh"}
+                        height={"190vh"}
+                      />
+                      <div styles={styles.Litext}>
+                        <text>9H - {data.title} </text>
+                      </div>
+                    </li>
+                  );
+                })}
               </div>
-
               <li className={styles.Li}>
                 <Image
                   src="/artists/_6fa6ae8c-4387-43e7-af59-260384c7e5a7.jpg" /* Ajoutez le chemin correct */
