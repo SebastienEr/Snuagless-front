@@ -16,6 +16,7 @@ import BackToTop from "./backToTop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import Image from "next/image";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -63,7 +64,25 @@ function Home() {
       <Schedule /> {/* programme de la semaine */}
       {/* bouton retourner en haut de page */}
       <BackToTop />
-      <footer className={styles.footer}></footer>
+      <footer className={styles.footer}>
+        <div>
+          <Image />
+          <h2></h2>
+          <text></text>
+        </div>
+        <div>
+          {" "}
+          <Image />
+          <h2></h2>
+          <text></text>
+        </div>
+        <div>
+          {" "}
+          <Image />
+          <h2></h2>
+          <text></text>
+        </div>
+      </footer>
     </div>
   );
 }

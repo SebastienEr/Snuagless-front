@@ -1,7 +1,6 @@
 .main {
   /* background-color: #480ebb; */
   background: linear-gradient(70deg, #7b2be8 50%, #01c2cc 100%);
-
   height: 100vh;
   width: 100vw;
 }
@@ -42,10 +41,9 @@
 
 .footer {
   width: 100vw;
-  height: 50vh;
+  height: 77vh;
   text-align: center;
   border: 2px solid green;
-  margin-bottom: 23vh;
 }
 /* 
 .player {
