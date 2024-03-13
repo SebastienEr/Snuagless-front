@@ -21,7 +21,6 @@ function Header({ onClick, onSetMode }) {
       <div>
         {user?.username ? (
           <div className={styles.connected}>
-            <div> Connecté en tant que {user.username} </div>
             <Menu onClick={onClick} onSetMode={onSetMode} />
           </div>
         ) : (
@@ -33,9 +32,6 @@ function Header({ onClick, onSetMode }) {
           </button>
         )}
       </div>
-
-
-      
     </header>
   );
 }

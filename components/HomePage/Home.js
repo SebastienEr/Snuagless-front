@@ -52,7 +52,7 @@ function Home() {
         {/* Utilisation de la classe "starred" conditionnelle pour afficher l'étoile vide ou jaune */}
         <button
           className={`${styles.likeButton} ${isStarred ? styles.starred : ""}`}
-          onClick={toggleStar}
+          onClick={() => toggleStar()}
         >
           <FontAwesomeIcon
             icon={isStarred ? solidStar : regularStar}
