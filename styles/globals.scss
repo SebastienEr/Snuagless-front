@@ -4,6 +4,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 * {
@@ -25,9 +26,9 @@ $bg: #8bc34a;
 $pi: 3.14;
 
 //config
-$menu-items: 6+1;
-$open-distance: 105px;
-$opening-angle: $pi * 2;
+$menu-items: 5+1;
+$open-distance: 80px;
+$opening-angle: $pi * 4;
 
 %goo {
   filter: url("#goo");
@@ -37,15 +38,15 @@ $opening-angle: $pi * 2;
 %ball {
   background: $fg;
   border-radius: 100%;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   font-size: 5px;
-  margin-left: -40px;
+
   position: absolute;
+  right: 80%;
   top: 20px;
   color: white;
-  text-align: center;
-  line-height: 80px;
+
   transform: translate3d(0, 0, 0);
   transition: transform ease-out 200ms;
   overflow: hidden;
@@ -55,61 +56,79 @@ $opening-angle: $pi * 2;
 }
 .menu-item {
   @extend %ball;
+  cursor: pointer;
 }
-.hamburger {
-  $width: 20px;
-  $height: 3px;
-  width: $width;
-  height: $height;
-  background: white;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -$width/2;
-  margin-top: -$height/2;
-  transition: transform 200ms;
-}
-$hamburger-spacing: 8px;
-.hamburger-1 {
-  transform: translate3d(0, -$hamburger-spacing, 0);
-}
-.hamburger-2 {
-  transform: translate3d(0, 0, 0);
-}
-.hamburger-3 {
-  transform: translate3d(0, $hamburger-spacing, 0);
-}
-.menu-open:checked + .menu-open-button {
-  .hamburger-3 {
-    transform: translate3d(0, 0, 0) rotate(45deg);
-  }
-  .hamburger-2 {
-    transform: translate3d(0, 0, 0) scale(0.1, 1);
-  }
-  .hamburger-1 {
-    transform: translate3d(0, 0, 0) rotate(-45deg);
-  }
-}
+
+// .hamburger {
+// $width: 20px;
+// $height: 3px;
+// width: $width;
+// height: $height;
+// background: white;
+// display: block;
+// position: absolute;
+// top: 50%;
+// left: 50%;
+// margin-left: -$width/2;
+// margin-top: -$height/2;
+// transition: transform 200ms;
+// }
+$hamburger-spacing: 4px;
+// .hamburger-1 {
+//   transform: translate3d(0, -$hamburger-spacing, 0);
+// }
+// .hamburger-2 {
+//   transform: translate3d(0, 0, 0);
+// }
+// .hamburger-3 {
+//   transform: translate3d(0, $hamburger-spacing, 0);
+// }
+
+// .menu-open:checked + .menu-open-button {
+//   .hamburger-3 {
+//     transform: translate3d(0, 0, 0) rotate(45deg);
+//   }
+//   .hamburger-2 {
+//     transform: translate3d(0, 0, 0) scale(0.1, 1);
+//   }
+//   .hamburger-1 {
+//     transform: translate3d(0, 0, 0) rotate(45deg);
+//   }
+// }
 .menu {
   @extend %goo;
-  $width: 380px;
+  $width: 350px;
   $height: 250px;
   position: absolute;
-  left: 50%;
-  margin-left: -$width/2;
+  left: 10%;
+  margin-top: 40px;
   padding-top: 12px;
-  padding-left: $width/2;
   width: $width;
   height: $height;
   box-sizing: border-box;
   text-align: left;
+  z-index: 1200;
+  position: absolute;
 }
-
+.settingsBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 700px;
+  background-color: blueviolet;
+  border-radius: 30px;
+  padding: 10px 20px;
+  position: absolute;
+  z-index: 1200;
+  transform: translateX(-1000px);
+}
 .menu-item {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 
   &:hover {
     background: white;

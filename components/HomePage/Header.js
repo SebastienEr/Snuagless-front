@@ -6,7 +6,7 @@ import Signup from "../connexion/connexion";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../reducers/user";
-function Header({ onClick }) {
+function Header({ onClick, onSetMode }) {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.value);
@@ -22,17 +22,20 @@ function Header({ onClick }) {
         {user?.username ? (
           <div className={styles.connected}>
             <div> Connecté en tant que {user.username} </div>
-            <Menu />
+            <Menu onClick={onClick} onSetMode={onSetMode} />
           </div>
         ) : (
           <button>
             <Link href="/connexion">Se Connecter</Link>
-            <span style={{ marginLeft: "2rem" }}>
+            <span>
               <Image src={require("../../public/images/userIcon.png")} />
             </span>
           </button>
         )}
       </div>
+
+
+      
     </header>
   );
 }

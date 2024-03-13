@@ -1,26 +1,34 @@
-.settingsBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 700px;
-  width: 350px;
-  background-color: blueviolet;
-  border-radius: 30px;
-  padding: 10px 20px;
-}
 .topCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 400px;
   width: 300px;
-  border: 1px solid green;
-  padding: 10px 20px;
+  padding: 10px;
+  margin: 2px;
 }
 .changePic {
-  height: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
   width: 300px;
+  padding: 5px;
+  margin: 2px;
+}
+.settingsBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 700px;
+  background-color: blueviolet;
+  border-radius: 30px;
+  padding: 10px 20px;
+  transform: translateX(-777px);
 }
 .bottomCard {
   display: flex;
@@ -29,38 +37,46 @@
   align-items: center;
   height: 500px;
   width: 300px;
-  border: 1px solid green;
   padding: 10px 20px;
+  margin: 10px;
+}
+.settingsWrapper {
+  display: flex;
+  flex-direction: column;
+  /* Ajoutez d'autres styles si nécessaire */
 }
 
 .fieldCardTop {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 75px;
-  width: 290px;
-  border: 1px solid orange;
+  align-items: left;
+  height: 450px;
+  width: 300px;
   padding: 10px 20px;
+  margin: 10px;
 }
 .fieldCardBottom {
-  height: 75px;
-  width: 290px;
-  border: 1px solid orange;
-  padding: 10px 20px;
-}
-
-.fields {
-  height: 25px;
-  width: 250px;
-}
-.onOff {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 80px;
   width: 290px;
   padding: 10px;
+  margin: 2px;
+}
+.fields {
+  height: 25px;
+  width: 240px;
+}
+.onOff {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  height: 75px;
+  width: 290px;
 }
 .settingsText {
   font-size: 14px;
@@ -68,11 +84,14 @@
   padding: 20px;
 }
 .buttonOnOff {
-  height: 15px;
-  width: 20px;
+  font-size: 12px;
+  height: 50px;
+  width: 70px;
 }
 .separationLine {
-  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+  height: 2px;
   width: 100px;
 }
 
@@ -91,6 +110,11 @@
 
 /* Icône à gauche du texte */
 .icon {
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px; /* Espacement entre l'icône et le texte */
 }
 
@@ -103,4 +127,20 @@
 /* Effet de survol */
 .saveButton:hover {
   background-color: #e64a29; /* Couleur de fond au survol */
+}
+
+.fieldCardSave {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 290px;
+
+  padding: 10px;
+  margin: 2px;
+}
+.saveButton {
+  height: 30px;
+  width: 240px;
 }

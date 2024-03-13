@@ -2,15 +2,15 @@ import styles from "../connexion/connexion.module.css";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import MailInput from "./mailInput";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 import { login } from "../../reducers/user";
 
 const ResetForm = () => {
-  const [resetEmail, setResetEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [showResetModal, setShowResetModal] = useState(false);
-  const router = useRouter(); // Add this line to get the router object
-  const userEmail = useSelector((state) => state.reset.value.email); // Moved useSelector to the top
+  const [resetEmail, setResetEmail] = useState(""); 
+  const [isEmailValid, setIsEmailValid] = useState(false); 
+  const [showResetModal, setShowResetModal] = useState (false);
+  const router = useRouter(); 
+  const userEmail = useSelector((state) => state.reset.value.email); 
   const user = useSelector((state) => state.user.value);
 
   const handleResetPassword = (e) => {
@@ -20,6 +20,7 @@ const ResetForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: resetEmail,
+    
       }),
     })
       .then((response) => response.json())
@@ -38,12 +39,13 @@ const ResetForm = () => {
       setIsEmailValid(false);
     }
     setShowResetModal(false);
-  };
+  }; 
+
 
   return (
     <div className={styles.inputs}>
       <div className={styles.emailBox}>
-        <form onSubmit={() => handleResetPassword()}>
+        <form onSubmit={handleResetPassword}>
           <MailInput
             value={resetEmail}
             onChange={(value) => setResetEmail(value)}

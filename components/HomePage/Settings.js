@@ -10,10 +10,14 @@ import {
   faOtter,
   faFloppyDisk,
   faTrash,
+  faImagePortrait,
 } from "@fortawesome/free-solid-svg-icons";
-import { logout } from "../../reducers/user";
+import { changePhoto, logout } from "../../reducers/user";
+import ChangePhoto from "../ModalSettings/ChangePhoto";
+import Modal from "../ModalSettings/Modal";
 
 function Settings() {
+  const [openChangePic, setOpenChangePic] = useState(false);
   const user = useSelector((state) => state.user.value);
   console.log(user);
   const [wantToDelete, setWantToDelete] = useState(false);
@@ -47,10 +51,24 @@ function Settings() {
   return (
     <div className={styles.settingsBox}>
       <div className={styles.topCard}>
-        {/* settings user */}
         <div className={styles.changePic}>
-          {/* changer de photo de profil */}
+          {/* settings user */}
+          <div styles={{ display: "flex" }}>
+            <FontAwesomeIcon
+              icon={faImagePortrait}
+              style={{ color: "white", width: "20px", fontSize: "3rem" }}
+            />
+          </div>
+          <text styles={{ fontSize: "12px" }}>Changer ma photo de profil</text>
+          <button
+            className={styles.settingsButton}
+            styles={{ fontSize: "14px" }}
+            onClick={() => ChangePhoto(onClose, open)}
+          >
+            +
+          </button>
         </div>
+
         <div className={styles.fieldCardTop}>
           {/* change username */}
           <text>Nom d'utilisateur: </text>
@@ -88,101 +106,96 @@ function Settings() {
 
       <div className={styles.bottomCard}>
         {/* settings preference */}
-        <div className={styles.onOff}>
+        <div className={styles.settingsWrapper}>
           {/* star on off */}
-          <FontAwesomeIcon
-            icon={faStar}
-            alt="Une étoile"
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />
-          <text className={styles.settingsText}>
-            Les étoiles me notifient quand ma musique passe. Les autres
-            personnes qui ont les mêmes étoiles seront surement sur le tchat
-            quand la musique passera!
-          </text>
-          <button type="radio" className={styles.buttonOnOff}>
-            OFF/ON
-          </button>
-        </div>
-        <div className={styles.onOff}>
-          {" "}
+          <div className={styles.fieldCardBottom}>
+            <FontAwesomeIcon
+              icon={faStar}
+              alt="Une étoile"
+              style={{ fontSize: "0.5rem", color: "white", width: "200px" }}
+            />
+            <text className={styles.settingsText}>
+              Les étoiles me notifient quand ma musique passe.
+              Activer/désactiver les notifications.
+            </text>
+            <button type="radio" className={styles.buttonOnOff}>
+              OFF/ON
+            </button>
+          </div>
+
           {/* tchat on off */}
-          <FontAwesomeIcon
-            icon={faMessage}
-            alt="Une bulle de dialogue"
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />
-          <text className={styles.settingsText}>
-            Désactiver/activer la présence du tchat
-          </text>
-          <button type="radio" className={styles.buttonOnOff}>
-            OFF/ON
-          </button>
-        </div>
+          <div className={styles.fieldCardBottom}>
+            <FontAwesomeIcon
+              icon={faMessage}
+              alt="Une bulle de dialogue"
+              style={{ fontSize: "0.10rem", color: "white", width: "100px" }}
+            />
+            <text className={styles.settingsText}>
+              Désactiver/activer la présence du tchat
+            </text>
+            <button type="radio" className={styles.buttonOnOff}>
+              OFF/ON
+            </button>
+          </div>
 
-        <div className={styles.onOff}>
-          {" "}
           {/* mascottes on off */}
-          <FontAwesomeIcon
-            icon={faOtter}
-            alt="Une loutre"
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
-          />
-          <text className={styles.settingsText}>
-            Désactiver/activer la présence de la mascotte
-          </text>
-          <button type="radio" className={styles.buttonOnOff}>
-            OFF/ON
-          </button>
+          <div className={styles.fieldCardBottom}>
+            <FontAwesomeIcon
+              icon={faOtter}
+              alt="Une loutre"
+              style={{ fontSize: "0.25rem", color: "white", width: "100px" }}
+            />
+            <text className={styles.settingsText}>
+              Désactiver/activer la présence de la mascotte
+            </text>
+            <button type="radio" className={styles.buttonOnOff}>
+              OFF/ON
+            </button>
+          </div>
         </div>
 
+        {/* Séparation et suppression du compte */}
         <div className={styles.separationLine}></div>
-        <div className={styles.deleteAccount} onClick={() => deleteAccount()}>
+        <div className={styles.fieldCardBottom} onClick={() => deleteAccount()}>
           <FontAwesomeIcon
             alt="Une poubelle pour supprimer mon compte"
             icon={faTrash}
-            style={{ width: "20px", marginTop: "25px", color: "white" }}
+            style={{ width: "20px", color: "white" }}
           />
+          <text>Supprimer mon compte</text>
         </div>
-        {wantToDelete ? (
-          <div>
+        <div className={styles.separationLine}></div>
+
+        {/* Confirmation de suppression */}
+        {wantToDelete && (
+          <div className={styles.fieldCardBottom}>
             <text>
               Es-tu sur de vouloir supprimer ton compte? Tu perdras tes étoiles
-              et tes likes et tu ne pourras plus poster dans le tchat!{" "}
+              et tes likes et tu ne pourras plus poster dans le tchat!
             </text>
             <div className={styles.deleteOrNotButtons}>
-              <button
-                type="button"
-                onClick={() => {
-                  setWantToDelete(false);
-                  console.log("hh");
-                }}
-              >
-                Non
+              <button type="button" onClick={() => setWantToDelete(false)}>
+                🔙
               </button>
               <button type="button" onClick={() => deleteConfirmed()}>
-                Oui
+                ✅
               </button>
             </div>
           </div>
-        ) : (
-          <div>
-            <text>Supprimer mon compte</text>
-          </div>
         )}
-
-        <div className={styles.separationLine}></div>
-      </div>
-
-      <div className={styles.saveSettings}>
-        <span className={styles.icon}>
-          <FontAwesomeIcon
-            icon={faFloppyDisk}
-            alt="Une icône de disquette pour sauvegarder les changements"
-            style={{ width: "20px", color: "white" }}
-          />
-        </span>
-        <span className={styles.text}>Save</span>
+        {/* Bouton de sauvegarde */}
+        <div className={styles.fieldCardSave}>
+          <div className={styles.icon}>
+            {" "}
+            <FontAwesomeIcon
+              icon={faFloppyDisk}
+              alt="Une icône de disquette pour sauvegarder les changements"
+              style={{ width: "20px", color: "white" }}
+            />
+          </div>
+          <text> Sauvegarder les changements</text>
+          <button className={styles.saveButton}>🥳</button>
+        </div>
       </div>
     </div>
   );

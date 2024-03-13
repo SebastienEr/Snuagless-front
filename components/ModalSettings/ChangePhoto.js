@@ -8,9 +8,8 @@ function ChangePhoto({ onClose, open }) {
   const [imagePicked, setImagePicked] = useState(null);
   const imageInput = useRef();
   const user = useSelector((state) => state.user.value);
+  const token = useSelector((state) => state.user.value.token);
   const dispatch = useDispatch();
-
-  console.log(imagePicked);
 
   const handlePickClick = () => {
     imageInput.current.click();
@@ -23,21 +22,30 @@ function ChangePhoto({ onClose, open }) {
   }, [open]);
 
   const changePhotoHandler = async (event) => {
-    const file = event.target.files[0];
-    console.log(file);
-    const formData = new FormData();
-    formData.append("image", file);
-    const response = await fetch(
-      `http://localhost:3000/users/upload/${user.token}`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    try {
+      const file = event.target.files[0];
+      console.log(file);
+      const formData = new FormData();
+      formData.append("image", file);
+      const response = await fetch(
+        `http://localhost:3000/users/upload/${user}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-    const data = await response.json();
-    console.log(data);
-    setImagePicked(data.url);
+      if (!response.ok) {
+        throw new Error("Failed to upload image");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setImagePicked(data.url);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      // Handle the error, e.g., display a message to the user
+    }
   };
 
   const onConfirmHandler = () => {
@@ -74,7 +82,7 @@ function ChangePhoto({ onClose, open }) {
       <input
         type="file"
         accept="image/png, image/jpeg, image/jpg"
-        onChange={changePhotoHandler}
+        onChange={() => changePhotoHandler()}
         id="image"
         name="image"
         ref={imageInput}
@@ -84,7 +92,7 @@ function ChangePhoto({ onClose, open }) {
         <button
           type="button"
           className={styles.button}
-          onClick={handlePickClick}
+          onClick={() => handlePickClick()}
         >
           <span>Change Photo</span>
         </button>
@@ -99,14 +107,14 @@ function ChangePhoto({ onClose, open }) {
         >
           <button
             type="button"
-            onClick={onConfirmHandler}
+            onClick={() => onConfirmHandler()}
             className={styles.button}
           >
             <span>Confirm </span>
           </button>
           <button
             type="button"
-            onClick={handlePickClick}
+            onClick={() => handlePickClick()}
             className={styles.buttonAlt}
           >
             <span>Pick Another Image</span>
