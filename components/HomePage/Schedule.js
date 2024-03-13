@@ -228,7 +228,7 @@ function Schedule() {
                         height={"190vh"}
                       />
                       <div styles={styles.Litext}>
-                        <text>12H - {data.title} </text> {/*Lundi 9h*/}
+                        <text>12H - {data.artist} </text> {/*Lundi 9h*/}
                       </div>
                     </>
                   );

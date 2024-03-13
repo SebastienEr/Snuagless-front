@@ -6,6 +6,7 @@ import Signup from "../connexion/connexion";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../reducers/user";
+
 function Header({ onClick, onSetMode }) {
   const dispatch = useDispatch();
 
@@ -15,13 +16,16 @@ function Header({ onClick, onSetMode }) {
       <Image
         src={require("../../public/images/logo.png")}
         className={styles.sunglasses}
-        onClick={onClick}
+        onClick={() => {
+          onClick();
+          onSetMode();
+        }}
       />
       <h1 className={styles.snuagless}>Snuagless</h1>
       <div>
-        {user?.username ? (
+        {user?.username ? ( // attend d'avoir un username pour éxecuter la suite du code - Louie
           <div className={styles.connected}>
-            <Menu onClick={onClick} onSetMode={onSetMode} />
+            <Menu />
           </div>
         ) : (
           <button>
