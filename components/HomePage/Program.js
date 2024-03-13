@@ -43,15 +43,30 @@ function Program() {
       .catch((error) => {
         console.error("Error fetching events:", error);
       });
-  }, []);
+  }, [previousTitle]);
 
   return (
     <div className={styles.container}>
       <h2>Programme</h2>
 
-      <div>Prochain titre: {nextTitle}</div>
-      <div>Titre en cours: {title}</div>
-      <div>Titre précédent: {previousTitle}</div>
+      <div className={styles.diffusion}>
+        <div className={styles.text}>
+          <text>Prochain titre: </text>
+        </div>
+        <div className={styles.title}>{nextTitle}</div>
+      </div>
+      <div className={styles.diffusion}>
+        <div className={styles.text}>
+          <text>Titre en cours: </text>
+        </div>{" "}
+        <div className={styles.title}>{title}</div>
+      </div>
+      <div className={styles.diffusion}>
+        <div className={styles.text}>
+          <text>Titre précédent: </text>
+        </div>{" "}
+        <div className={styles.title}>{previousTitle}</div>
+      </div>
     </div>
   );
 }
