@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 import {
   faHeart,
   faUser,
@@ -12,6 +14,7 @@ import {
 /* import styles from "../../styles/globals.scss"; */
 import { logout } from "../../reducers/user";
 import Settings from "../HomePage/Settings";
+import FavoriteModal from "../HomePage/Favorites"
 
 /* import Menu from "../HomePage/Menu"; et <Menu/> dans la page où on souhaite avoir le gooey*/
 function Menu() {
@@ -80,8 +83,8 @@ function Menu() {
           </span>
           <span
             className="menu-item"
-            style={{ display: "none" }}
-            onClick={() => openFavorites()}
+             style={{ display: "none" }}
+            // onClick={() => ()}
           >
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
@@ -94,7 +97,7 @@ function Menu() {
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
               style={{ fontSize: "2rem" }}
-            />
+            />{favoritesOpen?  (<FavoriteModal/>):null}
           </span>
           <span className="menu-item" onClick={() => openSettings()}>
             <FontAwesomeIcon

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// Home.js
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux"; // Pour accéder au token utilisateur
 import ChatView from "./ChatView";
 import Header from "./Header";
 import styles from "./Home.module.css";
@@ -6,49 +8,91 @@ import Program from "./Program";
 import Schedule from "./Schedule";
 import Player from "./player";
 import Poulpy from "./Poulpy";
-import AxeptioWidget from "./Cookies";
 import Modal from "../ModalSettings/Modal";
-import ChangePhoto from "../ModalSettings/ChangePhoto";
-import { useSelector } from "react-redux";
-import { settings } from "../../reducers/user";
-import Settings from "./Settings";
+import FavoriteModal from "../HomePage/Favorites";
 import BackToTop from "./backToTop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import { login } from "../../reducers/user";
+import { faStar as solidStar, faStar as regularStar } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isStarred, setIsStarred] = useState(false); // État pour vérifier si l'étoile est activée ou non
+  const [isStarred, setIsStarred] = useState(false);
+  const [currentSong, setCurrentSong] = useState({ title: '', cover: '' });
+  // const musicSchema = require("../models/musicschema");
+  const username = useSelector(state => state.user.value.username);
+  console.log("1", username)
 
-  const openModal = () => {
-    setModalIsOpen(true);
+  useEffect(() => {
+    fetchCurrentSong();
+  }, []);
+
+  const fetchCurrentSong = async () => {
+    try {
+      const response = await fetch("https://api.radioking.io/widget/radio/radio-snuagless/track/current", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+      setCurrentSong({ title: data.title, cover: data.cover });
+      console.log("Current song fetched:", data.title, data.cover);
+      return { title: data.title, cover: data.cover };
+    } catch (error) {
+      console.error('Erreur lors de la récupération de la chanson actuelle:', error);
+    }
+  };
+  // const test = { 
+  //   username: "Eric",
+  //   title: currentSong.title,
+  //   cover: currentSong.cover,}
+  // console.log("2", test)
+
+  const addToFavorites = async () => {
+    
+    const test = { 
+      username: username,
+      title: currentSong.title,
+      cover: currentSong.cover,}
+    console.log("2", test)
+    try {
+      const response = await fetch("http://localhost:3000/users/favorites", {
+        
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+         test
+        }),
+      });
+      const data = await response.json();
+      console.log("Chanson ajoutée aux favoris:", data);
+    } catch (error) {
+      console.error("Erreur lors de l'ajout de la chanson aux favoris:", error);
+    }
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-
-  const toggleStar = () => {
-    setIsStarred((prevState) => !prevState); // Inverse l'état de l'étoile
+  const toggleStar = async () => {
+    setIsStarred(!isStarred);
+    if (!isStarred) {
+      // Ajoutez la logique pour obtenir les informations de la chanson actuelle
+      const currentSongInfo = { title: currentSong.title, cover: currentSong.cover };
+      await addToFavorites(currentSongInfo); // Ajouter les informations actuelles de la chanson aux favoris
+    }
   };
 
   return (
     <div className={styles.tout}>
-      {/* <Modal open={modalIsOpen} onClose={closeModal}>
-        <Settings />
-      </Modal> */}
       <div className={styles.home}>
-        <Header onClick={() => openModal()} />
+        <Header onClick={() => setModalIsOpen(true)} />
         <main className={styles.main}>
           <div className={styles.content}>
-            <Program /> {/* Emission/Musique suivante */}
-            <Poulpy /> {/* Mascotte */}
-            <ChatView /> {/* tchat */}
+            <Program />
+            <Poulpy />
+            <ChatView />
           </div>
           <Player />
         </main>
-        {/* Utilisation de la classe "starred" conditionnelle pour afficher l'étoile vide ou jaune */}
         <button
           className={`${styles.likeButton} ${isStarred ? styles.starred : ""}`}
           onClick={toggleStar}
@@ -60,10 +104,12 @@ function Home() {
           />
         </button>
       </div>
-      <Schedule /> {/* programme de la semaine */}
-      {/* bouton retourner en haut de page */}
+      <Schedule />
       <BackToTop />
       <footer className={styles.footer}></footer>
+      <Modal open={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+        <FavoriteModal currentSong={currentSong} fetchCurrentSong={fetchCurrentSong} />
+      </Modal>
     </div>
   );
 }
