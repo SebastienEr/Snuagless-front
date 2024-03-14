@@ -1,20 +1,47 @@
 .container {
   z-index: 1;
-  height: 20rem;
+  height: auto;
   width: 22rem;
   border-radius: 10px;
-  border:  0.1px solid rgba(163, 162, 251, 0.841);
-  /* box-shadow: 5px 5px 4px 0 rgba(0, 0, 0, 0.6); */
-  /* background: linear-gradient(320deg, #7b2be8 50%, #01c2cc 100%); */
-  background: rgba(150, 213, 247, 0.511); /* couleur de fond avec transparence */  display: flex;
-  /* backdrop-filter: blur(10px); */
+  border: 0.1px solid rgba(163, 162, 251, 0.841);
+  background: rgba(150, 213, 247, 0.511);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-top: 14vh;
+  padding: 1rem;
+  box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
 }
+
 .container h2 {
-  margin: 0;
+  margin-bottom: 1rem;
   color: #ffffffec;
+  text-align: center;
+}
+
+.diffusion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0.7rem 0;
+  padding: 0.5rem;
+  background-color: rgba(163, 162, 251, 0.841);
+  color: #0e1044;
+  border-radius: 20px;
+  box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
+}
+
+.text {
+  margin-left: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.title {
+  flex-grow: 1; /* Permet au titre de prendre l'espace disponible */
+  text-align: right; /* Aligner le texte du titre à droite */
+  margin-right: 20px; /* Ajusté pour un espacement à droite */
 }

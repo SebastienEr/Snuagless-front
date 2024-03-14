@@ -2,20 +2,20 @@
   z-index: 0.5;
   height: 10.2em;
   width: 10.2em;
-  position: relative;
+  position: absolute;
   transform: translate(-50%, -50%);
-  left: 50%;
-  top: 42%;
-  transform: translateX(-800px);
+  left: 44%;
+  top: 32%;
+  /* transform: translateX(-800px); */
 }
 .squid {
-  height: 18.75em;
-  width: 18.75em;
+  height: 18.75em; 
+  width: 18.75em;  
   background: linear-gradient(#f01c8a, #f53e2f);
   border-radius: 50%;
   position: absolute;
-  margin: auto;
-  left: 0;
+  margin: auto;    
+  left: 0;        
   right: 0;
   top: 0;
   animation: swim 3s infinite;

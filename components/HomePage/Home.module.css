@@ -25,7 +25,6 @@
   height: 45px;
   border-radius: 50%;
   font-size: 20px;
-
   background: none;
   border: none;
   cursor: pointer;
@@ -39,15 +38,68 @@
   position: fixed;
 }
 
+/*footer*/
 .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 200px;
   width: 100vw;
   height: 77vh;
   text-align: center;
+  background: linear-gradient(to top, #7b2be8 2%, #fbd96b 100%);
   border: 2px solid green;
 }
-/* 
-.player {
-  position: sticky;
-  bottom: 0;
-  /* overflow: hidden; */
-/* } */
+
+.top5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #87cefa;
+  height: 300px;
+  width: 400px;
+  padding: 20px;
+  background: #8881ef;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.top5Li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.top5Title {
+  font-size: 22px;
+  color: white;
+}
+.divMiddleFooter {
+  border: 1px solid #87cefa;
+  border-radius: 20px;
+  height: 300px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+  background: #8881ef;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.divBottomFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid #87cefa;
+  border-radius: 20px;
+  height: 300px;
+  width: 400px;
+  color: white;
+  background: #8881ef;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+}

@@ -11,7 +11,7 @@ function Modal({ open, onClose, children }) {
       {open && <div className={styles.backdrop} onClick={onClose}></div>}
       <dialog open={open} className={styles.dialog} id="modal">
         <div className={styles.closeBtnContainer}>
-          <button className={styles.close} onClick={onClickHandler}>
+          <button className={styles.close} onClick={() => onClickHandler()}>
             X
           </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useEffect } from "react";
 import { useSelector } from "react-redux"; // Pour accéder au token utilisateur
 import ChatView from "./ChatView";
 import Header from "./Header";
@@ -117,7 +117,7 @@ const toggleFavoriteModal = () => {
         </main>
         <button
           className={`${styles.likeButton} ${isStarred ? styles.starred : ""}`}
-          onClick={toggleStar}
+          onClick={() => toggleStar()}
         >
           <FontAwesomeIcon
             icon={isStarred ? solidStar : regularStar}
@@ -128,7 +128,40 @@ const toggleFavoriteModal = () => {
       </div>
       <Schedule />
       <BackToTop />
-      <footer className={styles.footer}></footer>
+      <footer className={styles.footer}>
+        <div className={styles.top5}>
+          {/* une image ici */}
+          <h2>TOP 3</h2>
+          <ul className={styles.top5Ul}>
+            <li className={styles.top5Li}>
+              <div className={styles.top5Title}>{topTitle1}</div>
+            </li>
+            <li className={styles.top5Li}>
+              <div className={styles.top5Title}>{topTitle2}</div>
+            </li>
+            <li className={styles.top5Li}>
+              <div className={styles.top5Title}>{topTitle3}</div>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.divMiddleFooter}>
+          {" "}
+          <h2>NOUS CONTACTER</h2>
+          <h2>radio@snuagless.com</h2>
+          {/* une image ici */}
+        </div>
+        <div className={styles.divBottomFooter}>
+          {" "}
+          {/* une image ici */}
+          <h2> QUI SOMMES NOUS ? </h2>
+          <a
+            target="blank"
+            href="https://www.canva.com/design/DAF_CiGtLFU/h6XfrhqBsCWyrfjyWHha8w/view?utm_content=DAF_CiGtLFU&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+          >
+            <h2>Livre Blanc</h2>
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
