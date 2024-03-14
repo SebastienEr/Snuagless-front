@@ -48,7 +48,7 @@ const SignIn = () => {
             // envoyer au reducer l'username, le token, et la profile picture de data.result
             login({
               username: signInUsername,
-              token: token,
+              token: data.token,
               image: data.user.profilePic,
             })
           );

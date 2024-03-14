@@ -19,7 +19,7 @@ function ChatView() {
 
   return (
     <div className={styles.container}>
-      <h2>Tchat</h2>
+      <h2 className={styles.title}>ChatView</h2>
 
       {!authenticated && <PulsatingLock />}
 

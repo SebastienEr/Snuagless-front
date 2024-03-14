@@ -49,23 +49,28 @@ function Settings() {
   };
 
   return (
+    <div className={styles.backdrop}>
     <div className={styles.settingsBox}>
+
       <div className={styles.topCard}>
+      {/* <Image
+  src="/../../public/images/logo.png"
+  className={styles.sunglasses}
+  alt="Logo"
+  layout='fill'
+/> */}
+        <h3>Utilisateur</h3>
         <div className={styles.changePic}>
           {/* settings user */}
-          <div styles={{ display: "flex" }}>
+          <div styles={{ display: "flex" }} /*onClick={() => ChangePhoto(onClose, open)}*/>
             <FontAwesomeIcon
               icon={faImagePortrait}
-              style={{ color: "white", width: "20px", fontSize: "3rem" }}
+              style={{ color: "white", width: "40px" }}
             />
-          </div>
+          
           <text styles={{ fontSize: "12px" }}>Changer ma photo de profil</text>
-          <button
-            className={styles.settingsButton}
-            styles={{ fontSize: "14px" }}
-          >
-            +
-          </button>
+          </div>
+     
         </div>
 
         <div className={styles.fieldCardTop}>
@@ -109,47 +114,56 @@ function Settings() {
           {/* star on off */}
           <div className={styles.fieldCardBottom}>
             <FontAwesomeIcon
+              className={styles.starIcon}
               icon={faStar}
               alt="Une étoile"
-              style={{ fontSize: "0.5rem", color: "white", width: "200px" }}
+              // style={{ fontSize: "0.5rem", color: "white", width: "200px" }}
             />
             <text className={styles.settingsText}>
               Les étoiles me notifient quand ma musique passe.
               Activer/désactiver les notifications.
             </text>
-            <button type="radio" className={styles.buttonOnOff}>
+            <input type="checkbox" className={styles.checkbox} id="toggle"/>
+            <label for="toggle" className={styles.checkboxLabel}></label>
+            {/* <button type="checkbox" className={styles.buttonOnOff}>
               OFF/ON
-            </button>
+            </button> */}
           </div>
 
           {/* tchat on off */}
           <div className={styles.fieldCardBottom}>
             <FontAwesomeIcon
+            className={styles.tchatIcon}
               icon={faMessage}
               alt="Une bulle de dialogue"
-              style={{ fontSize: "0.10rem", color: "white", width: "100px" }}
+              // style={{ fontSize: "0.10rem", color: "white", width: "100px" }}
             />
             <text className={styles.settingsText}>
               Désactiver/activer la présence du tchat
             </text>
-            <button type="radio" className={styles.buttonOnOff}>
+            <input type="checkbox" className={styles.checkbox2} id="toggle2"/>
+            <label for="toggle2" className={styles.checkboxLabel2}></label>
+            {/* <button type="radio" className={styles.buttonOnOff}>
               OFF/ON
-            </button>
+            </button> */}
           </div>
 
           {/* mascottes on off */}
           <div className={styles.fieldCardBottom}>
             <FontAwesomeIcon
+              className={styles.otter}
               icon={faOtter}
               alt="Une loutre"
-              style={{ fontSize: "0.25rem", color: "white", width: "100px" }}
+              // style={{ fontSize: "0.25rem", color: "white", width: "100px" }}
             />
             <text className={styles.settingsText}>
               Désactiver/activer la présence de la mascotte
             </text>
-            <button type="radio" className={styles.buttonOnOff}>
+            <input type="checkbox" className={styles.checkbox3} id="toggle3"/>
+            <label for="toggle3" className={styles.checkboxLabel3}></label>
+            {/* <button type="radio" className={styles.buttonOnOff}>
               OFF/ON
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -161,24 +175,26 @@ function Settings() {
             icon={faTrash}
             style={{ width: "20px", color: "white" }}
           />
-          <text>Supprimer mon compte</text>
+          <text className={styles.supprtext}>Supprimer mon compte</text>
         </div>
         <div className={styles.separationLine}></div>
 
         {/* Confirmation de suppression */}
         {wantToDelete && (
           <div className={styles.fieldCardBottom}>
+            <div className={styles.delete}>
             <text>
               Es-tu sur de vouloir supprimer ton compte? Tu perdras tes étoiles
               et tes likes et tu ne pourras plus poster dans le tchat!
             </text>
             <div className={styles.deleteOrNotButtons}>
-              <button type="button" onClick={() => setWantToDelete(false)}>
+              <button type="button" onClick={() => setWantToDelete(false)} className={styles.backButton}>
                 🔙
               </button>
-              <button type="button" onClick={() => deleteConfirmed()}>
+              <button type="button" onClick={() => deleteConfirmed()} className={styles.confirmButton}>
                 ✅
               </button>
+              </div>
             </div>
           </div>
         )}
@@ -193,9 +209,10 @@ function Settings() {
             />
           </div>
           <text> Sauvegarder les changements</text>
-          <button className={styles.saveButton}>🥳</button>
+          {/* <button className={styles.saveButton}>🥳</button> */}
         </div>
       </div>
+    </div>
     </div>
   );
 }
