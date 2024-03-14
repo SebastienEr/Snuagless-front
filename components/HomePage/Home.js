@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux"; // Pour accéder au token utilisateur
 import ChatView from "./ChatView";
 import Header from "./Header";
@@ -16,6 +16,11 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 function Home() {
+  const [topTitle1, setTopTitle1] = useState([]);
+  const [topTitle2, setTopTitle2] = useState([]);
+  const [topTitle3, setTopTitle3] = useState([]);
+  const [topTitle4, setTopTitle4] = useState([]);
+  const [topTitle5, setTopTitle5] = useState([]);
   const [favoriteModalIsOpen, setFavoriteModalIsOpen] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isStarred, setIsStarred] = useState(false);
@@ -23,6 +28,23 @@ function Home() {
   // const musicSchema = require("../models/musicschema");
   const username = useSelector(state => state.user.value.username);
   console.log("1", username)
+  useEffect(() => {
+    fetch(
+      "https://api.radioking.io/widget/radio/radio-snuagless/track/top?limit=5"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("NEXT-TITLE", data);
+        setTopTitle1(data[0].title);
+        setTopTitle2(data[1].title);
+        setTopTitle3(data[2].title);
+        /* setTopTitle4(data[3].title); */
+        /* setTopTitle5(data[4].title); */
+      })
+      .catch((error) => {
+        console.error("Error fetching events:", error);
+      });
+  }, []); 
 
 
 const toggleModal = () => {
