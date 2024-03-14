@@ -16,7 +16,7 @@
 .sunglasses{
   width: 200px;
   height: auto;
-  border: solid 1px green;
+  /* border: solid 1px green; */
 }
 
 .topCard {
@@ -69,12 +69,12 @@
   width: 300px;
   padding: 10px 20px;
   margin: 10px;
-  border: solid 1px whitesmoke;
+  /* border: solid 1px whitesmoke; */
 }
 .settingsWrapper {
   display: flex;
   flex-direction: column;
-  border: solid 1px yellow
+  /* border: solid 1px yellow */
   /* Ajoutez d'autres styles si nécessaire */
 }
 
@@ -87,7 +87,7 @@
   width: 300px;
   padding: 10px 20px;
   margin: 10px;
-  background-color: blue;
+  /* background-color: blue; */
 }
 .fieldCardBottom {
   display: flex;
@@ -321,17 +321,20 @@ padding: 10px;
    }
 
    .deleteOrNotButtons{
-    width: 50px;
+    display: flex;
+
+    width: 30px;
     height: 30px;
     /* border: solid 1px green; */
    }
 
-   .backButton{
-    width: 50px;
-    height: 30px;
-    border: solid 1px yellow;
-    background-color: yellow;
+   .backButton, .confirmButton{
+    margin-left: 60px;
+    width: 15px;
+    height: 15px;
    }
+
+
 
    .supprtext{
     margin-left:-200px;

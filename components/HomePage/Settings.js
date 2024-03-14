@@ -53,16 +53,16 @@ function Settings() {
     <div className={styles.settingsBox}>
 
       <div className={styles.topCard}>
-      <Image
+      {/* <Image
   src="/../../public/images/logo.png"
   className={styles.sunglasses}
   alt="Logo"
   layout='fill'
-/>
+/> */}
         <h3>Utilisateur</h3>
         <div className={styles.changePic}>
           {/* settings user */}
-          <div styles={{ display: "flex" }} onClick={() => ChangePhoto(onClose, open)}>
+          <div styles={{ display: "flex" }} /*onClick={() => ChangePhoto(onClose, open)}*/>
             <FontAwesomeIcon
               icon={faImagePortrait}
               style={{ color: "white", width: "40px" }}
@@ -182,6 +182,7 @@ function Settings() {
         {/* Confirmation de suppression */}
         {wantToDelete && (
           <div className={styles.fieldCardBottom}>
+            <div className={styles.delete}>
             <text>
               Es-tu sur de vouloir supprimer ton compte? Tu perdras tes étoiles
               et tes likes et tu ne pourras plus poster dans le tchat!
@@ -190,9 +191,10 @@ function Settings() {
               <button type="button" onClick={() => setWantToDelete(false)} className={styles.backButton}>
                 🔙
               </button>
-              <button type="button" onClick={() => deleteConfirmed()}>
+              <button type="button" onClick={() => deleteConfirmed()} className={styles.confirmButton}>
                 ✅
               </button>
+              </div>
             </div>
           </div>
         )}
