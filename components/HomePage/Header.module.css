@@ -7,7 +7,6 @@
   height: 155px;
   background-color: #480ebb;
   background: linear-gradient(150deg, #7b2be8 50%, #01c2cc 100%);
-  
 }
 
 .connected {
@@ -18,6 +17,11 @@
   height: 100px;
   width: 400px;
 }
+.button {
+  width: 200px;
+  height: 40px;
+}
+
 .header h1 {
   color: white;
   font-family: "Press Start 2P", system-ui;
@@ -31,7 +35,8 @@
   border: none;
   border-radius: 30px;
   padding: 0.5rem;
-  width: 15%;
+  width: 200px;
+  height: 40px;
   box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
