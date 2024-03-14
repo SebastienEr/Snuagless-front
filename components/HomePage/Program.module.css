@@ -1,6 +1,6 @@
 .container {
   z-index: 1;
-  height: auto; /* Ajusté pour s'adapter au contenu */
+  height: auto;
   width: 22rem;
   border-radius: 10px;
   border: 0.1px solid rgba(163, 162, 251, 0.841);
@@ -8,16 +8,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Ajusté pour aligner le contenu depuis le haut */
+  justify-content: flex-start;
   margin-top: 14vh;
-  padding: 1rem; /* Ajusté pour un meilleur espacement */
+  padding: 1rem;
   box-shadow: 5px 5px 4px 0 rgba(79, 78, 78, 0.6);
 }
 
 .container h2 {
-  margin-bottom: 1rem; /* Ajouté pour un espacement sous le titre */
+  margin-bottom: 1rem;
   color: #ffffffec;
-  text-align: center; /* Centrer le titre */
+  text-align: center;
 }
 
 .diffusion {
@@ -25,8 +25,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%; /* Ajusté pour utiliser toute la largeur du conteneur */
-  margin: 0.7rem 0; /* Ajouté pour un espacement vertical entre les éléments */
+  width: 100%;
+  margin: 0.7rem 0;
   padding: 0.5rem;
   background-color: rgba(163, 162, 251, 0.841);
   color: #0e1044;
@@ -35,7 +35,7 @@
 }
 
 .text {
-  margin-left: 10px; /* Ajusté pour aligner le texte à gauche */
+  margin-left: 10px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
