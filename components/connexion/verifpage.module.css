@@ -1,5 +1,7 @@
 
 .verif-page {
+  background: linear-gradient(to top, #FF66C4 2%, #fbd96b 100%);
+
     text-align: center;
     margin-top: 50px;
   }

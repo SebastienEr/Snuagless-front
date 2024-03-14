@@ -99,7 +99,7 @@ width: 50vw;
 .passwordBox input:focus-within, 
 .inputFilled input{
   border: 1.5px solid rgba(85, 52, 98, 0.956);
-  color: black;
+  color: rgb(38, 37, 37);
   background-color: #f8cbce87;
   /* background-color: #f8cbce6a; */
 }
