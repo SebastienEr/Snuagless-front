@@ -36,13 +36,16 @@ const SignIn = () => {
       body: JSON.stringify({
         username: signInUsername,
         password: signInPassword,
-      }),
+      }), // envoie au backend un objet avec le nom d'utilisateur et son mot de passe
     })
       .then((response) => response.json())
       .then((data) => {
+        // traitement de la réponse du backend
         console.log(data);
         if (data.result === true) {
+          //si la réponse est true
           dispatch(
+            // envoyer au reducer l'username, le token, et la profile picture de data.result
             login({
               username: signInUsername,
               token: token,
@@ -50,7 +53,7 @@ const SignIn = () => {
             })
           );
           router.push("/");
-          // login ok, renvoie vers homepage en étant connecté
+          // redirection vers home avec connecté vrai
         } else {
           setMessage("Mot de passe erroné. Veuillez réessayer.");
           setSignInAttempts(signInAttempts + 1);
@@ -136,7 +139,9 @@ const SignIn = () => {
       console.log(email, "after fetch");
 
       if (response.ok) {
-        setResetStatus("Mot de passe modifié avec succès. Vous pouvez fermer cette page et vous connecter.")
+        setResetStatus(
+          "Mot de passe modifié avec succès. Vous pouvez fermer cette page et vous connecter."
+        );
 
         // Vous pouvez ajouter ici une redirection ou toute autre action en cas de succès
       } else {
@@ -181,11 +186,15 @@ const SignIn = () => {
               />
               <label>Mot de passe</label>
             </div>
-            <button className={styles.signupbtn} id="connection" onClick={() => handleConnection()}>
-            Se connecter
-          </button>
+            <button
+              className={styles.signupbtn}
+              id="connection"
+              onClick={() => handleConnection()}
+            >
+              Se connecter
+            </button>
           </div>
-     
+
           {message && <p>{message}</p>}
           {showResetModal && (
             <div>
