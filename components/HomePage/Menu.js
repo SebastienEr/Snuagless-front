@@ -73,14 +73,15 @@ function Menu() {
           <span
             className="menu-item"
             style={{ display: "none" }}
-            onClick={() => openFavorites()}
-          >
+            onClick={() => openFavorites()}>
+            
             <FontAwesomeIcon
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
               style={{ fontSize: "2rem" }}
             />
           </span>
+          {favoritesOpen && <FavoriteModal isOpen={favoritesOpen} toggleModal={openFavorites} />}
           <span
             className="menu-item"
              style={{ display: "none" }}
@@ -97,7 +98,7 @@ function Menu() {
               alt="icône en forme de coeur. Mes 10 musiques favorites"
               icon={faHeart}
               style={{ fontSize: "2rem" }}
-            />{favoritesOpen?  (<FavoriteModal/>):null}
+            />{favoritesOpen &&  (<FavoriteModal/>)}
           </span>
           <span className="menu-item" onClick={() => openSettings()}>
             <FontAwesomeIcon
