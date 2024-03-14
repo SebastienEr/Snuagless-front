@@ -7,9 +7,9 @@ function Program() {
   // https://api.radioking.io/widget/radio/radio-snuagless/track/current
   //https://api.radioking.io/widget/radio/radio-snuagless/track/ckoi?limit=1
 
-  const [previousTitle, setPreviousTitile] = useState(null);
-  const [title, setTitle] = useState(null);
-  const [nextTitle, setNextTitle] = useState(null);
+  const [previousTitle, setPreviousTitile] = useState([]);
+  const [title, setTitle] = useState([]);
+  const [nextTitle, setNextTitle] = useState([]);
 
   useEffect(() => {
     fetch(
